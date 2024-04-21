@@ -182,7 +182,7 @@ const ChartComponent = () => {
       chartInstance.destroy();
     };
   }, [selectedCoin,levels]);
-
+const applications = [{id:1,}]
   return (
     <>
     <div className={`flex flex-col items-center`} >
@@ -259,6 +259,90 @@ const ChartComponent = () => {
       </select> 
      
     </div>
+    {/* <div className={`overflow-x-auto`}>
+          <table className="table-auto w-full border-collapse border border-gray-300 mb-12">
+            <thead>
+              <tr>
+                <th
+                  className={`px-4 py-2 bg-gray-700 text-gray-50 border text-2xl `}
+                >
+                  Company name
+                </th>
+                <th
+                  className={`px-4 py-2 bg-gray-700 text-gray-50 border text-2xl `}
+                >
+                  Role
+                </th>
+                <th
+                  className={`px-4 py-2 bg-gray-700 text-gray-50 border text-2xl `}
+                >
+                  Location
+                </th>
+                <th
+                  className={`px-4 py-2 bg-gray-700 text-gray-50 border text-2xl `}
+                >
+                  Status
+                </th>
+                <th
+                  className={`px-4 py-2 bg-gray-700 text-gray-50 border text-2xl `}
+                >
+                  Cancel Application
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {applications.map((application) => (
+                <tr key={application.id}>
+                  <td className={`px-4 py-4 border text-center `}>
+                    {application.companyname}
+                  </td>
+                  <td className={`px-4 py-4 border text-center `}>
+                    {application.position}
+                  </td>
+                  <td className={`px-4 py-4 border text-center `}>
+                    {application.location}
+                  </td>
+                  <td
+                    className={`px-4 py-4 border text-center font-bold  ${
+                      application.status === "reject"
+                        ? "text-red-600"
+                        : application.status === "pending"
+                        ? "text-blue-600"
+                        : application.status === "approve"
+                        ? "text-green-500"
+                        : ""
+                    }`}
+                  >
+                    {application.status === "approve"
+                      ? "approved"
+                      : application.status === "reject"
+                      ? "rejected"
+                      : application.status}
+                  </td>
+                  <td className={`px-4 py-4 border text-center `}>
+                    <button
+                      className="text-lg bg-red-600 text-gray-50 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                      onClick={() => {
+                        handleCancelApplication(application._id);
+                        console.log(
+                          "application_id__application table:",
+                          application._id
+                        );
+                      }}
+                    >
+                      Cancel
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <Pagination
+        currentPage={currentPage}
+        totalPages={pages}
+        onPageChange={setCurrentPage}
+      />
+        </div> */}
   </>
   );
 };
