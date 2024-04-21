@@ -12,7 +12,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <script
+          src="https://cdn.jsdelivr.net/npm/chart.js"
+          async
+        ></script>
       </head>
       <body className={inter.className}>{children}</body>
     </html>
