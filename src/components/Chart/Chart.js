@@ -5,17 +5,10 @@ import style from "./Chart.module.css";
 
 const ChartComponent = () => {
   const [levelArray, setLevelArray] = useState([]);
-  const screenWidth = window.innerWidth;
   const addLevel = (levelName, levelPrice) => {
-    // setLevelArray((prevLevels) => [
-    //   ...prevLevels,
-    //   { level: levelName, levelPrice: levelPrice },
-    // ]);
-    // console.log(levelArray, "levelArray");
     setLevelArray((prevLevels) => {
       // Create a Set to store unique values
       const levelSet = new Set(prevLevels.map((item) => item.levelPrice));
-      // Add the new level price to the Set
       levelSet.add(levelPrice);
       // Convert the Set back to an array
       const uniqueLevels = Array.from(levelSet).map((price) => ({
@@ -310,7 +303,6 @@ const ChartComponent = () => {
   }, [
     selectedCoin,
     levels,
-    screenWidth,
     levelRange,
     customSellPriceValue,
     averagePurchasePrice,
