@@ -7,10 +7,8 @@ const ChartComponent = () => {
   const [levelArray, setLevelArray] = useState([]);
   const addLevel = (levelName, levelPrice) => {
     setLevelArray((prevLevels) => {
-      // Create a Set to store unique values
       const levelSet = new Set(prevLevels.map((item) => item.levelPrice));
       levelSet.add(levelPrice);
-      // Convert the Set back to an array
       const uniqueLevels = Array.from(levelSet).map((price) => ({
         level: levelName,
         levelPrice: price,
@@ -47,7 +45,6 @@ const ChartComponent = () => {
   const [levelRange, setLevelRange] = useState(10);
   const [levels, setLevels] = useState(5);
   const [initialInvestments, setInitialInvestments] = useState(false);
-  // const [returnOnInvestment, setReturnOnInvestment] = useState(0);
   const [customSellPriceLevel, setCustomSellPriceLevel] = useState(0);
   const handleChangeSlider = (event) => {
     setLevelRange(parseInt(event.target.value));
@@ -132,10 +129,12 @@ const ChartComponent = () => {
       { length: parseInt(event.target.value) },
       (_, index) => ({
         level: `# ${index + 1}`,
-        levelPrice: 0,
+        levelPrice: 2,
       })
     );
     setLevelArray(newLevelArray);
+    console.log(levelArray, "levelArray");
+    console.log(levels, "levels");
   };
   const handleInitialInvestment = (event) => {
     setInitialInvestments(!initialInvestments);
@@ -502,33 +501,34 @@ const ChartComponent = () => {
             </tr>
           </thead>
           <tbody>
-            {levelArray.map((level, index) => (
-              <tr key={index}>
-                <td className={`px-4 py-4 border text-center `}>
-                  {" "}
-                  {`# ${index + 1}`}
-                </td>
-                <td className={`px-4 py-4 border text-center `}>
-                  $ {level.levelPrice}
-                </td>
-                <td className={`px-4 py-4 border text-center `}>
-                  <input
-                    type="text"
-                    value={level.levelPrice}
-                    onChange={(e) => {
-                      const newValue = e.target.value.replace(/\D/g, "");
-                      setCustomSellPriceLevel(newValue);
-                      handleCustomSellPriceChange(index, newValue);
-                    }}
-                    pattern="\d*"
-                    className="w-3/12  ml-4 bg-gray-200 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                </td>
-                <td className={`px-4 py-4 border text-center `}>
-                  $ {(level.levelPrice - averagePurchasePrice) * numberOfTokens}
-                </td>
-              </tr>
-            ))}
+            {levelArray.length >= levels &&
+              levelArray.map((level, index) => (
+                <tr key={index}>
+                  <td className={`px-4 py-4 border text-center `}>
+                    {`# ${index + 1}`}
+                  </td>
+                  <td className={`px-4 py-4 border text-center `}>
+                    $ {level.levelPrice}
+                  </td>
+                  <td className={`px-4 py-4 border text-center `}>
+                    <input
+                      type="text"
+                      value={level.levelPrice}
+                      onChange={(e) => {
+                        const newValue = e.target.value.replace(/\D/g, "");
+                        setCustomSellPriceLevel(newValue);
+                        handleCustomSellPriceChange(index, newValue);
+                      }}
+                      pattern="\d*"
+                      className="w-3/12  ml-4 bg-gray-200 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    />
+                  </td>
+                  <td className={`px-4 py-4 border text-center `}>
+                    ${" "}
+                    {(level.levelPrice - averagePurchasePrice) * numberOfTokens}
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </table>
       </div>
