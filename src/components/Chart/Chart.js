@@ -295,7 +295,6 @@ const ChartComponent = () => {
         },
       },
     });
-    console.log(screenWidth, "screenwidth");
 
     return () => {
       chartInstance.destroy();
