@@ -3,49 +3,50 @@ import React, { useEffect, useRef, useState } from "react";
 import Chart from "chart.js/auto";
 import style from "./Chart.module.css";
 
-const ChartComponent = () => {
+const ChartComponent = () => { 
+
+  const [changedLevel,setChangedLevel] = useState(['unaltered',
+  'unaltered',
+  'unaltered',
+  'unaltered',
+  'unaltered',
+  'unaltered',
+  'unaltered',
+  'unaltered',
+  'unaltered',
+  'unaltered',
+  'unaltered',
+  'unaltered',
+  'unaltered',
+  'unaltered',
+  'unaltered',
+  'unaltered',
+  'unaltered',
+  'unaltered',
+  'unaltered',
+  'unaltered',
+  'unaltered',
+  'unaltered',
+  'unaltered',
+  'unaltered',
+  'unaltered',
+  'unaltered',
+  'unaltered',
+  'unaltered',
+  'unaltered',
+  'unaltered',
+])
   const [levelArray, setLevelArray] = useState([]);
-  const addLevel = (levelName, levelPrice) => {
-    setLevelArray((prevLevels) => {
-      const levelSet = new Set(prevLevels.map((item) => item.levelPrice));
-      levelSet.add(levelPrice);
-      const uniqueLevels = Array.from(levelSet).map((price) => ({
-        level: levelName,
-        levelPrice: price,
-      }));
-      return uniqueLevels;
-    });
-    console.log(levelArray, "levelArray");
-  };
-  const [selectedCoin, setSelectedCoin] = useState({
-    name: "Coin1",
-    maxValue: 200,
-    months: [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "August",
-      "October",
-      "November",
-      "December",
-    ],
-    data: [65, 59, 80, 81, 56, 55, 40, 65, 59, 80, 81, 56, 55, 40, 210],
-  });
-  const [customSellPriceValue, setCustomSellPriceValue] = useState(
-    selectedCoin.maxValue - selectedCoin.maxValue * (25 / 100)
-  );
+  const [selectedCoin, setSelectedCoin] = useState(undefined);
+  const [customSellPriceValue, setCustomSellPriceValue] = useState(null);
   const [averagePurchasePrice, setAveragePurchasePrice] = useState(0);
   const [numberOfTokens, setNumberOfTokens] = useState(0);
   const [levelRange, setLevelRange] = useState(10);
   const [levels, setLevels] = useState(5);
   const [initialInvestments, setInitialInvestments] = useState(false);
   const [customSellPriceLevel, setCustomSellPriceLevel] = useState(0);
+  const [isCoinSelected,setIsCoinSelected] = useState(false)
+  const [initalInvestmentOutLevel,setInitalInvestmentOutLevel] = useState(0)
   const handleChangeSlider = (event) => {
     setLevelRange(parseInt(event.target.value));
   };
@@ -119,24 +120,16 @@ const ChartComponent = () => {
     coin.data.push(coin.maxValue * 1.5);
   });
 
-  const handleSelectChange = (event) => {
+  const handleSelectCoin = (event) => {
     const selectedCoin = coins.find((coin) => coin.name === event.target.value);
     setSelectedCoin(selectedCoin);
+    setCustomSellPriceValue(selectedCoin.maxValue-selectedCoin.maxValue*(25/100))
+    setIsCoinSelected(true)
   };
   const handleLevelsChange = (event) => {
-    setLevels(parseInt(event.target.value));
-    const newLevelArray = Array.from(
-      { length: parseInt(event.target.value) },
-      (_, index) => ({
-        level: `# ${index + 1}`,
-        levelPrice: 2,
-      })
-    );
-    setLevelArray(newLevelArray);
-    console.log(levelArray, "levelArray");
-    console.log(levels, "levels");
+    setLevels(parseInt(event.target.value)); 
   };
-  const handleInitialInvestment = (event) => {
+  const handleInitialInvestment = () => {
     setInitialInvestments(!initialInvestments);
   };
   const chartRef = useRef(null);
@@ -157,11 +150,11 @@ const ChartComponent = () => {
     const chartInstance = new Chart(ctx, {
       type: "line",
       data: {
-        labels: selectedCoin.months,
+        labels: isCoinSelected?selectedCoin.months:'',
         datasets: [
           {
-            label: selectedCoin.name,
-            data: selectedCoin.data,
+            label: isCoinSelected? selectedCoin.name:"Select a coin",
+            data: isCoinSelected?selectedCoin.data:"",
             fill: false,
             borderColor: "#0000B9",
             tension: 0.4,
@@ -191,10 +184,10 @@ const ChartComponent = () => {
             const ctx = chartInstance.ctx;
             const chartArea = chartInstance.chartArea;
             const maxValueY = chartInstance.scales.y.getPixelForValue(
-              selectedCoin.maxValue
+              isCoinSelected?selectedCoin.maxValue:500
             );
             const maxValueYAverage = chartInstance.scales.y.getPixelForValue(
-              selectedCoin.maxValue - selectedCoin.maxValue * (25 / 100)
+              isCoinSelected?selectedCoin.maxValue - selectedCoin.maxValue * (25 / 100):500-(500* 25/100)
             );
             const yValue2 =
               chartInstance.scales.y.getPixelForValue(averagePurchasePrice);
@@ -217,11 +210,11 @@ const ChartComponent = () => {
             ctx.strokeStyle = "orange";
             ctx.stroke();
 
-            ctx.restore();
+            if (isCoinSelected){
+              ctx.restore();
             ctx.save();
             ctx.beginPath();
-            ctx.setLineDash([5, 5]);
-
+            ctx.setLineDash([5, 5]); 
             ctx.moveTo(chartInstance.chartArea.left, yValue2);
             ctx.lineTo(chartInstance.chartArea.right, yValue2);
             ctx.strokeStyle = "green";
@@ -237,7 +230,9 @@ const ChartComponent = () => {
             ctx.strokeStyle = "pink";
             ctx.stroke();
             ctx.restore();
+            
 
+            const initialLevels = []
             for (let i = 0; i < levels; i++) {
               if (levels % 2 === 0) {
                 const yPosition =
@@ -257,17 +252,18 @@ const ChartComponent = () => {
                 const labelX = chartArea.right + lineWidth - 20;
                 const labelY = yPos;
                 ctx.fillStyle = "purple";
-                addLevel(levelNames[i], customSellPriceValue - levelRange);
-
+                initialLevels.push({
+                  level: levelNames[i],
+                  levelPrice: changedLevel[i]!=='unaltered'? changedLevel[i]:yPosition});
+                  setLevelArray(initialLevels);
                 ctx.fillText(levelNames[i], labelX, labelY);
 
-                console.log(yPos, "yPos");
               } else {
                 const yPosition =
                   customSellPriceValue -
                   Math.ceil(levels / 2) * levelRange +
                   (i + 1) * levelRange;
-                const yPos = chartInstance.scales.y.getPixelForValue(yPosition);
+                const yPos = chartInstance.scales.y.getPixelForValue(changedLevel[i]!=='unaltered'? changedLevel[i]:yPosition);
                 ctx.save();
                 ctx.beginPath();
                 ctx.setLineDash([5, 5]);
@@ -279,17 +275,20 @@ const ChartComponent = () => {
                 const labelX = chartArea.right + lineWidth - 20;
                 const labelY = yPos;
                 ctx.fillStyle = "purple";
-                addLevel(
-                  levelNames[i],
-                  customSellPriceValue -
-                    Math.ceil(levels / 2) * levelRange +
-                    (i + 1) * levelRange
-                );
+                initialLevels.push({
+                  level: levelNames[i],
+                  levelPrice: changedLevel[i]!=='unaltered'? changedLevel[i]:yPosition})
 
+                console.log(initialLevels,'initial Levels')
+                
+                  setLevelArray(initialLevels);
                 ctx.fillText(levelNames[i], labelX, labelY);
-                console.log(yPos, "yPos");
+                console.log(changedLevel[i],'changedLevel[i]')
               }
             }
+            }
+
+            
           },
         },
       },
@@ -304,7 +303,27 @@ const ChartComponent = () => {
     levelRange,
     customSellPriceValue,
     averagePurchasePrice,
+    changedLevel
   ]);
+
+  const weightedAveragePrice = ()=>{
+    var value=0;
+    levelArray.map((level)=>{
+      value+=parseInt(level.levelPrice) * numberOfTokens
+    })
+    return numberOfTokens==0?0:value/numberOfTokens
+  }
+  const totalRevenue = ()=>{
+    var value=0;
+    levelArray.map((level)=>{
+      value+=parseInt(level.levelPrice) * numberOfTokens
+    })
+    return value
+  }
+
+  const totalProfit = ()=>{ 
+    return totalRevenue() - (averagePurchasePrice*numberOfTokens)
+  }
   return (
     <div className="container mx-auto">
       <div className={`flex flex-col items-center`}>
@@ -312,10 +331,14 @@ const ChartComponent = () => {
       </div>
       <div className="flex flex-col items-center w-full mt-20">
         <select
-          value={selectedCoin ? selectedCoin.name : ""}
-          onChange={handleSelectChange}
-          className=" block appearance-none w-2/12 bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:border-indigo-500"
+          value={selectedCoin ? selectedCoin.name : "Select coin"}
+          onChange={handleSelectCoin}
+          className={` block appearance-none w-2/12 bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:border-indigo-500 ${!isCoinSelected?'my-20':''}`}
         >
+             <option value={'select a coin'}>
+              select a coin
+            </option>
+         
           {coins.map((coin, index) => (
             <option key={index} value={coin.name}>
               {coin.name}
@@ -323,8 +346,9 @@ const ChartComponent = () => {
           ))}
         </select>
       </div>
+{isCoinSelected && <>
 
-      <div className="flex w-full flex-col items-center mt-8">
+  <div className="flex w-full flex-col items-center mt-8">
         <div className="w-[400px] ">
           <input
             type="range"
@@ -451,16 +475,28 @@ const ChartComponent = () => {
             <option value={false}>no</option>
           </select>
         </div>
-      </div>
+      </div></>}
       <div
         className="flex flex-row items-end justify-evenly w-full h-auto   mt-16"
         style={{ display: initialInvestments ? "" : "none" }}
       >
         <div className="flex flex-col items-center justify-evenly h-auto w-3/12">
-          <div className="mt-4 w-full flex-col items-center  py-4 border border-black">
-            <h2 className="text-center text-xl">
-              I.I.O Price: $ {numberOfTokens * averagePurchasePrice}
+        <div className="mt-4 w-full flex flex-row items-center py-4 ">
+            <h2 className="text-center text-lg w-7/12">
+              I.I.O Price
             </h2>
+            <input
+              type="text"
+              value={
+                initalInvestmentOutLevel
+              }
+              onChange={(e) => {
+                const newValue = e.target.value.replace(/\D/g, "");
+                setInitalInvestmentOutLevel(newValue);
+              }}
+              pattern="\d*"  
+              className="w-4/12   bg-gray-200 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
           </div>
         </div>
         <div className="flex flex-col items-center justify-evenly h-auto w-3/12">
@@ -501,66 +537,69 @@ const ChartComponent = () => {
             </tr>
           </thead>
           <tbody>
-            {levelArray.length >= levels &&
-              levelArray.map((level, index) => (
-                <tr key={index}>
-                  <td className={`px-4 py-4 border text-center `}>
-                    {`# ${index + 1}`}
-                  </td>
-                  <td className={`px-4 py-4 border text-center `}>
-                    $ {level.levelPrice}
-                  </td>
-                  <td className={`px-4 py-4 border text-center `}>
-                    <input
-                      type="text"
-                      value={level.levelPrice}
-                      onChange={(e) => {
-                        const newValue = e.target.value.replace(/\D/g, "");
-                        setCustomSellPriceLevel(newValue);
-                        handleCustomSellPriceChange(index, newValue);
-                      }}
-                      pattern="\d*"
-                      className="w-3/12  ml-4 bg-gray-200 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
-                  </td>
-                  <td className={`px-4 py-4 border text-center `}>
-                    ${" "}
-                    {(level.levelPrice - averagePurchasePrice) * numberOfTokens}
-                  </td>
-                </tr>
-              ))}
+          {levelArray.map((level, index) => (
+    <tr key={index}>
+      <td className={`px-4 py-4 border text-center `}>
+        {`# ${index + 1}`}
+      </td>
+      <td className={`px-4 py-4 border text-center `}>
+        $ {level.levelPrice}
+      </td>
+      <td className={`px-4 py-4 border text-center `}>
+        <input
+          type="text"
+          value={level.levelPrice}
+          onChange={(e) => {
+            const newValue = e.target.value.replace(/\D/g, "");
+            setCustomSellPriceLevel(newValue);
+            handleCustomSellPriceChange(index, newValue);
+            const updatedLevels = [...changedLevel];  
+            updatedLevels[index] = parseInt(e.target.value);
+            setChangedLevel(updatedLevels); 
+            console.log('onachange levels: ', updatedLevels)
+          }}
+          pattern="\d*"
+          className="w-7/12  ml-4 bg-gray-200 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </td>
+      <td className={`px-4 py-4 border text-center `}>
+        ${" "}
+        {(level.levelPrice - averagePurchasePrice) * numberOfTokens}
+      </td>
+    </tr>
+  ))}
           </tbody>
         </table>
       </div>
       <div
-        className="grid grid-cols-4 w-full h-auto   mt-16"
+        className="grid grid-cols-4 w-full h-auto   mt-16 mb-16"
         style={{ display: initialInvestments ? "" : "none" }}
       >
         <div className="flex flex-col items-center justify-evenly h-auto w-11/12">
-          <div className="mt-4 w-full flex-col items-center  py-4 border border-black">
+          <div className="mt-4 w-11/12 flex-col items-center  py-4 border border-black">
             <h2 className="text-center text-xl">
-              Weighted Average: $ {numberOfTokens * averagePurchasePrice}
+              Weighted Average: $ {weightedAveragePrice()}
             </h2>
           </div>
         </div>
         <div className="flex flex-col items-center justify-evenly h-auto w-11/12">
-          <div className="mt-4 w-full flex-col items-center  py-4 border border-black">
+          <div className="mt-4  w-11/12 flex-col items-center  py-4 border border-black">
             <h2 className="text-center text-xl">
               Expected ROI: $ {customSellPriceValue - averagePurchasePrice}
             </h2>
           </div>
         </div>
         <div className="flex flex-col items-center justify-evenly h-auto w-11/12">
-          <div className="mt-4 w-full flex-col items-center  py-4 border border-black">
+          <div className="mt-4 w-11/12 flex-col items-center  py-4 border border-black">
             <h2 className="text-center text-xl">
-              Total Revenue: $ {numberOfTokens * averagePurchasePrice}
+              Total Revenue: $ {totalRevenue()}
             </h2>
           </div>
         </div>
         <div className="flex flex-col items-center justify-evenly h-auto w-11/12">
-          <div className="mt-4 w-full flex-col items-center  py-4 border border-black">
+          <div className="mt-4  w-11/12 flex-col items-center  py-4 border border-black">
             <h2 className="text-center text-xl">
-              Total Profit: $ {numberOfTokens * averagePurchasePrice}
+              Total Profit: $ {totalProfit()}
             </h2>
           </div>
         </div>
