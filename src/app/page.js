@@ -1,7 +1,7 @@
-import ChartComponent from "@/components/Chart/Chart"; 
+import ChartUi from "@/components/ChartUi/Chart"; 
 
 export default function Home() {
   return (
-    <ChartComponent/>
+    <ChartUi/>
   );
 }

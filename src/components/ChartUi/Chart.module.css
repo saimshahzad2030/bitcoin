@@ -1,0 +1,9 @@
+.chartContainer {
+    width: 90%;
+    
+  }
+  
+  .chartCanvas {
+    width: 500px;
+    height: 500px;
+  }
