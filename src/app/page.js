@@ -1,7 +1,5 @@
-import ChartUi from "@/components/ChartUi/Chart"; 
+import WelcomePage from "@/components/WelcomePage/WelcomePage";
 
 export default function Home() {
-  return (
-    <ChartUi/>
-  );
+  return <WelcomePage />;
 }

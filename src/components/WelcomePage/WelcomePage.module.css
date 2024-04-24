@@ -1,0 +1,25 @@
+.welcomePage {
+  height: 100vh;
+}
+
+@media screen and (max-width: 768px) {
+  .welcomePage {
+    height: auto;
+  }
+}
+.fadeIn {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fadeIn.active {
+  opacity: 1;
+}
+.fadeOut {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fadeOut.active {
+  opacity: 0;
+}
