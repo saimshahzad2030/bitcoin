@@ -22,16 +22,18 @@ const CustomCarousel = ({ styling }) => {
   }, []);
   return (
     <div
-      className={`relative p-[4px] bg-white h-auto ${styling} flex flex-row items-center`}
+      className={`relative p-[4px] h-auto ${styling} flex flex-row items-center justify-center`}
     >
       <img
         src={images[textIndex]}
         alt="Your Image"
-        className={`w-full h-full opacity-70 `}
+        className={`w-10/12 h-auto opacity-70 rounded-2xl`}
       />
 
-      <div className="absolute bottom-[20%] left-[5%] w-auto p-4 bg-gray-500 opacity-80">
-        <p className=" font-bold text-lg md:text-md lg:text-2xl xl:text-4xl text-white opacity-100">
+      <div
+        className={`absolute bottom-[20%] md:bottom-[35%] lg:bottom-[20%] left-[5%] w-auto p-4 bg-indigo-500 opacity-80`}
+      >
+        <p className=" font-bold text-sm sm:text-lg md:text-md lg:text-2xl xl:text-4xl text-white opacity-100">
           {text[textIndex]}
         </p>
       </div>

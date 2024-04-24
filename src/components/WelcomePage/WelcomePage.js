@@ -17,9 +17,7 @@ const WelcomePage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
-  const [companyName, setCompanyname] = useState("");
   const [isLogin, setIsLogin] = useState(true);
-  const [isChecked, setIsChecked] = useState(false);
   const [token, setToken] = useState("");
   const [emailEntered, setEmailEntered] = useState(false);
   const [emailVerified, setEmailVerified] = useState(false);
@@ -98,25 +96,8 @@ const WelcomePage = () => {
       }
     });
   }, []);
-  // const [textIndex, setTextIndex] = useState(0);
-  // const text = [
-  //   "Welcome to Crypto Exit Calculator",
-  //   "Calculate your exit price",
-  //   "Get to know your profits",
-  // ];
-
-  // const images = WELCOMEPAGE;
-  // useEffect(() => {
-  //   const intervalId = setInterval(() => {
-  //     setTextIndex((prevIndex) => (prevIndex + 1) % images.length);
-  //   }, 5000);
-
-  //   return () => {
-  //     clearInterval(intervalId);
-  //   };
-  // }, []);
   return (
-    <div className={`bg-gray-700 py-12 ${style.welcomePage}`}>
+    <div className={`bg-indigo-800 py-12 ${style.welcomePage}`}>
       <Modal
         loading={loading}
         type={type}
@@ -131,27 +112,17 @@ const WelcomePage = () => {
             Crypto Exit Calculator
           </h1>
           <div className="grid sm:grid-cols-1  lg:sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-2 2xl:md:grid-cols-2 ">
-            {/* <div className="relative p-[4px] bg-white h-auto flex flex-row items-center">
-              <img
-                src={images[textIndex]}
-                alt="Your Image"
-                className={`w-full h-full opacity-70 `}
-              />
-
-              <div className="absolute bottom-[20%] left-[5%] w-auto p-4 bg-gray-500 opacity-80">
-                <p className=" font-bold text-lg md:text-md lg:text-2xl xl:text-4xl text-white opacity-100">
-                  {text[textIndex]}
-                </p>
-              </div>
-            </div> */}
             <CustomCarousel />
-            <div className="flex-1  p-6 sm:px-16 w-full">
-              <form onSubmit={handleSubmit} className="w-full  lg:w-8/12  ">
-                <h2 className="text-2xl lg:text-5xl font-bold mb-4 text-gray-50">
+            <div className=" flex flex-col items-center justify-center  p-6 sm:px-16 w-full ">
+              <form
+                onSubmit={handleSubmit}
+                className="w-11/12  lg:w-8/12 flex flex-col items-center bg-white p-8 rounded-xl "
+              >
+                <h2 className="text-2xl lg:text-5xl font-bold mb-4 text-indigo-800">
                   {isLogin ? "Login" : "Sign Up"}
                 </h2>
                 {!isLogin && emailVerified && (
-                  <div className="mb-4">
+                  <div className="mb-4 w-full">
                     <label
                       htmlFor="username"
                       className="block text-gray-400 text-sm font-bold mb-2"
@@ -170,7 +141,7 @@ const WelcomePage = () => {
                 )}
 
                 {isLogin ? (
-                  <div className="mb-4">
+                  <div className="mb-4 w-full">
                     <label
                       htmlFor="email"
                       className="block text-gray-400 text-sm font-bold mb-2"
@@ -188,7 +159,7 @@ const WelcomePage = () => {
                   </div>
                 ) : (
                   !emailEntered && (
-                    <div className="mb-4">
+                    <div className="mb-4 w-full">
                       <label
                         htmlFor="email"
                         className="block text-gray-400 text-sm font-bold mb-2"
@@ -208,7 +179,7 @@ const WelcomePage = () => {
                 )}
 
                 {!isLogin && emailEntered && !emailVerified && (
-                  <div className="mb-4">
+                  <div className="mb-4 w-full">
                     <label
                       htmlFor="username"
                       className="block text-gray-400 text-sm font-bold mb-2"
@@ -220,7 +191,7 @@ const WelcomePage = () => {
                       type="text"
                       id="token"
                       value={token}
-                      placeholder="token"
+                      placeholder="Enter Token..."
                       onChange={(e) => {
                         const inputValue = e.target.value;
                         const numericInput = inputValue.replace(/[^0-9]/g, "");
@@ -234,7 +205,7 @@ const WelcomePage = () => {
                 )}
 
                 {isLogin ? (
-                  <div className="mb-6">
+                  <div className="mb-6 w-full">
                     <label
                       htmlFor="password"
                       className="block text-gray-400 text-sm font-bold mb-2"
@@ -252,7 +223,7 @@ const WelcomePage = () => {
                   </div>
                 ) : (
                   emailVerified && (
-                    <div className="mb-6">
+                    <div className="mb-6 w-full ">
                       <label
                         htmlFor="password"
                         className="block text-gray-400 text-sm font-bold mb-2"
@@ -271,30 +242,38 @@ const WelcomePage = () => {
                   )
                 )}
 
-                <button
-                  type="submit"
-                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 lg:text-2xl rounded focus:outline-none focus:shadow-outline"
+                <div
+                  className={`${
+                    !emailEntered && !isLogin
+                      ? "flex flex-col items-end w-full "
+                      : "flex flex-col items-center w-full "
+                  }`}
                 >
+                  <button
+                    type="submit"
+                    className="bg-indigo-800 hover:bg-indigo-700 text-white font-bold py-2 px-4 lg:text-lg rounded focus:outline-none focus:shadow-outline"
+                  >
+                    {isLogin
+                      ? "Login"
+                      : !emailEntered
+                      ? "Next"
+                      : emailEntered && !emailVerified
+                      ? "VerifyEmail"
+                      : emailEntered && emailVerified && "signin"}
+                  </button>
+                </div>
+                <p className="mt-4 text-black">
                   {isLogin
-                    ? "Login"
-                    : !emailEntered
-                    ? "Next"
-                    : emailEntered && !emailVerified
-                    ? "VerifyEmail"
-                    : emailEntered && emailVerified && "signin"}
-                </button>
+                    ? "Don't have an account?"
+                    : "Already have an account?"}
+                  <button
+                    onClick={() => setIsLogin(!isLogin)}
+                    className="ml-2 text-indigo-800 hover:underline focus:outline-none"
+                  >
+                    {isLogin ? "Sign Up" : "Login"}
+                  </button>
+                </p>
               </form>
-              <p className="mt-4 text-gray-50">
-                {isLogin
-                  ? "Don't have an account?"
-                  : "Already have an account?"}
-                <button
-                  onClick={() => setIsLogin(!isLogin)}
-                  className="ml-2 text-blue-500 hover:underline focus:outline-none"
-                >
-                  {isLogin ? "Sign Up" : "Login"}
-                </button>
-              </p>
             </div>
           </div>
         </div>

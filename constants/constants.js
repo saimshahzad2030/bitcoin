@@ -1,5 +1,5 @@
 import Cookies from "js-cookie";
-export const BASEURL = "http://localhost:4000/api";
+export const BASEURL = "https://bitcoin-backend-lyart.vercel.app/api";
 
 export const headersFunction = () => {
   const token = Cookies.get("token");
@@ -73,4 +73,11 @@ export const WELCOMEPAGE = [
   "/assets/welcome/1.jpg",
   "/assets/welcome/2.jpg",
   "/assets/welcome/3.jpg",
+];
+
+export const BLANKPAGE = [
+  { name: "Coin", image: "/assets/blankhome/bit-coin.svg" },
+  { name: "Chart View", image: "/assets/blankhome/chart-line.svg" },
+  { name: "Custom levels", image: "/assets/blankhome/customization.svg" },
+  { name: "Table View", image: "/assets/blankhome/table.svg" },
 ];

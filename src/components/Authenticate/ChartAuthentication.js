@@ -17,7 +17,6 @@ const ChartAuthentication = ({ children }) => {
           `${BASEURL}/authenticate`,
           headersFunction()
         );
-
         if (
           response.data.role === "admin" &&
           pathname !== "/admin/home" &&
@@ -29,7 +28,10 @@ const ChartAuthentication = ({ children }) => {
           setLoading(false);
           setUserAuthenticated(false);
           return <BlankHome />;
-        } else if (response.data.status !== "approved") {
+        } else if (
+          response.data.role === "user" &&
+          response.data.status !== "approved"
+        ) {
           setLoading(false);
           setUserAuthenticated(false);
           return <BlankHome />;
@@ -47,7 +49,7 @@ const ChartAuthentication = ({ children }) => {
     }
 
     checkAuthentication();
-  }, [loading, userAuthenticated]);
+  }, []);
 
   if (!userAuthenticated && !loading) {
     return <BlankHome />;
