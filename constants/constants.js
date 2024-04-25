@@ -77,7 +77,7 @@ export const WELCOMEPAGE = [
 
 export const BLANKPAGE = [
   { name: "Coin", image: "/assets/blankhome/bit-coin.svg" },
-  { name: "Chart View", image: "/assets/blankhome/chart-line.svg" },
+  { name: "Chart", image: "/assets/blankhome/chart-line.svg" },
   { name: "Custom levels", image: "/assets/blankhome/customization.svg" },
   { name: "Table View", image: "/assets/blankhome/table.svg" },
 ];

@@ -5,11 +5,11 @@ import { BLANKPAGE } from "../../../constants/constants";
 const BlankHome = () => {
   const name = Cookies.get("name");
   return (
-    <div className="flex flex-col items-center w-full">
-      <div className="flex flex-row items-center justify-end  w-full bg-indigo-700 p-4">
-        <p className="text-white text-2xl mr-4">{name}</p>
-        <div className="flex flex-col items-center justify-center h-12 w-12 bg-white rounded-full">
-          <p className="text-indigo-700 text-3xl font-bold">
+    <div className="flex flex-col items-center w-full container mx-auto">
+      <div className="flex flex-row items-center justify-end  w-full p-4">
+        <p className="text-indigo-700 text-2xl mr-4">{name}</p>
+        <div className="flex flex-col items-center justify-center h-12 w-12 bg-indigo-700 rounded-full">
+          <p className="text-white text-3xl font-bold">
             {name.charAt(0).toUpperCase()}
           </p>
         </div>
@@ -35,7 +35,7 @@ const BlankHome = () => {
         </div>
         <div className="bg-white h-[300px] flex flex-col items-center  w-full cursor-pointer transition-transform transform duration-700  hover:scale-105">
           <div className="w-11/12 bg-indigo-600 h-full flex flex-col justify-center items-center p-4  rounded-lg">
-            <h1 className="font-bold text-4xl text-white text-center">
+            <h1 className="font-bold  text-4xl text-white text-center">
               {BLANKPAGE[1].name}
             </h1>
             <p className=" text-white px-4 text-center mt-4">
@@ -81,18 +81,18 @@ const BlankHome = () => {
         </div>
       </div>
 
-      <div className="flex flex-col items-start  w-full p-4 mt-20 sm:px-40">
+      <div className="flex flex-col items-start  w-full p-4 mt-20">
         <p className={`text-black mx-4 text-4xl ${style.text}`}>
           Hey <span className="text-4xl font-bold">{name}</span>,
         </p>
         <p className={`text-black mx-4 text-2xl ${style.text}`}>
           hope you are doing well, Your account is pending approval from an
-          administrator. You won't be able to access the features of our
+          administrator. You won&apos;t be able to access the features of our
           application until your account is approved. Please wait patiently for
           further instructions.
         </p>
       </div>
-      <div className="flex flex-col items-end  w-full p-4  sm:px-40 mb-8">
+      <div className="flex flex-col items-end  w-full p-4   mb-8">
         <p className={`text-black mx-4 text-2xl ${style.text}`}>
           Best Regards, <span className="font-bold">Team Exit Calculator</span>
         </p>
