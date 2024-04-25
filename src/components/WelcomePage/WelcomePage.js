@@ -24,7 +24,6 @@ const WelcomePage = () => {
   const [signupSuccesfull, setSignupSuccesfull] = useState(false);
   const [loginSuccesfull, setLoginSuccesfull] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [role, setRole] = useState(null);
   const router = useRouter();
   const [responseMessage, setResponseMessage] = useState("");
   const [type, setType] = useState("");
@@ -84,7 +83,22 @@ const WelcomePage = () => {
           setLoading,
           setSignupSuccesfull,
           setType,
-          setResponseMessage
+          setResponseMessage,
+          (role) => {
+            if (role === "admin") {
+              setRouteName("/admin/home");
+              setLoading(false);
+            } else if (role === "user") {
+              setRouteName("/user/home");
+              setLoading(false);
+              setIsLogin(true);
+              setEmail("");
+              setPassword("");
+              setToken("");
+              setEmailEntered(false);
+              setEmailVerified(false);
+            }
+          }
         );
       }
     }

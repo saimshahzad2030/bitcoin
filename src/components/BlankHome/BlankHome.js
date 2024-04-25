@@ -1,15 +1,22 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import style from "./BlankHome.module.css";
 import Cookies from "js-cookie";
 import { BLANKPAGE } from "../../../constants/constants";
+import { useRouter } from "next/navigation";
 const BlankHome = () => {
+  const router = useRouter();
   const name = Cookies.get("name");
+  const [avatarClicked, setAvatarClicked] = useState(false);
   return (
-    <div className="flex flex-col items-center w-full container mx-auto">
-      <div className="flex flex-row items-center justify-end  w-full p-4">
+    <div className="relative flex flex-col items-center w-full container mx-auto ">
+      <div className="flex flex-row items-center justify-end  w-full p-4 z-10 ">
         <p className="text-indigo-700 text-2xl mr-4">{name}</p>
-        <div className="flex flex-col items-center justify-center h-12 w-12 bg-indigo-700 rounded-full">
-          <p className="text-white text-3xl font-bold">
+        <div className="flex flex-col items-center justify-center h-12 w-12 bg-indigo-700 rounded-full cursor-pointer">
+          <p
+            className="text-white text-3xl font-bold"
+            onClick={() => setAvatarClicked(true)}
+          >
             {name.charAt(0).toUpperCase()}
           </p>
         </div>
@@ -97,6 +104,27 @@ const BlankHome = () => {
           Best Regards, <span className="font-bold">Team Exit Calculator</span>
         </p>
       </div>
+      {avatarClicked && (
+        <div className="absolute right-[-40px] w-[150px] h-[200px] pb-8 pt-4 z-5">
+          <div
+            className="mt-16 flex flex-col items-center bg-red-100 w-full h-full rounded-lg"
+            onMouseLeave={() => setAvatarClicked(false)}
+          >
+            <div className="w-full h-full bg-slate-200 flex flex-col items-center pt-4  rounded-lg">
+              <button
+                className="bg-red-600 font-bold text-white p-4 rounded-lg"
+                onClick={() => {
+                  Cookies.remove("token");
+                  Cookies.remove("name");
+                  router.push("/");
+                }}
+              >
+                Logout
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

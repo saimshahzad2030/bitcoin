@@ -62,8 +62,6 @@ export const Signup = async (
 
     if (response.status === 200) {
       setSignupSuccesfull(true);
-      Cookies.set("token", response.data.token);
-      Cookies.set("name", response.data.name);
       setResponseMessage(response.data.message);
       setType("success");
       if (callback) {

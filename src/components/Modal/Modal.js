@@ -13,6 +13,7 @@ const Modal = ({ loading, type, message, route }) => {
         () => {
           if (route !== "" && message === "login successful") {
             router.push(route);
+            console.log("first");
           } else {
             setIsVisible(false);
           }
