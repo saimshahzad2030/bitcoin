@@ -112,7 +112,7 @@ const BlankHome = () => {
           >
             <div className="w-full h-full bg-slate-200 flex flex-col items-center pt-4  rounded-lg">
               <button
-                className="bg-red-600 font-bold text-white p-4 rounded-lg"
+                className="bg-red-600 font-bold text-white p-4 rounded-lg  transition-transform transform duration-700  hover:scale-105"
                 onClick={() => {
                   Cookies.remove("token");
                   Cookies.remove("name");
