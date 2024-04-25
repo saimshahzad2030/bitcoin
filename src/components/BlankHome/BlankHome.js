@@ -25,7 +25,7 @@ const BlankHome = () => {
   return (
     <div className="relative flex flex-col items-center w-full container mx-auto ">
       <div className="flex flex-row items-center justify-end  w-full p-4 z-10 ">
-        <p className="text-indigo-700 text-2xl mr-4">{name}</p>
+        <p className="text-indigo-700 text-2xl mr-4 ">{name}</p>
         <div className="flex flex-col items-center justify-center h-12 w-12 bg-indigo-700 rounded-full cursor-pointer">
           <p
             className="text-white text-3xl font-bold"
@@ -43,7 +43,7 @@ const BlankHome = () => {
       </h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 w-full p-4">
         <div className="bg-white h-[300px] flex flex-col items-center  w-full  cursor-pointer ">
-          <div className="w-11/12 bg-indigo-600 h-full flex flex-col justify-center items-center p-4  rounded-lg  transition-transform transform duration-700  hover:scale-105">
+          <div className="w-11/12 bg-gradient-to-b from-indigo-900 to-indigo-600 h-full flex flex-col justify-center items-center p-4  rounded-lg  transition-transform transform duration-700  hover:scale-105">
             <h1 className="font-bold text-4xl text-white text-center">
               {BLANKPAGE[0].name}
             </h1>
@@ -58,7 +58,7 @@ const BlankHome = () => {
           </div>
         </div>
         <div className=" mt-4 sm:mt-0 bg-white h-[300px] flex flex-col items-center  w-full cursor-pointer ">
-          <div className="w-11/12 bg-indigo-600 h-full flex flex-col justify-center items-center p-4  rounded-lg  transition-transform transform duration-700  hover:scale-105">
+          <div className="w-11/12 bg-gradient-to-b from-indigo-900 to-indigo-600  h-full flex flex-col justify-center items-center p-4  rounded-lg  transition-transform transform duration-700  hover:scale-105">
             <h1 className="font-bold  text-4xl text-white text-center">
               {BLANKPAGE[1].name}
             </h1>
@@ -74,7 +74,7 @@ const BlankHome = () => {
           </div>
         </div>
         <div className="bg-white h-[300px] mt-4 lg:mt-0 flex flex-col items-center  w-full cursor-pointer">
-          <div className="w-11/12 bg-indigo-600 h-full flex flex-col justify-center items-center p-4  rounded-lg  transition-transform transform duration-700  hover:scale-105">
+          <div className="w-11/12 bg-gradient-to-b from-indigo-900 to-indigo-600  h-full flex flex-col justify-center items-center p-4  rounded-lg  transition-transform transform duration-700  hover:scale-105">
             <h1 className="font-bold text-4xl text-white text-center">
               {BLANKPAGE[2].name}
             </h1>
@@ -89,7 +89,7 @@ const BlankHome = () => {
           </div>
         </div>
         <div className="bg-white h-[300px] mt-4 lg:mt-0 flex flex-col items-center  w-full  cursor-pointer">
-          <div className="w-11/12 bg-indigo-600 h-full flex flex-col justify-center items-center p-4  rounded-lg  transition-transform transform duration-700  hover:scale-105">
+          <div className="w-11/12 bg-gradient-to-b from-indigo-900 to-indigo-600  h-full flex flex-col justify-center items-center p-4  rounded-lg  transition-transform transform duration-700  hover:scale-105">
             <h1 className="font-bold text-4xl text-white text-center">
               {BLANKPAGE[3].name}
             </h1>

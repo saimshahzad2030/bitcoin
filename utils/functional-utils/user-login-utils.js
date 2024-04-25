@@ -15,8 +15,6 @@ export const login = async (
   setLoading(true);
 
   try {
-    console.log(email, "email");
-    console.log(password, "password");
     const response = await axios.post(`${BASEURL}/login`, {
       email,
       password,
@@ -32,13 +30,18 @@ export const login = async (
       if (callback) {
         callback(response.data.role);
       }
+    } else {
+      setLoginSuccesfull(false);
+      setLoading(false);
+      setType("failed");
+      setResponseMessage(response.data.message);
     }
   } catch (error) {
     setLoginSuccesfull(false);
     setLoading(false);
     setType("failed");
-    console.log(error);
     setResponseMessage(error.response.data.message);
+    console.log(error);
   }
 };
 

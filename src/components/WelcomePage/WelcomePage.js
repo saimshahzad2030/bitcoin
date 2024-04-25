@@ -29,7 +29,7 @@ const WelcomePage = () => {
   const [responseMessage, setResponseMessage] = useState("");
   const [type, setType] = useState("");
   const [routeName, setRouteName] = useState("");
-
+  const [finalLoading, setFinalLoading] = useState(false);
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isLogin) {
@@ -115,15 +115,17 @@ const WelcomePage = () => {
   const isPasswordValid = (password) => {
     return password.length >= 8;
   };
+
   return (
-    <div className={`bg-indigo-800 py-12 ${style.welcomePage}`}>
+    <div
+      className={`bg-gradient-to-b from-indigo-900 to-indigo-500  py-12 ${style.welcomePage}`}
+    >
       <Modal
         loading={loading}
         type={type}
         message={responseMessage}
         route={routeName}
-      />
-      {!loading && (
+      >
         <div>
           <h1
             className={`text-5xl lg:text-6xl font-bold mb-12 text-center text-gray-50 ${style.heading}`}
@@ -317,7 +319,7 @@ const WelcomePage = () => {
             </div>
           </div>
         </div>
-      )}
+      </Modal>
     </div>
   );
 };

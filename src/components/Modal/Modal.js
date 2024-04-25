@@ -2,9 +2,17 @@
 import React, { useState, useEffect } from "react";
 import style from "./Modal.module.css";
 import { useRouter } from "next/navigation";
-const Modal = ({ loading, type, message, route }) => {
+const Modal = ({
+  children,
+  loading,
+  type,
+  message,
+  route,
+  setFinalLoading,
+}) => {
   const [isVisible, setIsVisible] = useState(false);
   const router = useRouter();
+
   useEffect(() => {
     if (loading) {
       setIsVisible(true);
@@ -13,9 +21,9 @@ const Modal = ({ loading, type, message, route }) => {
         () => {
           if (route !== "" && message === "login successful") {
             router.push(route);
-            console.log("first");
           } else {
             setIsVisible(false);
+            setFinalLoading(false);
           }
         },
         !type ? 100 : 1500
@@ -25,9 +33,7 @@ const Modal = ({ loading, type, message, route }) => {
   }, [loading]);
   return isVisible ? (
     <div
-      className={`w-screen h-screen flex justify-center items-center ${
-        type === "failed" ? "bg-black bg-opacity-30" : "bg-black bg-opacity-30"
-      } ${style.main}`}
+      className={`w-screen h-screen flex justify-center items-center ${style.main}`}
     >
       <div className="rounded-lg bg-white p-8">
         <div className="flex justify-center mb-4">
@@ -53,6 +59,8 @@ const Modal = ({ loading, type, message, route }) => {
         <p className="text-center">{message}</p>
       </div>
     </div>
+  ) : children ? (
+    children
   ) : null;
 };
 
