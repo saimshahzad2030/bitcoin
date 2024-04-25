@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import style from "./BlankHome.module.css";
 import Cookies from "js-cookie";
 import { BLANKPAGE } from "../../../constants/constants";
@@ -8,6 +8,20 @@ const BlankHome = () => {
   const router = useRouter();
   const name = Cookies.get("name");
   const [avatarClicked, setAvatarClicked] = useState(false);
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      const avatarDiv = document.getElementById("avatarDiv");
+      if (avatarDiv && !avatarDiv.contains(event.target)) {
+        setAvatarClicked(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, []);
   return (
     <div className="relative flex flex-col items-center w-full container mx-auto ">
       <div className="flex flex-row items-center justify-end  w-full p-4 z-10 ">
@@ -21,7 +35,10 @@ const BlankHome = () => {
           </p>
         </div>
       </div>
-      <h1 className="text-center text-5xl font-bold my-16" id="benefitsSection">
+      <h1
+        className="text-center text-5xl font-bold my-16  p-4"
+        id="benefitsSection"
+      >
         Benefits (working with us)
       </h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 w-full p-4">
@@ -40,7 +57,7 @@ const BlankHome = () => {
             />
           </div>
         </div>
-        <div className="bg-white h-[300px] flex flex-col items-center  w-full cursor-pointer ">
+        <div className=" mt-4 sm:mt-0 bg-white h-[300px] flex flex-col items-center  w-full cursor-pointer ">
           <div className="w-11/12 bg-indigo-600 h-full flex flex-col justify-center items-center p-4  rounded-lg  transition-transform transform duration-700  hover:scale-105">
             <h1 className="font-bold  text-4xl text-white text-center">
               {BLANKPAGE[1].name}
@@ -108,7 +125,10 @@ const BlankHome = () => {
         </p>
       </div>
       {avatarClicked && (
-        <div className={`absolute right-0 w-[150px] h-[150px] pb-8 pt-4 z-5 `}>
+        <div
+          id="avatarDiv"
+          className={`absolute right-0 w-[150px] h-[150px] pb-8 pt-4 z-5 `}
+        >
           <div
             className="mt-16 flex flex-col items-center  w-full h-full rounded-lg"
             onMouseLeave={() => setAvatarClicked(false)}

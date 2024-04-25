@@ -14,6 +14,7 @@ import {
 } from "../../../utils/functional-utils/user-login-utils";
 import CustomCarousel from "../CustomCarousel/CustomCarousel";
 const WelcomePage = () => {
+  const [btnDisabled, setBtnDisabled] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
@@ -110,6 +111,10 @@ const WelcomePage = () => {
       }
     });
   }, []);
+
+  const isPasswordValid = (password) => {
+    return password.length >= 8;
+  };
   return (
     <div className={`bg-indigo-800 py-12 ${style.welcomePage}`}>
       <Modal
@@ -230,8 +235,10 @@ const WelcomePage = () => {
                       type="password"
                       id="password"
                       value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      className="appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                      onChange={(e) => {
+                        setPassword(e.target.value);
+                      }}
+                      className={`appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline`}
                       required
                     />
                   </div>
@@ -248,10 +255,22 @@ const WelcomePage = () => {
                         type="password"
                         id="password"
                         value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        className="appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                        onChange={(e) => {
+                          setPassword(e.target.value);
+                          if (e.target.value.length < 8) {
+                            setBtnDisabled(true);
+                          } else {
+                            setBtnDisabled(false);
+                          }
+                        }}
+                        className={`appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline `}
                         required
                       />
+                      {!isPasswordValid(password) && (
+                        <p className={` text-sm ${"text-gray-500"}`}>
+                          Password must be at least 8 characters long.
+                        </p>
+                      )}
                     </div>
                   )
                 )}
@@ -264,8 +283,15 @@ const WelcomePage = () => {
                   }`}
                 >
                   <button
+                    disabled={
+                      !isLogin && emailEntered && emailVerified && btnDisabled
+                    }
                     type="submit"
-                    className="bg-indigo-800 hover:bg-indigo-700 text-white font-bold py-2 px-4 lg:text-lg rounded focus:outline-none focus:shadow-outline"
+                    className={` text-white font-bold py-2 px-4 lg:text-lg rounded focus:outline-none focus:shadow-outline ${
+                      !isLogin && emailEntered && emailVerified && btnDisabled
+                        ? "bg-gray-600"
+                        : "bg-indigo-800 hover:bg-indigo-700"
+                    }`}
                   >
                     {isLogin
                       ? "Login"
