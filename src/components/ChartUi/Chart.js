@@ -165,19 +165,19 @@ const ChartUi = () => {
           />
           <div className="grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-3 w-full h-auto py-16">
             <UnChangeAblePrices
-              color={"orange-900"}
+              color={"bg-orange-900"}
               text={"Price Prediction: $"}
               value={selectedCoin.maxValue}
             />
             <UnChangeAblePrices
-              color={"orange-500"}
+              color={"bg-orange-500"}
               text={"Max Ladder Sell Price:  $"}
               value={selectedCoin.maxValue - (selectedCoin.maxValue * 25) / 100}
             />
             <ChangeablePrice
               heading={"Custom Price Sell Level"}
               setUpdate={setCustomSellPriceValue}
-              color={"pink-500"}
+              color={"border-pink-500"}
               inputVal={
                 !customSellPriceValue
                   ? selectedCoin.maxValue - selectedCoin.maxValue * (25 / 100)
@@ -191,7 +191,7 @@ const ChartUi = () => {
               heading={"Average Purchase Price"}
               setUpdate={setAveragePurchasePrice}
               inputVal={averagePurchasePrice}
-              color={"green-500"}
+              color={"border-green-500"}
               customMargin={"mt-8 sm:mt-8 "}
               justifyPosition={""}
             />
