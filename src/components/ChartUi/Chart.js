@@ -143,7 +143,7 @@ const ChartUi = () => {
   return (
     <div className="container mx-auto relative">
       {avatarClicked && (
-        <div className="absolute right-[-40px] w-[150px] h-[200px] pb-8 pt-4 z-2">
+        <div className="absolute right-[-40px] w-[150px] h-[150px] pb-8 pt-4 z-2">
           <div
             className="mt-16 flex flex-col items-center bg-red-100 w-full h-full rounded-lg"
             onMouseLeave={() => setAvatarClicked(false)}
