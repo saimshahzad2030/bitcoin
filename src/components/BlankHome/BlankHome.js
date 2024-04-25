@@ -21,7 +21,7 @@ const BlankHome = () => {
           </p>
         </div>
       </div>
-      <h1 className="text-center text-5xl font-bold my-16">
+      <h1 className="text-center text-5xl font-bold my-16" id="benefitsSection">
         Benefits (working with us)
       </h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 w-full p-4">
@@ -88,7 +88,10 @@ const BlankHome = () => {
         </div>
       </div>
 
-      <div className="flex flex-col items-start  w-full p-4 mt-20">
+      <div
+        className="flex flex-col items-start  w-full p-4 mt-20"
+        id="statusSection"
+      >
         <p className={`text-black mx-4 text-4xl ${style.text}`}>
           Hey <span className="text-4xl font-bold">{name}</span>,
         </p>
@@ -105,14 +108,34 @@ const BlankHome = () => {
         </p>
       </div>
       {avatarClicked && (
-        <div className="absolute right-[-40px] w-[150px] h-[150px] pb-8 pt-4 z-5">
+        <div className={`absolute right-0 w-[150px] h-[150px] pb-8 pt-4 z-5 `}>
           <div
-            className="mt-16 flex flex-col items-center bg-red-100 w-full h-full rounded-lg"
+            className="mt-16 flex flex-col items-center  w-full h-full rounded-lg"
             onMouseLeave={() => setAvatarClicked(false)}
           >
-            <div className="w-full h-full bg-slate-200 flex flex-col items-center pt-4  rounded-lg">
-              <button
-                className="bg-red-600 font-bold text-white p-4 rounded-lg  transition-transform transform duration-700  hover:scale-105"
+            <div className="w-full h-auto bg-slate-100 flex flex-col items-start pt-4  rounded-lg">
+              <p
+                className="mt-1 w-full pl-4  text-lg    transition-transform transform duration-700  hover:scale-110 cursor-pointer"
+                onClick={() => {
+                  const benefitsSection =
+                    document.getElementById("benefitsSection");
+                  benefitsSection.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
+                Beneits
+              </p>
+              <p
+                className="mt-1 w-full pl-4 text-lg    transition-transform transform duration-700  hover:scale-110 cursor-pointer"
+                onClick={() => {
+                  const benefitsSection =
+                    document.getElementById("statusSection");
+                  benefitsSection.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
+                Status
+              </p>
+              <p
+                className="mt-1 mb-4 w-full pl-4 text-red-900 text-lg font-bold transition-transform transform duration-700  hover:scale-110  cursor-pointer"
                 onClick={() => {
                   Cookies.remove("token");
                   Cookies.remove("name");
@@ -120,7 +143,7 @@ const BlankHome = () => {
                 }}
               >
                 Logout
-              </button>
+              </p>
             </div>
           </div>
         </div>
