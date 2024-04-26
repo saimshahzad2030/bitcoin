@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from "react";
 import style from "./Modal.module.css";
 import { useRouter } from "next/navigation";
+// import { Formik } from "formik";
+
 const Modal = ({
   children,
   loading,
@@ -23,7 +25,6 @@ const Modal = ({
             router.push(route);
           } else {
             setIsVisible(false);
-            setFinalLoading(false);
           }
         },
         !type ? 100 : 1500

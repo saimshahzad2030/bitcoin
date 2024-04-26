@@ -25,7 +25,7 @@ const BlankHome = () => {
   return (
     <div className="relative flex flex-col items-center w-full container mx-auto ">
       <div className="flex flex-row items-center justify-end  w-full p-4 z-10 ">
-        <p className="text-indigo-700 text-2xl mr-4 ">{name}</p>
+        <p className="text-indigo-700 text-xl mr-4 ">{name}</p>
         <div className="flex flex-col items-center justify-center h-12 w-12 bg-indigo-700 rounded-full cursor-pointer">
           <p
             className="text-white text-3xl font-bold"

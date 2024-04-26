@@ -13,7 +13,10 @@ import {
   login,
 } from "../../../utils/functional-utils/user-login-utils";
 import CustomCarousel from "../CustomCarousel/CustomCarousel";
+
+import { Formik, Form, Field, ErrorMessage } from "formik";
 const WelcomePage = () => {
+  const [showPassword, setShowPassword] = useState(false);
   const [btnDisabled, setBtnDisabled] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -29,7 +32,6 @@ const WelcomePage = () => {
   const [responseMessage, setResponseMessage] = useState("");
   const [type, setType] = useState("");
   const [routeName, setRouteName] = useState("");
-  const [finalLoading, setFinalLoading] = useState(false);
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isLogin) {
@@ -134,7 +136,7 @@ const WelcomePage = () => {
           </h1>
           <div className="grid sm:grid-cols-1  lg:sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-2 2xl:md:grid-cols-2 ">
             <CustomCarousel />
-            <div className=" flex flex-col items-center justify-center  p-6 sm:px-16 w-full ">
+            <div className=" flex flex-col items-center justify-center  p-4 sm:px-4 w-full ">
               <form
                 onSubmit={handleSubmit}
                 className="w-11/12  lg:w-8/12 flex flex-col items-center bg-white p-8 rounded-xl "
@@ -148,7 +150,7 @@ const WelcomePage = () => {
                       htmlFor="username"
                       className="block text-gray-400 text-sm font-bold mb-2"
                     >
-                      Name
+                      Firstname
                     </label>
                     <input
                       type="text"
@@ -156,6 +158,7 @@ const WelcomePage = () => {
                       value={username}
                       onChange={(e) => setUsername(e.target.value)}
                       className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      maxLength={10}
                       required
                     />
                   </div>
@@ -226,7 +229,7 @@ const WelcomePage = () => {
                 )}
 
                 {isLogin ? (
-                  <div className="mb-6 w-full">
+                  <div className="mb-6 w-full relative ">
                     <label
                       htmlFor="password"
                       className="block text-gray-400 text-sm font-bold mb-2"
@@ -234,45 +237,140 @@ const WelcomePage = () => {
                       Password
                     </label>
                     <input
-                      type="password"
+                      type={showPassword ? "text" : "password"}
                       id="password"
                       value={password}
                       onChange={(e) => {
                         setPassword(e.target.value);
                       }}
-                      className={`appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline`}
+                      className={`pr-8 appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline`}
                       required
                     />
+                    {showPassword ? (
+                      <img
+                        className={`h-4 w-4 absolute top-[50%] right-2 cursor-pointer`}
+                        src="/assets/pass/show-pass.svg"
+                        alt="sd"
+                        onClick={() => setShowPassword(!showPassword)}
+                      />
+                    ) : (
+                      <img
+                        className={`h-4 w-4 absolute top-[50%]  right-2  cursor-pointer`}
+                        src="/assets/pass/hide-pass.svg"
+                        alt="sd"
+                        onClick={() => setShowPassword(!showPassword)}
+                      />
+                    )}
                   </div>
                 ) : (
                   emailVerified && (
-                    <div className="mb-6 w-full ">
+                    <div className="mb-6 w-full">
                       <label
                         htmlFor="password"
                         className="block text-gray-400 text-sm font-bold mb-2"
                       >
                         Password
                       </label>
-                      <input
-                        type="password"
-                        id="password"
-                        value={password}
-                        onChange={(e) => {
-                          setPassword(e.target.value);
-                          if (e.target.value.length < 8) {
-                            setBtnDisabled(true);
-                          } else {
-                            setBtnDisabled(false);
-                          }
-                        }}
-                        className={`appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline `}
-                        required
-                      />
-                      {!isPasswordValid(password) && (
-                        <p className={` text-sm ${"text-gray-500"}`}>
-                          Password must be at least 8 characters long.
-                        </p>
-                      )}
+                      <div className="relative flex items-center justify-between">
+                        <input
+                          type={showPassword ? "text" : "password"}
+                          id="password"
+                          value={password}
+                          onChange={(e) => {
+                            setPassword(e.target.value);
+                            setBtnDisabled(
+                              !/[A-Z]/.test(e.target.value) ||
+                                !/\d/.test(e.target.value) ||
+                                !/[\W_]/.test(e.target.value) ||
+                                e.target.value.length < 8
+                            );
+                          }}
+                          className={`pr-8 appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline `}
+                          required
+                        />
+                        {showPassword ? (
+                          <img
+                            className={`h-4 w-4 absolute top-3 right-2 cursor-pointer`}
+                            src="/assets/pass/show-pass.svg"
+                            alt="sd"
+                            onClick={() => setShowPassword(!showPassword)}
+                          />
+                        ) : (
+                          <img
+                            className={`h-4 w-4 absolute top-3 right-2 cursor-pointer`}
+                            src="/assets/pass/hide-pass.svg"
+                            alt="sd"
+                            onClick={() => setShowPassword(!showPassword)}
+                          />
+                        )}
+                      </div>
+                      {
+                        <div className="w-full ">
+                          <div className="flex flex-row items-center justify-between w-full">
+                            <p
+                              className={` font-bold  text-sm ${"text-gray-500"}`}
+                            >
+                              Password must contain
+                            </p>
+                          </div>
+                          <div className="flex flex-row items-center justify-between w-full">
+                            <p
+                              className={`text-xs sm:text-sm ${"text-gray-500"}`}
+                            >
+                              at least 8 characters.
+                            </p>
+                            {isPasswordValid(password) && (
+                              <img
+                                className="w-4 h-auto"
+                                src="/assets/pass/tick.svg"
+                                alt="sd"
+                              />
+                            )}
+                          </div>
+                          <div className="flex flex-row items-center justify-between w-full">
+                            <p
+                              className={`text-xs sm:text-sm ${"text-gray-500"}`}
+                            >
+                              numbers and characters.
+                            </p>
+                            {/\d/.test(password) && (
+                              <img
+                                className="w-4 h-auto"
+                                src="/assets/pass/tick.svg"
+                                alt="sd"
+                              />
+                            )}
+                          </div>
+                          <div className="flex flex-row items-center justify-between w-full">
+                            <p
+                              className={`text-xs sm:text-sm ${"text-gray-500"}`}
+                            >
+                              1 special character ($,@,..).
+                            </p>
+                            {/[\W_]/.test(password) && (
+                              <img
+                                className="w-4 h-auto"
+                                src="/assets/pass/tick.svg"
+                                alt="sd"
+                              />
+                            )}
+                          </div>
+                          <div className="flex flex-row items-center justify-between w-full">
+                            <p
+                              className={`text-xs sm:text-sm ${"text-gray-500"}`}
+                            >
+                              1 uppercase characers.
+                            </p>
+                            {/[A-Z]/.test(password) && (
+                              <img
+                                className="w-4 h-auto"
+                                src="/assets/pass/tick.svg"
+                                alt="sd"
+                              />
+                            )}
+                          </div>
+                        </div>
+                      }
                     </div>
                   )
                 )}
@@ -300,7 +398,7 @@ const WelcomePage = () => {
                       : !emailEntered
                       ? "Next"
                       : emailEntered && !emailVerified
-                      ? "VerifyEmail"
+                      ? "Verify Email"
                       : emailEntered && emailVerified && "signin"}
                   </button>
                 </div>
@@ -309,7 +407,12 @@ const WelcomePage = () => {
                     ? "Don't have an account?"
                     : "Already have an account?"}
                   <button
-                    onClick={() => setIsLogin(!isLogin)}
+                    onClick={() => {
+                      setIsLogin(!isLogin);
+                      setEmail("");
+                      setPassword("");
+                      setUsername("");
+                    }}
                     className="ml-2 text-indigo-800 hover:underline focus:outline-none"
                   >
                     {isLogin ? "Sign Up" : "Login"}
