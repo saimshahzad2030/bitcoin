@@ -12,6 +12,7 @@ import UnChangeAblePrices from "../UnChangeAblePrices/UnChangeAblePrices";
 import ChangeablePrice from "../ChangeablePrice/ChangeablePrice";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
+
 const ChartUi = () => {
   const router = useRouter();
   const [changedLevel, setChangedLevel] = useState([
@@ -61,7 +62,7 @@ const ChartUi = () => {
   const coins = [
     {
       name: "Coin1",
-      maxValue: 200,
+      maxValue: 100,
       months: [
         "January",
         "February",
@@ -77,7 +78,7 @@ const ChartUi = () => {
         "November",
         "December",
       ],
-      data: [65, 59, 80, 81, 56, 55, 40, 65, 59, 80, 81, 56, 55, 40],
+      data: [65, 59, 80, 81, 56, 55, 40, 65, 59, 80, 81, 56, 55, 40, 100],
     },
     {
       name: "Coin2",
@@ -97,11 +98,11 @@ const ChartUi = () => {
         "November",
         "December",
       ],
-      data: [15, 59, 4, 82, 30, 67, 69, 21, 15, 70, 14, 13, 55],
+      data: [15, 59, 4, 82, 30, 67, 69, 21, 15, 70, 14, 13, 55, 120],
     },
     {
       name: "Coin3",
-      maxValue: 350,
+      maxValue: 200,
       months: [
         "January",
         "February",
@@ -117,15 +118,15 @@ const ChartUi = () => {
         "November",
         "December",
       ],
-      data: [165, 59, 40, 181, 56, 45, 40, 65, 59, 29, 14, 156, 55],
+      data: [165, 59, 40, 181, 56, 45, 40, 65, 59, 29, 14, 156, 55, 200],
     },
   ];
-  coins.forEach((coin) => {
-    coin.data = Array.from({ length: coin.months.length }, () =>
-      Math.floor(Math.random() * coin.maxValue)
-    );
-    coin.data.push(coin.maxValue * 1.5);
-  });
+  // coins.forEach((coin) => {
+  //   coin.data = Array.from({ length: coin.months.length }, () =>
+  //     Math.floor(Math.random() * coin.maxValue)
+  //   );
+  //   coin.data.push(coin.maxValue * 1.5);
+  // });
 
   const handleLevelsChange = (event) => {
     setLevels(parseInt(event.target.value));

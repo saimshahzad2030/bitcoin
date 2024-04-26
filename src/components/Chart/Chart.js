@@ -61,12 +61,12 @@ const ChartComponent = ({
             const ctx = chartInstance.ctx;
             const chartArea = chartInstance.chartArea;
             const maxValueY = chartInstance.scales.y.getPixelForValue(
-              isCoinSelected ? selectedCoin.maxValue : 500
+              isCoinSelected ? selectedCoin.maxValue : 100
             );
             const maxValueYAverage = chartInstance.scales.y.getPixelForValue(
               isCoinSelected
                 ? selectedCoin.maxValue - selectedCoin.maxValue * (25 / 100)
-                : 500 - (500 * 25) / 100
+                : 75
             );
             const yValue2 =
               chartInstance.scales.y.getPixelForValue(averagePurchasePrice);
@@ -106,20 +106,19 @@ const ChartComponent = ({
 
               ctx.moveTo(chartInstance.chartArea.left, customSellPrice);
               ctx.lineTo(chartInstance.chartArea.right, customSellPrice);
-              ctx.strokeStyle = "pink";
+              ctx.strokeStyle = "#e75480";
               ctx.stroke();
               ctx.restore();
 
               const initialLevels = [];
               for (let i = 0; i < levels; i++) {
                 if (levels % 2 === 0) {
-                  const yPosition =
-                    customSellPriceValue -
-                    (levels / 2) * levelRange +
-                    (i + 1) * levelRange -
-                    levelRange / 2;
-                  const yPos =
-                    chartInstance.scales.y.getPixelForValue(yPosition);
+                  const yPosition = -500;
+                  const yPos = chartInstance.scales.y.getPixelForValue(
+                    changedLevel[i] !== "unaltered"
+                      ? changedLevel[i]
+                      : yPosition
+                  );
                   ctx.save();
                   ctx.beginPath();
                   ctx.setLineDash([5, 5]);
@@ -136,15 +135,12 @@ const ChartComponent = ({
                     levelPrice:
                       changedLevel[i] !== "unaltered"
                         ? changedLevel[i]
-                        : yPosition,
+                        : -yPosition,
                   });
                   setLevelArray(initialLevels);
                   ctx.fillText(levelNames[i], labelX, labelY);
                 } else {
-                  const yPosition =
-                    customSellPriceValue -
-                    Math.ceil(levels / 2) * levelRange +
-                    (i + 1) * levelRange;
+                  const yPosition = -500;
                   const yPos = chartInstance.scales.y.getPixelForValue(
                     changedLevel[i] !== "unaltered"
                       ? changedLevel[i]
