@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from "react";
 import style from "./Modal.module.css";
 import { useRouter } from "next/navigation";
-// import { Formik } from "formik";
 
 const Modal = ({
   children,

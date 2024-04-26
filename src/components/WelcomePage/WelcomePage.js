@@ -14,7 +14,6 @@ import {
 } from "../../../utils/functional-utils/user-login-utils";
 import CustomCarousel from "../CustomCarousel/CustomCarousel";
 
-import { Formik, Form, Field, ErrorMessage } from "formik";
 const WelcomePage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [btnDisabled, setBtnDisabled] = useState(true);
