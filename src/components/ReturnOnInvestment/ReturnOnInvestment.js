@@ -10,22 +10,22 @@ const ReturnOnInvestment = ({
   return (
     <>
       <div className="flex flex-col items-center justify-center h-auto w-full">
-        <div className="flex flex-col items-start justify-between w-10/12 py-16">
-          <h2 className=" text-lg w-full mb-4">I.I.O Price</h2>
+        <div className="flex flex-col items-start justify-between w-10/12 ">
           <input
             type="text"
-            value={initalInvestmentOutLevel}
+            value={initalInvestmentOutLevel ? initalInvestmentOutLevel : ""}
             onChange={(e) => {
               const newValue = e.target.value.replace(/\D/g, "");
               setInitalInvestmentOutLevel(newValue);
             }}
+            placeholder="I.I.O Price "
             pattern="\d*"
-            className="w-full  bg-white border border-black rounded-md py-5 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full  bg-white border border-black rounded-lg py-4 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
       </div>
       <UnChangeAblePrices
-        text={"Return On Investment: $ "}
+        text={"ROI: $ "}
         value={numberOfTokens * averagePurchasePrice}
       />
     </>

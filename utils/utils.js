@@ -10,7 +10,7 @@ export const totalRevenue = (levelArray, numberOfTokens) => {
   levelArray.map((level) => {
     value += parseInt(level.levelPrice) * numberOfTokens;
   });
-  return value;
+  return typeof value !== "number" ? 0 : value;
 };
 
 export const totalProfit = (

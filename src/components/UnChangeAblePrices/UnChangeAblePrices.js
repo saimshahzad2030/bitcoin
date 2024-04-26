@@ -15,9 +15,15 @@ const UnChangeAblePrices = ({ value, color, text, parentBg }) => {
     </div>
   ) : (
     <div
-      className={`   flex flex-col items-center justify-end h-auto w-full ${parentBg}  py-4 sm:py-16`}
+      className={`   flex flex-col items-center justify-end h-auto w-full ${parentBg}  ${
+        text == "Return On Investment: $ " ||
+        text == "Sell Price: $ " ||
+        text == "ROI: $ "
+          ? ""
+          : "py-4  sm:py-16"
+      }`}
     >
-      <div className="mt-4 w-10/12 flex-col items-center border border-black py-4 rounded-xl bg-white">
+      <div className=" w-10/12 flex-col items-center border border-black py-4 rounded-xl bg-white">
         <h2 className="text-center text-xl">
           {text}
           {value}

@@ -33,9 +33,11 @@ const ChangeablePrice = ({
     </div>
   ) : (
     <div
-      className={`${customMargin}  flex flex-col items-center justify-between h-auto w-full ${parentBg} py-4 sm:py-16`}
+      className={`${customMargin}  flex flex-col items-center justify-between h-auto w-full ${parentBg} py-4 sm:py-16 `}
     >
-      <h2 className=" text-lg  mb-4 ">{heading}</h2>
+      {labelRequired && (
+        <h2 className=" text-lg text-center w-full mb-1">{heading}</h2>
+      )}
 
       <div className="mt-4 w-10/12 flex flex-col items-start  ">
         {selection ? (

@@ -252,7 +252,6 @@ const ChartUi = () => {
             </div>
             <div className="grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-3 w-full h-auto py-4">
               <ChangeablePrice
-                labelRequired={true}
                 heading={"Average Purchase Price"}
                 setUpdate={setAveragePurchasePrice}
                 inputVal={averagePurchasePrice}
@@ -263,7 +262,6 @@ const ChartUi = () => {
               />
 
               <ChangeablePrice
-                labelRequired={true}
                 heading={"No. of Tokens Hold"}
                 setUpdate={setNumberOfTokens}
                 inputVal={numberOfTokens}
@@ -287,6 +285,7 @@ const ChartUi = () => {
           <div className="flex flex-col items-center w-full lg:w-4/12 xl:w-4/12 2xl:w-3/12">
             {" "}
             <ChangeablePrice
+              labelRequired={true}
               heading={"Number of Levels"}
               setUpdate={setNumberOfTokens}
               inputVal={numberOfTokens}
@@ -309,6 +308,7 @@ const ChartUi = () => {
           </div>
           <div className="flex flex-col items-center   w-full lg:w-4/12 xl:w-4/12 2xl:w-3/12">
             <ChangeablePrice
+              labelRequired={true}
               heading={"Initial Investment?"}
               setUpdate={setNumberOfTokens}
               inputVal={initialInvestments}
@@ -329,18 +329,26 @@ const ChartUi = () => {
         </div>
       )}
       <div
-        className="grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-3 w-full h-auto   mt-4"
+        className="flex flex-col lg:flex-row items-center justify-start bg-purple-100"
         style={{ display: initialInvestments ? "" : "none" }}
       >
-        <ReturnOnInvestment
-          initalInvestmentOutLevel={initalInvestmentOutLevel}
-          setInitalInvestmentOutLevel={setInitalInvestmentOutLevel}
-          numberOfTokens={numberOfTokens}
-          averagePurchasePrice={averagePurchasePrice}
-        />
+        <div className="flex flex-col lg:flex-row items-center justify-between  mt-8 lg:mt-0  ">
+          <h1 className={`text-6xl font-bold ml-8`}>#I.I.O</h1>
+        </div>
+        <div
+          className="grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-3 w-full h-auto   mt-1"
+          style={{ display: initialInvestments ? "" : "none" }}
+        >
+          <ReturnOnInvestment
+            initalInvestmentOutLevel={initalInvestmentOutLevel}
+            setInitalInvestmentOutLevel={setInitalInvestmentOutLevel}
+            numberOfTokens={numberOfTokens}
+            averagePurchasePrice={averagePurchasePrice}
+          />
+        </div>
       </div>
       <div
-        className={`overflow-x-auto mt-4 `}
+        className={`overflow-x-auto `}
         style={{ display: !initialInvestments ? "none" : "" }}
       >
         <Table
