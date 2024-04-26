@@ -11,9 +11,9 @@ const CoinSelection = ({
   const handleSelectCoin = (event) => {
     const matchedCoin = coins.find((coin) => coin.name === event.target.value);
     setSelectedCoin(matchedCoin);
-    setCustomSellPriceValue(
-      matchedCoin.maxValue - matchedCoin.maxValue * (25 / 100)
-    );
+    // setCustomSellPriceValue(
+    //   matchedCoin.maxValue - matchedCoin.maxValue * (25 / 100)
+    // );
     console.log("matched coin:", matchedCoin);
     console.log("actual coin:", coins[2]);
 
@@ -29,7 +29,7 @@ const CoinSelection = ({
         <select
           value={!isCoinSelected ? "Select coin" : selectedCoin.name}
           onChange={handleSelectCoin}
-          className={` block appearance-none w-full bg-white border border-gray-300 hover:border-gray-400 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:border-indigo-500 ${
+          className={` block appearance-none text-white w-full bg-black border border-gray-300 hover:border-gray-400 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:border-indigo-500 ${
             !isCoinSelected ? "my-20" : ""
           }`}
         >

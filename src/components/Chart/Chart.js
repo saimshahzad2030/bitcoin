@@ -190,8 +190,10 @@ const ChartComponent = ({
     changedLevel,
   ]);
   return (
-    <div className={`flex flex-col items-center`}>
-      <canvas ref={chartRef} className={style.chartCanvas} />
+    <div className="flex flex-col items-center w-full">
+      <div className={`flex flex-col items-center w-7/12`}>
+        <canvas ref={chartRef} className={style.chartCanvas} />
+      </div>
     </div>
   );
 };

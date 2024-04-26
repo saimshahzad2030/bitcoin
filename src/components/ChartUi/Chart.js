@@ -202,7 +202,7 @@ const ChartUi = () => {
       />
       <CoinSelection
         selectedCoin={selectedCoin}
-        setCustomSellPriceValue={setCustomSellPriceValue}
+        // setCustomSellPriceValue={setCustomSellPriceValue}
         setSelectedCoin={setSelectedCoin}
         setIsCoinSelected={setIsCoinSelected}
         isCoinSelected={isCoinSelected}
@@ -215,52 +215,77 @@ const ChartUi = () => {
             selectedCoin={selectedCoin}
             setLevelRange={setLevelRange}
           />
-          <div className="grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-3 w-full h-auto py-16">
-            <UnChangeAblePrices
-              color={"bg-orange-900"}
-              text={"Price Prediction: $"}
-              value={selectedCoin.maxValue}
-            />
-            <UnChangeAblePrices
-              color={"bg-orange-500"}
-              text={"Max Ladder Sell Price:  $"}
-              value={selectedCoin.maxValue - (selectedCoin.maxValue * 25) / 100}
-            />
-            <ChangeablePrice
-              heading={"Custom Price Sell Level"}
-              setUpdate={setCustomSellPriceValue}
-              color={"border-pink-500"}
-              inputVal={
-                !customSellPriceValue
-                  ? selectedCoin.maxValue - selectedCoin.maxValue * (25 / 100)
-                  : customSellPriceValue
-              }
-              customMargin={"mt-8 sm:mt-8 lg:mt-0"}
-              justifyPosition={"justify-end"}
-            />
+          <div className="flex flex-col lg:flex-row items-center justify-between  bg-red-100 mt-8">
+            <div className="flex flex-row items-center justify-between mt-8 lg:mt-0">
+              <h1 className={`text-6xl font-bold ml-8`}>Sell</h1>
+            </div>
+            <div className="grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-3 w-full h-auto py-4">
+              <UnChangeAblePrices
+                color={"bg-orange-900"}
+                text={"Price Prediction: $"}
+                value={selectedCoin.maxValue}
+                parentBg={"bg-red-100"}
+              />
+              <UnChangeAblePrices
+                color={"bg-orange-500"}
+                text={"Max Ladder SP:  $"}
+                value={
+                  selectedCoin.maxValue - (selectedCoin.maxValue * 25) / 100
+                }
+                parentBg={"bg-red-100"}
+              />
+              <ChangeablePrice
+                heading={"Custom Price Sell Level"}
+                setUpdate={setCustomSellPriceValue}
+                color={"border-pink-500"}
+                inputVal={customSellPriceValue}
+                parentBg={"bg-red-100"}
+                customMargin={"mt-0"}
+                justifyPosition={"justify-end"}
+              />
+            </div>
+            <div className="bg-red-100 w-2/12"></div>
+          </div>
+          <div className="flex flex-col lg:flex-row items-center justify-between  bg-green-100 mt-8">
+            <div className="flex flex-col lg:flex-row items-center justify-between  mt-8 lg:mt-0  ">
+              <h1 className={`text-6xl font-bold ml-8`}>Buy</h1>
+            </div>
+            <div className="grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-3 w-full h-auto py-4">
+              <ChangeablePrice
+                labelRequired={true}
+                heading={"Average Purchase Price"}
+                setUpdate={setAveragePurchasePrice}
+                inputVal={averagePurchasePrice}
+                color={"border-green-500"}
+                customMargin={"mt-0"}
+                justifyPosition={""}
+                parentBg={"bg-green-100"}
+              />
 
-            <ChangeablePrice
-              heading={"Average Purchase Price"}
-              setUpdate={setAveragePurchasePrice}
-              inputVal={averagePurchasePrice}
-              color={"border-green-500"}
-              customMargin={"mt-8 sm:mt-8 "}
-              justifyPosition={""}
-            />
+              <ChangeablePrice
+                labelRequired={true}
+                heading={"No. of Tokens Hold"}
+                setUpdate={setNumberOfTokens}
+                inputVal={numberOfTokens}
+                customMargin={"mt-0"}
+                justifyPosition={""}
+                parentBg={"bg-green-100"}
+              />
 
-            <ChangeablePrice
-              heading={"No. of Tokens Hold"}
-              setUpdate={setNumberOfTokens}
-              inputVal={numberOfTokens}
-              customMargin={"mt-8 sm:mt-8 "}
-              justifyPosition={""}
-            />
-
-            <UnChangeAblePrices
-              text={" Initial Investment: $ "}
-              value={numberOfTokens * averagePurchasePrice}
-            />
-
+              <UnChangeAblePrices
+                text={" Initial Investment: $ "}
+                value={numberOfTokens * averagePurchasePrice}
+                parentBg={"bg-green-100"}
+              />
+            </div>
+            <div className="bg-red-100 w-2/12"></div>
+          </div>
+        </>
+      )}
+      {isCoinSelected && (
+        <div className="flex flex-col sm:flex-row items-center justify-center">
+          <div className="flex flex-col items-center w-full lg:w-4/12 xl:w-4/12 2xl:w-3/12">
+            {" "}
             <ChangeablePrice
               heading={"Number of Levels"}
               setUpdate={setNumberOfTokens}
@@ -271,7 +296,7 @@ const ChartUi = () => {
                 <select
                   value={levels}
                   onChange={handleLevelsChange}
-                  className="w-full bg-white border border-gray-300 rounded-md py-2 px-4 focus:outline-none "
+                  className="w-full bg-black text-white border border-gray-300 rounded-md py-2 px-4 focus:outline-none "
                 >
                   {[...Array(30).keys()].map((level) => (
                     <option key={level + 1} value={level + 1}>
@@ -281,6 +306,8 @@ const ChartUi = () => {
                 </select>
               }
             />
+          </div>
+          <div className="flex flex-col items-center   w-full lg:w-4/12 xl:w-4/12 2xl:w-3/12">
             <ChangeablePrice
               heading={"Initial Investment?"}
               setUpdate={setNumberOfTokens}
@@ -291,15 +318,15 @@ const ChartUi = () => {
                 <select
                   value={initialInvestments}
                   onChange={handleInitialInvestment}
-                  className="w-full bg-white border border-gray-300 rounded-md py-2 px-4 focus:outline-none "
+                  className="w-full bg-black text-white border border-gray-300 rounded-md py-2 px-4 focus:outline-none "
                 >
                   <option value={true}>yes</option>
                   <option value={false}>no</option>
                 </select>
               }
             />
-          </div>{" "}
-        </>
+          </div>
+        </div>
       )}
       <div
         className="grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-3 w-full h-auto   mt-4"
