@@ -333,7 +333,7 @@ const ChartUi = () => {
         style={{ display: initialInvestments ? "" : "none" }}
       >
         <div className="flex flex-col lg:flex-row items-center justify-between  mt-8 lg:mt-0  ">
-          <h1 className={`text-6xl font-bold ml-8`}>#I.I.O</h1>
+          <h1 className={`text-2xl font-bold ml-8`}>#I.I.O</h1>
         </div>
         <div
           className="grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-3 w-full h-auto   mt-1"
