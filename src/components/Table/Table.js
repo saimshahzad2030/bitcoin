@@ -1,6 +1,8 @@
 import React from "react";
 import { returnOnServiceEachLevel } from "../../../utils/utils";
 import UnChangeAblePrices from "../UnChangeAblePrices/UnChangeAblePrices";
+import ChangeablePrice from "../ChangeablePrice/ChangeablePrice";
+
 const Table = ({
   initialInvestments,
   setLevelArray,
@@ -10,6 +12,8 @@ const Table = ({
   setCustomSellPriceLevel,
   setChangedLevel,
   changedLevel,
+  initalInvestmentOutLevel,
+  setInitalInvestmentOutLevel, 
 }) => {
   const handleCustomSellPriceChange = (index, newValue) => {
     setLevelArray((prevLevels) => {
@@ -23,42 +27,53 @@ const Table = ({
       className={`overflow-x-auto `}
       style={{ display: !initialInvestments ? "none" : "" }}
     >
-      <table className="table-auto w-full  border-gray-300 mb-12">
-        {/* <thead>
+      <table className="table-auto w-full bg-purple-100   mb-12">
+        <thead className="bg-purple-100 border-t border-b border-black">
           <tr>
-            <th
-              className={`px-4 py-2 bg-gray-700 text-gray-50 border text-2xl `}
-            >
-              Level Number
+            <th className={`px-4 py-2 border text-2xl w-1/12`}
+            > 
+          <h1 className={`text-2xl text-center font-bold ml-8`}>#I.I.O</h1> 
             </th>
-            <th
-              className={`px-4 py-2 bg-gray-700 text-gray-50 border text-2xl `}
+            <th className={`px-4 py-2   border w-4/12 md:w-3/12  `}
             >
-              Sell Price
+            <input
+            type="text"
+            value={initalInvestmentOutLevel ? initalInvestmentOutLevel : ""}
+            onChange={(e) => {
+              const newValue = e.target.value.replace(/\D/g, "");
+              setInitalInvestmentOutLevel(newValue);
+            }}
+            placeholder="I.I.O Price "
+            pattern="\d*"
+            className="w-full  border border-black rounded-lg py-4 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
             </th>
-            <th
-              className={`px-4 py-2 bg-gray-700 text-gray-50 border text-2xl `}
+            <th className={`px-4 py-2 border w-4/12 md:w-3/12`}
             >
-              Custom Sell Price
+             <UnChangeAblePrices
+        text={"ROI: $ "}
+        value={numberOfTokens * averagePurchasePrice}
+      />
             </th>
-            <th
-              className={`px-4 py-2 bg-gray-700 text-gray-50 border text-2xl `}
+            <th className={`px-4 py-2 border text-2xl w-4/12 md:w-3/12 `}
             >
-              Return On Investment
+             
             </th>
           </tr>
-        </thead> */}
+          <div className="w-full h-4 "></div>
+        </thead>
         <tbody>
           {levelArray.map((level, index) => (
+         <>
+          <div className="w-full h-4 "></div>
             <tr
               key={index}
-              className="border-t bordet-b border-black bg-purple-100"
+              className="border-t border-b border-black bg-purple-100"
             >
-              <td className={`px-4 py-4  text-center `}>{`# ${index + 1}`}</td>
-              <td
-                className={`px-4 py-4  text-center flex flex-col items-center`}
+              <td className={`px-4 py-4 text-center border-t  border-b border-black  `}>{`# ${index + 1}`}</td>
+              <td className={`px-4 py-4    text-center `}
               >
-                <div className="w-7/12 h-[2px]  border-t-2 border-purple-500 border-dashed mb-2"></div>
+                <div className="h-[2px]  border-t-2 border-purple-500 border-dashed mb-2"></div>
                 <UnChangeAblePrices
                   text={"Sell Price: $ "}
                   value={
@@ -67,15 +82,10 @@ const Table = ({
                       : level.levelPrice
                   }
                 />
-                {/* <p>
-                  ${" "}
-                  {level.levelPrice < 0 || !level.levelPrice
-                    ? 0
-                    : level.levelPrice}
-                </p> */}
+               
               </td>
-              <td className={`px-4 py-4  text-center `}>
-                <input
+              <td className={`px-4 py-4    `}> 
+              {/* <input
                   type="text"
                   inputmode="numeric"
                   value={
@@ -93,10 +103,19 @@ const Table = ({
                     setChangedLevel(updatedLevels);
                   }}
                   pattern="(?!0\d+)\d+" // This pattern allows only positive integers without leading zeroes
-                  className="w-7/12 text-center ml-4 bg-white border  border-black rounded-xl py-4 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
+                  className=" text-center w-10/12  bg-white border  border-black rounded-xl py-4 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                /> */}
+                 <ChangeablePrice 
+              heading={"Enter Custom Sell Price"}
+              setUpdate={                    setCustomSellPriceLevel
+              }
+              inputVal={level.levelPrice < 0 || !level.levelPrice
+                ? ""
+                : level.levelPrice} 
+              justifyPosition={""} 
+            />
               </td>
-              <td className={`px-4 py-4  text-center text-black`}>
+              <td className={`px-4 py-4    text-center text-black`}>
                 <UnChangeAblePrices
                   text={"ROI: $ "}
                   value={
@@ -119,7 +138,7 @@ const Table = ({
                   }
                 />
               </td>
-            </tr>
+            </tr></>
           ))}
         </tbody>
       </table>

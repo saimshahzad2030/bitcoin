@@ -24,7 +24,7 @@ const UnChangeAblePrices = ({ value, color, text, parentBg }) => {
       }`}
     >
       <div className=" w-10/12 flex-col items-center border border-black py-4 rounded-xl bg-white">
-        <h2 className="text-center text-xl">
+        <h2 className="text-center text-xl text-black">
           {text}
           {value}
         </h2>
