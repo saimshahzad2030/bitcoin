@@ -40,14 +40,17 @@ const DoughNutChart = () => {
 
   return (
     <div className="flex flex-col lg:flex-row items-center justify-evenly mt-10">
-      <div className="w-8/12 lg:w-3/12 flex flex-col items-center">
+      <div className="w-full   flex flex-col items-center">
         <h1 className="text-4xl lg:text-3xl font-bold">All Users</h1>
-        <Doughnut data={userData} />
+        <div className="w-[300px]">
+          <Doughnut data={userData} />
+        </div>
       </div>
-      <div className="mt-16 lg:mt-0 w-8/12 lg:w-3/12 flex flex-col items-center">
+      <div className="mt-16 lg:mt-0 w-full  flex flex-col items-center">
         <h1 className="text-4xl lg:text-3xl font-bold">No. of coins selled</h1>
-
-        <Doughnut data={coinData} />
+        <div className="w-[300px]">
+          <Doughnut data={coinData} />
+        </div>
       </div>
     </div>
   );

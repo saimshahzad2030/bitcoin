@@ -109,6 +109,8 @@ const WelcomePage = () => {
     autoLogin(setLoading, (role) => {
       if (role === "user") {
         router.push("/user/home");
+      } else if (role === "admin") {
+        router.push("/admin/home");
       }
     });
   }, []);
