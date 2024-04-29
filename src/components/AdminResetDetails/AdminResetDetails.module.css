@@ -1,0 +1,9 @@
+.welcomePage {
+  height: 100vh;
+}
+
+@media screen and (max-width: 767px) {
+  .welcomePage {
+    height: auto;
+  }
+}

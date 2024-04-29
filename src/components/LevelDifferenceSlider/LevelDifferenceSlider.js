@@ -6,7 +6,7 @@ const LevelDifferenceSlider = ({ selectedCoin, levelRange, setLevelRange }) => {
   };
   return (
     <div className="flex w-full flex-col items-center mt-8">
-      <div className="w-[400px] ">
+      <div className="w-[300px] sm:w-[400px] ">
         <input
           type="range"
           min={0}

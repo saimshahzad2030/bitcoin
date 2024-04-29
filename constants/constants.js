@@ -82,3 +82,9 @@ export const BLANKPAGE = [
   { name: "Custom levels", image: "/assets/blankhome/customization.svg" },
   { name: "Table View", image: "/assets/blankhome/table.svg" },
 ];
+
+export const TOPSELLINGCOINS = [
+  { name: "Etherum", image: "/assets/blankhome/bit-coin.svg" },
+  { name: "Doge",  image: "/assets/blankhome/bit-coin.svg" },
+  { name: "Bitcoin ",  image: "/assets/blankhome/bit-coin.svg" },
+];

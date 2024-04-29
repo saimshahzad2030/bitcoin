@@ -1,0 +1,9 @@
+/* CSS */
+.parent:hover > .child {
+  width: 100%;
+}
+.admin {
+  font-family: "Josefin Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}

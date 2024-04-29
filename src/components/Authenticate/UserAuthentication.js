@@ -21,10 +21,8 @@ const UserAuthentication = ({ children }) => {
         if (
           response.data.role === "admin" &&
           pathname !== "/admin/home" &&
-          pathname !== "/admin/companies" &&
-          pathname !== "/admin/jobs-details" &&
-          pathname !== "/admin/student-details" &&
-          pathname !== "/admin/students"
+          pathname !== "/admin/users" &&
+          pathname !== "/admin/details"
         ) {
           setLoading(false);
           setUserAuthenticated(false);

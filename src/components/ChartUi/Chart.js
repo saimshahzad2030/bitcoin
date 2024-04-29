@@ -328,7 +328,7 @@ const ChartUi = () => {
           </div>
         </div>
       )}
-      <div
+      {/* <div
         className="flex flex-col lg:flex-row items-center justify-start bg-purple-100"
         style={{ display: initialInvestments ? "" : "none" }}
       >
@@ -346,7 +346,7 @@ const ChartUi = () => {
             averagePurchasePrice={averagePurchasePrice}
           />
         </div>
-      </div>
+      </div> */}
       <div
         className={`overflow-x-auto `}
         style={{ display: !initialInvestments ? "none" : "" }}
@@ -355,11 +355,13 @@ const ChartUi = () => {
           initialInvestments={initialInvestments}
           levelArray={levelArray}
           setLevelArray={setLevelArray}
-          numberOfTokens={numberOfTokens}
           setCustomSellPriceLevel={setCustomSellPriceLevel}
-          averagePurchasePrice={averagePurchasePrice}
           setChangedLevel={setChangedLevel}
           changedLevel={changedLevel}
+          initalInvestmentOutLevel={initalInvestmentOutLevel}
+          setInitalInvestmentOutLevel={setInitalInvestmentOutLevel}
+          numberOfTokens={numberOfTokens}
+          averagePurchasePrice={averagePurchasePrice}
         />
       </div>
       <Totals
