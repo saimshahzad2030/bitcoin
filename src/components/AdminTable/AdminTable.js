@@ -15,8 +15,8 @@ const AdminTable = ({ data }) => {
         <tbody>
           {data.map((user) => (
             <>
-              <br />
-              <tr className="border border-gray-300 mb-2">
+              <br key={user.id} />
+              <tr key={user.id} className="border border-gray-300 mb-2">
                 <td className="text-center text-sm">{user.id}</td>
                 <td className="text-center text-sm">{user.name}</td>
                 <td className="text-center text-sm">{user.status}</td>

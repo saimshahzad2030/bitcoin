@@ -1,9 +1,11 @@
 "use client";
-import React, { useState } from "react";
 import AdminResetDetails from "@/components/AdminResetDetails/AdminResetDetails";
+import AdminDashboard from "@/components/AdminDashboard/AdminDashboard";
 import AdminSidebar from "@/components/AdminSidebar/AdminSidebar";
+import React, { useState } from "react";
+import AdminUi from "@/components/AdminUi/AdminUi";
 
-const page = () => {
+const Page = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleSidebar = () => {
@@ -12,7 +14,7 @@ const page = () => {
   return (
     <div className="relative flex flex-row items-start w-full h-auto">
       <AdminSidebar
-        selectedLink={""}
+        selectedLink={"dashboard"}
         toggleSidebar={toggleSidebar}
         isOpen={isOpen}
       />
@@ -21,4 +23,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

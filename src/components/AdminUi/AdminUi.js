@@ -17,10 +17,16 @@ const AdminUi = () => {
       name: "saim",
       status: "pending",
       actions: [
-        <button className="px-4 py-4  bg-red-300 text-red-700 rounded-lg my-2 -white font-bold">
+        <button
+          key={4}
+          className="px-4 py-4  bg-red-300 text-red-700 rounded-lg my-2 -white font-bold"
+        >
           Delete
         </button>,
-        <button className="px-4 py-4  bg-green-300  text-green-700  rounded-lg my-2 ml-4  font-bold">
+        <button
+          key={5}
+          className="px-4 py-4  bg-green-300  text-green-700  rounded-lg my-2 ml-4  font-bold"
+        >
           Approve
         </button>,
       ],
@@ -30,7 +36,10 @@ const AdminUi = () => {
       name: "ali",
       status: "approved",
       actions: [
-        <button className="px-4 py-4 bg-red-300 text-red-700  rounded-lg my-2  font-bold">
+        <button
+          key={7}
+          className="px-4 py-4 bg-red-300 text-red-700  rounded-lg my-2  font-bold"
+        >
           Delete
         </button>,
       ],
@@ -40,7 +49,10 @@ const AdminUi = () => {
       name: "rehman",
       status: "approved",
       actions: [
-        <button className="px-4 py-4  bg-red-300 text-red-700  rounded-lg my-2  font-bold">
+        <button
+          key={8}
+          className="px-4 py-4  bg-red-300 text-red-700  rounded-lg my-2  font-bold"
+        >
           Delete
         </button>,
       ],

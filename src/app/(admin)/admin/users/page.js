@@ -3,7 +3,7 @@ import AdminSidebar from "@/components/AdminSidebar/AdminSidebar";
 import AdminUi from "@/components/AdminUi/AdminUi";
 import React, { useState } from "react";
 
-const page = () => {
+const Page = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleSidebar = () => {
@@ -21,4 +21,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
