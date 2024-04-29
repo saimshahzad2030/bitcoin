@@ -50,14 +50,7 @@ const AdminDashboard = ({ toggleSidebar }) => {
                 >
                   Account
                 </Link>
-                <p
-                  className="mt-1 w-full pl-4 text-lg    transition-transform transform duration-700  hover:scale-110 cursor-pointer"
-                  onClick={() => {
-                    const benefitsSection =
-                      document.getElementById("statusSection");
-                    benefitsSection.scrollIntoView({ behavior: "smooth" });
-                  }}
-                >
+                <p className="mt-1 w-full pl-4 text-lg    transition-transform transform duration-700  hover:scale-110 cursor-pointer">
                   Settings
                 </p>
                 <p
