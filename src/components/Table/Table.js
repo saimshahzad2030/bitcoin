@@ -81,27 +81,27 @@ const Table = ({
                   />
                 </td>
                 <td className={`md:px-4 md:py-4    `}>
-                  {/* <input
-                  type="text"
-                  inputmode="numeric"
-                  value={
-                    level.levelPrice < 0 || !level.levelPrice
-                      ? ""
-                      : level.levelPrice
-                  }
-                  placeholder="Enter Custom Sell Price"
-                  onChange={(e) => {
-                    const newValue = e.target.value.replace(/\D/g, "");
-                    setCustomSellPriceLevel(newValue);
-                    handleCustomSellPriceChange(index, newValue);
-                    const updatedLevels = [...changedLevel];
-                    updatedLevels[index] = parseInt(e.target.value);
-                    setChangedLevel(updatedLevels);
-                  }}
-                  pattern="(?!0\d+)\d+" // This pattern allows only positive integers without leading zeroes
-                  className=" text-center w-10/12  bg-white border  border-black rounded-xl py-4 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                /> */}
-                  <ChangeablePrice
+                  <input
+                    type="text"
+                    inputmode="numeric"
+                    value={
+                      level.levelPrice < 0 || !level.levelPrice
+                        ? ""
+                        : level.levelPrice
+                    }
+                    placeholder="Enter Custom Sell Price"
+                    onChange={(e) => {
+                      const newValue = e.target.value.replace(/\D/g, "");
+                      setCustomSellPriceLevel(newValue);
+                      handleCustomSellPriceChange(index, newValue);
+                      const updatedLevels = [...changedLevel];
+                      updatedLevels[index] = parseInt(e.target.value);
+                      setChangedLevel(updatedLevels);
+                    }}
+                    pattern="(?!0\d+)\d+" // This pattern allows only positive integers without leading zeroes
+                    className=" text-center w-10/12  bg-white border  border-black rounded-xl py-4 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                  {/* <ChangeablePrice
                     heading={"Enter Custom Sell Price"}
                     setUpdate={setCustomSellPriceLevel}
                     inputVal={
@@ -110,7 +110,7 @@ const Table = ({
                         : level.levelPrice
                     }
                     justifyPosition={""}
-                  />
+                  /> */}
                 </td>
                 <td className={`md:px-4 md:py-4    text-center text-black`}>
                   <UnChangeAblePrices

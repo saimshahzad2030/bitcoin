@@ -27,9 +27,10 @@ const ChangeablePrice = ({
           onChange={(e) => {
             const newValue = e.target.value.replace(/\D/g, "");
             setUpdate(newValue);
+            console.log(e.target.value);
           }}
           pattern="\d*"
-          className="w-full text-center py-4 bg-white border border-black px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg"
+          className="w-full text-center py-4 bg-white border border-black text-black px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg"
         />
       </div>
     </div>

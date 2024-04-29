@@ -48,7 +48,7 @@ const AdminResetDetails = () => {
           >
             Admin Details
           </h1>
-          <div className=" flex flex-col items-center justify-center  p-4 sm:px-4 w-6/12 ">
+          <div className=" flex flex-col items-center justify-center  p-4 sm:px-4 w-11/12 sm:w-8/12 lg:w-6/12 ">
             <form
               onSubmit={handleSubmit}
               className="w-11/12  lg:w-8/12 flex flex-col items-center bg-white p-8 rounded-xl "

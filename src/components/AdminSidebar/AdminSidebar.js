@@ -12,7 +12,7 @@ const AdminSidebar = ({ isOpen, toggleSidebar, selectedLink }) => {
     >
       <div
         className={`  
-          absolute top-4  ${isOpen ? "" : "right-[2%]"} 
+          absolute top-4 ${isOpen ? "" : "right-[2%]"} 
          cursor-pointer bg-white  p-2 rounded-3xl`}
         onClick={toggleSidebar}
       >
@@ -116,17 +116,19 @@ const AdminSidebar = ({ isOpen, toggleSidebar, selectedLink }) => {
               <Link
                 href={"/admin/home"}
                 className={`${
-                  selectedLink === "dashboard" ? "bg-white" : "bg-indigo-700"
+                  selectedLink === "dashboard"
+                    ? "bg-white"
+                    : "bg-white sm:bg-indigo-700"
                 } ${
                   isOpen ? "" : "hidden"
-                }  hidden  p-2 mb-4 rounded-3xl mr-[2px] cursor-pointer                `}
+                }  p-2 mb-4 rounded-3xl mr-[2px] cursor-pointer`}
               >
                 <img
                   src={`${
                     selectedLink === "dashboard"
                       ? "/assets/admin/dashboard-purple.svg"
                       : "/assets/admin/dashboard.svg"
-                  } `}
+                  }`}
                   alt="dashboard-icon"
                   className="w-6  h-auto"
                 />
@@ -134,8 +136,10 @@ const AdminSidebar = ({ isOpen, toggleSidebar, selectedLink }) => {
               <Link
                 href={"/admin/users"}
                 className={`p-2 rounded-3xl mr-[2px] cursor-pointer  ${
-                  selectedLink === "users" ? "bg-white" : "bg-indigo-700"
-                } ${isOpen ? "" : "hidden"} hidden `}
+                  selectedLink === "users"
+                    ? "bg-white"
+                    : "bg-white sm:bg-indigo-700"
+                } ${isOpen ? "" : "hidden"} `}
               >
                 <img
                   src={`${
