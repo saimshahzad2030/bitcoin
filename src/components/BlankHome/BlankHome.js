@@ -126,7 +126,7 @@ const BlankHome = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 w-full p-4 my-32 bg-indigo-700 h-auto">
+        <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 w-full p-4 mt-16 mb-4 bg-indigo-700 h-auto">
           <div className=" mt-4 sm:mt-0  flex flex-col items-center  w-full ">
             <div className="w-11/12 h-full flex flex-col  items-center p-4  rounded-lg py-20">
               <h1 className="font-bold  text-5xl text-white text-center">
@@ -334,111 +334,7 @@ const BlankHome = () => {
               />
             </div>
           </div>
-          {plan === "subscribed" && (
-            <div className="flex flex-col items-center w-full mt-12">
-              <h1 className="text-5xl font-bold">Subscribed Plan</h1>
-              <p className="text-3xl px-8 mt-2 text-center">
-                fill out the details below in order to subscribe
-              </p>
 
-              <div className="flex flex-col w-full items-center mt-12 mb-8">
-                <form
-                  onSubmit={handleSubmit}
-                  className="w-11/12 sm:w-9/12  lg:w-6/12 flex flex-col items-center bg-white p-8 rounded-xl "
-                >
-                  <div className="mb-4 w-full">
-                    <label
-                      htmlFor="username"
-                      className="block text-gray-400 text-sm font-bold mb-2"
-                    >
-                      Name
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      value={!username ? name : username}
-                      onChange={(e) => setUsername(e.target.value)}
-                      className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                      maxLength={10}
-                      required
-                    />
-                  </div>
-                  <div className="mb-4 w-full">
-                    <label
-                      htmlFor="username"
-                      className="block text-gray-400 text-sm font-bold mb-2"
-                    >
-                      Account No.
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      value={accountNo}
-                      onChange={(e) => setAccountNo(e.target.value)}
-                      className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                      maxLength={10}
-                      required
-                    />
-                  </div>
-
-                  <div className="mb-4 w-full">
-                    <label
-                      htmlFor="username"
-                      className="block text-gray-400 text-sm font-bold mb-2"
-                    >
-                      Account name
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      value={accountName}
-                      onChange={(e) => setAccountName(e.target.value)}
-                      className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                      maxLength={10}
-                      required
-                    />
-                  </div>
-                  <div className="mb-4 w-full">
-                    <label
-                      htmlFor="username"
-                      className="block text-gray-400 text-sm font-bold mb-2"
-                    >
-                      Country
-                    </label>
-                    <select
-                      value={country}
-                      onChange={(e) => {
-                        setCountry(e.target.value);
-                      }}
-                      className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    >
-                      <option value={"select a Country"}>
-                        select a Country
-                      </option>
-
-                      {COUNTRY_LIST.map((country, index) => (
-                        <option key={index} value={country}>
-                          {country}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-
-                  <div
-                    className={`
-                        flex flex-col items-center w-full`}
-                  >
-                    <button
-                      type="submit"
-                      className={` text-white bg-indigo-700 font-bold py-2 px-4 lg:text-lg rounded focus:outline-none focus:shadow-outline`}
-                    >
-                      Buy Subscription
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          )}
           {plan === "free" && (
             <div className="flex flex-col items-center w-full mt-12">
               <h1 className="text-5xl font-bold">Free Plan</h1>
