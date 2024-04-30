@@ -5,7 +5,12 @@ import Cookies from "js-cookie";
 import { BLANKPAGE, GoBack } from "../../../constants/constants";
 import { useRouter } from "next/navigation";
 import { COUNTRY_LIST } from "../../../constants/constants";
+import { loadStripe } from "@stripe/stripe-js";
+import axios from "axios";
+// import("dotenv").config();
+
 const BlankHome = () => {
+  // const stripeKey = process.env.STRIPE_KEY;
   const router = useRouter();
   const name = Cookies.get("name");
   const [avatarClicked, setAvatarClicked] = useState(false);
@@ -132,7 +137,23 @@ const BlankHome = () => {
           </div>
           <div
             className=" h-auto mt-4 lg:mt-0 flex flex-col items-center  w-full cursor-pointer"
-            onClick={() => setPLan("subscribed")}
+            onClick={async () => {
+              // setPLan("subscribed");
+              console.log("stripekey:", process.env.NEXT_PUBLIC_STRIPE_KEY);
+              const stripe = await loadStripe(
+                process.env.NEXT_PUBLIC_STRIPE_KEY
+              );
+              const response = await axios.post(
+                `http://localhost:4000/api/subscribe`
+              );
+              console.log(response.data.id);
+              const result = await stripe.redirectToCheckout({
+                sessionId: response.data.id,
+              });
+              if (result.error) {
+                console.log(result.error);
+              }
+            }}
           >
             <div className="w-11/12 sm:w-7/12  lg:w-11/12 bg-white h-full flex flex-col justify-start items-center p-4  rounded-lg  transition-transform transform duration-700  hover:scale-105 border  ">
               <h1 className="font-bold text-4xl text-indigo-700 text-center mt-4">
@@ -460,7 +481,29 @@ const BlankHome = () => {
                     />
                     <p className="text-xl px-8 "> Calculational Investments</p>
                   </div>
-                  <button className="p-4    font-bold  bg-indigo-700 text-white rounded-xl  mt-8 transition-transform transform duration-700  hover:scale-110">
+                  <button
+                    className="p-4    font-bold  bg-indigo-700 text-white rounded-xl  mt-8 transition-transform transform duration-700  hover:scale-110"
+                    onClick={async () => {
+                      // setPLan("subscribed");
+                      console.log(
+                        "stripekey:",
+                        process.env.NEXT_PUBLIC_STRIPE_KEY
+                      );
+                      const stripe = await loadStripe(
+                        process.env.NEXT_PUBLIC_STRIPE_KEY
+                      );
+                      const response = await axios.post(
+                        `http://localhost:4000/api/subscribe`
+                      );
+                      console.log(response.data.id);
+                      const result = await stripe.redirectToCheckout({
+                        sessionId: response.data.id,
+                      });
+                      if (result.error) {
+                        console.log(result.error);
+                      }
+                    }}
+                  >
                     Continue
                   </button>
                 </div>
