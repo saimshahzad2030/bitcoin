@@ -23,7 +23,7 @@ export const login = async (
     if (response.status === 200) {
       setLoginSuccesfull(true);
       Cookies.set("token", response.data.token);
-      Cookies.set("name", response.data.role);
+      Cookies.set("name", response?.data?.name ? response.data.name : "Admin");
       setResponseMessage(response.data.message);
       setType("success");
 

@@ -142,7 +142,7 @@ const ChartUi = () => {
   const name = Cookies.get("name");
   const [avatarClicked, setAvatarClicked] = useState(false);
   return (
-    <div className="container mx-auto relative">
+    <div className="container mx-auto relative alegreya">
       {avatarClicked && (
         <div
           id="avatarDiv"

@@ -12,7 +12,7 @@ const AdminDashboard = ({ toggleSidebar }) => {
   const name = Cookies.get("name");
   const [avatarClicked, setAvatarClicked] = useState(false);
   return (
-    <div className={`${style.admin} w-full checkTest`}>
+    <div className={`w-full checkTest alegreya`}>
       <div className="w-full bg-white flex flex-row items-center justify-between relative shadow-lg  px-4">
         <img
           onClick={toggleSidebar}

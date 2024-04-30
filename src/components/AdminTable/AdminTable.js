@@ -13,9 +13,9 @@ const AdminTable = ({ data }) => {
           </tr>
         </thead>
         <tbody>
-          {data.map((user) => (
+          {data.map((user, index) => (
             <>
-              <br key={user.id} />
+              {index !== 0 && <br />}
               <tr key={user.id} className="border border-gray-300 mb-2">
                 <td className="text-center text-sm">{user.id}</td>
                 <td className="text-center text-sm">{user.name}</td>

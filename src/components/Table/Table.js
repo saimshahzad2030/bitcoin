@@ -31,7 +31,9 @@ const Table = ({
         <thead className="bg-purple-100 border-t border-b border-black">
           <tr>
             <th className={`md:px-4 md:py-2 border text-2xl w-1/12`}>
-              <h1 className={`text-2xl text-center font-bold ml-8`}>#I.I.O</h1>
+              <h1 className={`text-2xl text-center font-bold sm:ml-8`}>
+                #I.I.O
+              </h1>
             </th>
             <th className={`md:px-4 md:py-2   border w-4/12 md:w-3/12  `}>
               <input
@@ -69,7 +71,7 @@ const Table = ({
                 <td
                   className={`md:px-4 md:py-4 text-center border-t  border-b border-black  `}
                 >{`# ${index + 1}`}</td>
-                <td className={`md:px-4 md:py-4    text-center `}>
+                <td className={`md:px-4 md:py-4    text-center pb-4`}>
                   <div className="h-[2px]  border-t-2 border-purple-500 border-dashed mb-2"></div>
                   <UnChangeAblePrices
                     text={"Sell Price: $ "}
@@ -133,7 +135,7 @@ const Table = ({
                             numberOfTokens
                           )
                     }
-                    parentBg={"mt-4"}
+                    // parentBg={"mt-4"}
                   />
                 </td>
               </tr>

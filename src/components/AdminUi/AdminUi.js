@@ -59,9 +59,7 @@ const AdminUi = () => {
     },
   ];
   return (
-    <div
-      className={`flex flex-col items-start w-full  py-8 h-auto ${style.admin}`}
-    >
+    <div className={`flex flex-col items-start w-full  py-8 h-auto alegreya`}>
       <div className="w-full bg-white flex flex-row items-center justify-between relative shadow-lg px-4">
         <h1 className="text-3xl font-bold">USERS</h1>
         <div className="flex flex-row items-center justify-end  w-full z-10 py-2">

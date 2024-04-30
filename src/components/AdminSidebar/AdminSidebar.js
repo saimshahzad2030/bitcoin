@@ -8,7 +8,7 @@ const AdminSidebar = ({ isOpen, toggleSidebar, selectedLink }) => {
     <div
       className={`z-40 absolute md:relative flex flex-col items-center w-3/12 md:w-3/12  lg:w-2/12 h-[100vh]  sidebar  ${
         isOpen ? "open" : ""
-      } ${style.admin}`}
+      } alegreya`}
     >
       <div
         className={`  
