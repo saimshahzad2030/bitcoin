@@ -2,7 +2,12 @@
 import React, { useState, useEffect } from "react";
 import style from "./BlankHome.module.css";
 import Cookies from "js-cookie";
-import { BASEURL, BLANKPAGE, GoBack } from "../../../constants/constants";
+import {
+  BASEURL,
+  BLANKPAGE,
+  GoBack,
+  headersFunction,
+} from "../../../constants/constants";
 import { useRouter } from "next/navigation";
 import { COUNTRY_LIST } from "../../../constants/constants";
 import { loadStripe } from "@stripe/stripe-js";
@@ -136,15 +141,24 @@ const BlankHome = () => {
             </div>
           </div>
           <div
-            className=" h-auto mt-4 lg:mt-0 flex flex-col items-center  w-full cursor-pointer"
+            className=" h-auto mt-4 lg:mt-0 flex flex-col items-center justify-center w-full cursor-pointer"
             onClick={async () => {
               // setPLan("subscribed");
               console.log("stripekey:", process.env.NEXT_PUBLIC_STRIPE_KEY);
               const stripe = await loadStripe(
                 process.env.NEXT_PUBLIC_STRIPE_KEY
               );
-              const response = await axios.post(`${BASEURL}/subscribe`);
-
+              console.log(headersFunction());
+              const response = await axios.post(
+                `${BASEURL}/subscribe`,
+                {},
+                headersFunction()
+              );
+              // const response = await axios.post(
+              //   `http://localhost:4000/api/subscribe`,
+              //   {},
+              //   headersFunction()
+              // );
               console.log(response.data.id);
               const result = await stripe.redirectToCheckout({
                 sessionId: response.data.id,
@@ -154,7 +168,7 @@ const BlankHome = () => {
               }
             }}
           >
-            <div className="w-11/12 sm:w-7/12  lg:w-11/12 bg-white h-full flex flex-col justify-start items-center p-4  rounded-lg  transition-transform transform duration-700  hover:scale-105 border  ">
+            <div className="w-11/12 sm:w-7/12  lg:w-11/12 bg-white h-auto flex flex-col justify-start items-center p-4  rounded-lg  transition-transform transform duration-700  hover:scale-105 border  ">
               <h1 className="font-bold text-4xl text-indigo-700 text-center mt-4">
                 {BLANKPAGE[4].name}
               </h1>
@@ -216,10 +230,10 @@ const BlankHome = () => {
             </div>
           </div>
           <div
-            className=" h-auto] mt-4 lg:mt-0 flex flex-col items-center  w-full  cursor-pointer  "
+            className=" h-auto] mt-4 lg:mt-0 flex flex-col items-center justify-center w-full  cursor-pointer  "
             onClick={() => setPLan("free")}
           >
-            <div className="w-11/12 sm:w-7/12 lg:w-11/12 bg-white  h-full flex flex-col justify-start items-center p-4  rounded-lg    transition-transform transform duration-700  hover:scale-105">
+            <div className="w-11/12 sm:w-7/12 lg:w-11/12 bg-white  h-auto flex flex-col justify-start items-center p-4  rounded-lg    transition-transform transform duration-700  hover:scale-105">
               <h1 className="font-bold text-4xl text-indigo-700 text-center mt-4">
                 {BLANKPAGE[5].name}
               </h1>
@@ -308,7 +322,7 @@ const BlankHome = () => {
         <div className="flex flex-col w-full items-center">
           <div className="flex flex-col items-start justify-center w-full ">
             <div
-              className="flex felx-col items-center justify-center m-2 px-4 py-2 rounded-xl bg-indigo-700 cursor-pointer"
+              className="flex flex-col items-center justify-center m-2 px-4 py-2 rounded-xl bg-indigo-700 cursor-pointer"
               onClick={() => {
                 setPLan(null);
               }}
@@ -492,7 +506,11 @@ const BlankHome = () => {
                         process.env.NEXT_PUBLIC_STRIPE_KEY
                       );
                       // console.log(`${BASEURL}/subscribe`);
-                      const response = await axios.post(`${BASEURL}/subscribe`);
+                      const response = await axios.post(
+                        `${BASEURL}/subscribe`,
+                        {},
+                        headersFunction()
+                      );
                       console.log(response.data.id);
                       const result = await stripe.redirectToCheckout({
                         sessionId: response.data.id,
