@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import style from "./BlankHome.module.css";
 import Cookies from "js-cookie";
-import { BLANKPAGE, GoBack } from "../../../constants/constants";
+import { BASEURL, BLANKPAGE, GoBack } from "../../../constants/constants";
 import { useRouter } from "next/navigation";
 import { COUNTRY_LIST } from "../../../constants/constants";
 import { loadStripe } from "@stripe/stripe-js";
@@ -143,9 +143,8 @@ const BlankHome = () => {
               const stripe = await loadStripe(
                 process.env.NEXT_PUBLIC_STRIPE_KEY
               );
-              const response = await axios.post(
-                `http://localhost:4000/api/subscribe`
-              );
+              const response = await axios.post(`${BASEURL}/subscribe`);
+
               console.log(response.data.id);
               const result = await stripe.redirectToCheckout({
                 sessionId: response.data.id,
@@ -492,9 +491,8 @@ const BlankHome = () => {
                       const stripe = await loadStripe(
                         process.env.NEXT_PUBLIC_STRIPE_KEY
                       );
-                      const response = await axios.post(
-                        `http://localhost:4000/api/subscribe`
-                      );
+                      // console.log(`${BASEURL}/subscribe`);
+                      const response = await axios.post(`${BASEURL}/subscribe`);
                       console.log(response.data.id);
                       const result = await stripe.redirectToCheckout({
                         sessionId: response.data.id,
