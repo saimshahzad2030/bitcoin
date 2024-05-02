@@ -16,7 +16,7 @@ const Page = () => {
         isOpen={isOpen}
         toggleSidebar={toggleSidebar}
       />
-      <AdminUi />
+      <AdminUi toggleSidebar={toggleSidebar} />
     </div>
   );
 };

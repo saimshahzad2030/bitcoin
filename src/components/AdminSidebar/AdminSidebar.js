@@ -6,7 +6,7 @@ const AdminSidebar = ({ isOpen, toggleSidebar, selectedLink }) => {
   console.log(selectedLink, "selected link");
   return (
     <div
-      className={`z-40 absolute md:relative flex flex-col items-center w-3/12 md:w-3/12  lg:w-2/12 h-[100vh]  sidebar  ${
+      className={`z-40 absolute md:relative flex flex-col items-center w-3/12 md:w-4/12  lg:w-3/12 xl:w-2/12 h-[100vh]  sidebar  ${
         isOpen ? "open" : ""
       } alegreya`}
     >
@@ -31,7 +31,7 @@ const AdminSidebar = ({ isOpen, toggleSidebar, selectedLink }) => {
       >
         <div className="flex flex-col items-center justify-center mt-16 w-full ">
           <h1
-            className={`text-white text-lg md:text-2xl font-bold ${
+            className={`text-white text-lg md:text-2xl font-bold text-center ${
               isOpen ? "hidden" : ""
             }`}
           >
@@ -109,7 +109,7 @@ const AdminSidebar = ({ isOpen, toggleSidebar, selectedLink }) => {
                 } ${isOpen ? "hidden" : ""}`}
               ></Link>
               <div
-                className={`w-3/12 h-full bg-indigo-700 absolute z-4 left-0 ${
+                className={`w-5/12 h-full bg-indigo-700 absolute z-4 left-0 ${
                   isOpen ? "hidden" : ""
                 }`}
               ></div>

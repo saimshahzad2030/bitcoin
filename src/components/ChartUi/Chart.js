@@ -52,7 +52,7 @@ const ChartUi = () => {
   const [customSellPriceValue, setCustomSellPriceValue] = useState(null);
   const [averagePurchasePrice, setAveragePurchasePrice] = useState(0);
   const [numberOfTokens, setNumberOfTokens] = useState(0);
-  const [levelRange, setLevelRange] = useState(10);
+  const [levelRange, setLevelRange] = useState(100);
   const [levels, setLevels] = useState(5);
   const [initialInvestments, setInitialInvestments] = useState(false);
   const [customSellPriceLevel, setCustomSellPriceLevel] = useState(0);

@@ -13,6 +13,8 @@ const AdminTable = ({ data }) => {
           </tr>
         </thead>
         <tbody>
+          <br />
+
           {data.map((user, index) => (
             <>
               {index !== 0 && <br />}

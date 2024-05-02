@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import style from "./AdminUi.module.css";
 import Table from "../Table/Table";
 import AdminTable from "../AdminTable/AdminTable";
-const AdminUi = () => {
+const AdminUi = ({ toggleSidebar }) => {
   const router = useRouter();
   const name = Cookies.get("name");
   const [avatarClicked, setAvatarClicked] = useState(false);
@@ -59,11 +59,18 @@ const AdminUi = () => {
     },
   ];
   return (
-    <div className={`flex flex-col items-start w-full  py-8 h-auto alegreya`}>
+    <div className={`flex flex-col items-start w-full  h-auto alegreya`}>
       <div className="w-full bg-white flex flex-row items-center justify-between relative shadow-lg px-4">
+        <img
+          onClick={toggleSidebar}
+          src={`/assets/admin/show-sidebar.svg`}
+          alt="menu-icon"
+          className=" w-8 h-auto  md:hidden
+            cursor-pointer"
+        />
         <h1 className="text-3xl font-bold">USERS</h1>
         <div className="flex flex-row items-center justify-end  w-full z-10 py-2">
-          <p className="text-indigo-700 text-xl mr-4 ">{name}</p>
+          <p className="text-indigo-700 text-xl mr-4  hidden sm:flex">{name}</p>
           <div className="flex flex-col items-center justify-center h-12 w-12 bg-indigo-700 rounded-full cursor-pointer">
             <p
               className="text-white text-3xl font-bold"

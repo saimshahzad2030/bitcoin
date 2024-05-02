@@ -33,7 +33,7 @@ const Modal = ({
   }, [loading]);
   return isVisible ? (
     <div
-      className={`w-screen h-screen flex justify-center items-center ${style.main}`}
+      className={`w-screen h-screen flex justify-center items-center ${style.main} drop-shadow-lg`}
     >
       <div className="rounded-lg bg-white p-8">
         <div className="flex justify-center mb-4">

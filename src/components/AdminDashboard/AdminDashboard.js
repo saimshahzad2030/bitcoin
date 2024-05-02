@@ -23,7 +23,7 @@ const AdminDashboard = ({ toggleSidebar }) => {
         />
         <h1 className="text-3xl font-bold">DASHBOARD</h1>
         <div className="flex flex-row items-center justify-end  w-full z-10 py-2">
-          <p className="text-indigo-700 text-xl mr-4 ">{name}</p>
+          <p className="text-indigo-700 text-xl mr-4 hidden sm:flex">{name}</p>
           <div className="flex flex-col items-center justify-center h-12 w-12 bg-indigo-700 rounded-full cursor-pointer">
             <p
               className="text-white text-3xl font-bold"

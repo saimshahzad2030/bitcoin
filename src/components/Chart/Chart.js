@@ -111,12 +111,75 @@ const ChartComponent = ({
               ctx.restore();
 
               const initialLevels = [];
+              // for (let i = 0; i < levels; i++) {
+              //   if (levels % 2 === 0) {
+              //     const yPosition = -500;
+              //     const yPos = chartInstance.scales.y.getPixelForValue(
+              //       changedLevel[i] !== "unaltered"
+              //         ? changedLevel[i]
+              //         : yPosition
+              //     );
+              //     ctx.save();
+              //     ctx.beginPath();
+              //     ctx.setLineDash([5, 5]);
+              //     ctx.moveTo(chartArea.right, yPos);
+              //     ctx.lineTo(chartArea.right + lineWidth, yPos);
+              //     ctx.strokeStyle = "purple";
+              //     ctx.stroke();
+              //     ctx.restore();
+              //     const labelX = chartArea.right + lineWidth - 20;
+              //     const labelY = yPos;
+              //     ctx.fillStyle = "purple";
+              //     initialLevels.push({
+              //       level: levelNames[i],
+              //       levelPrice:
+              //         changedLevel[i] !== "unaltered"
+              //           ? changedLevel[i]
+              //           : -yPosition,
+              //     });
+              //     setLevelArray(initialLevels);
+              //     ctx.fillText(levelNames[i], labelX, labelY);
+              //   } else {
+              //     const yPosition = -500;
+              //     const yPos = chartInstance.scales.y.getPixelForValue(
+              //       changedLevel[i] !== "unaltered"
+              //         ? changedLevel[i]
+              //         : yPosition
+              //     );
+              //     ctx.save();
+              //     ctx.beginPath();
+              //     ctx.setLineDash([5, 5]);
+              //     ctx.moveTo(chartArea.right, yPos);
+              //     ctx.lineTo(chartArea.right + lineWidth, yPos);
+              //     ctx.strokeStyle = "purple";
+              //     ctx.stroke();
+              //     ctx.restore();
+              //     const labelX = chartArea.right + lineWidth - 20;
+              //     const labelY = yPos;
+              //     ctx.fillStyle = "purple";
+              //     initialLevels.push({
+              //       level: levelNames[i],
+              //       levelPrice:
+              //         changedLevel[i] !== "unaltered"
+              //           ? changedLevel[i]
+              //           : yPosition,
+              //     });
+
+              //     console.log(initialLevels, "initial Levels");
+
+              //     setLevelArray(initialLevels);
+              //     ctx.fillText(levelNames[i], labelX, labelY);
+              //     console.log(changedLevel[i], "changedLevel[i]");
+              //   }
+              // }
               for (let i = 0; i < levels; i++) {
                 if (levels % 2 === 0) {
                   const yPosition = -500;
                   const yPos = chartInstance.scales.y.getPixelForValue(
                     changedLevel[i] !== "unaltered"
-                      ? changedLevel[i]
+                      ? levelRange == 100
+                        ? changedLevel[i]
+                        : changedLevel[i] * (levelRange / 100)
                       : yPosition
                   );
                   ctx.save();
@@ -134,8 +197,10 @@ const ChartComponent = ({
                     level: levelNames[i],
                     levelPrice:
                       changedLevel[i] !== "unaltered"
-                        ? changedLevel[i]
-                        : -yPosition,
+                        ? levelRange == 100
+                          ? changedLevel[i]
+                          : changedLevel[i] * (levelRange / 100)
+                        : yPosition,
                   });
                   setLevelArray(initialLevels);
                   ctx.fillText(levelNames[i], labelX, labelY);
@@ -143,7 +208,9 @@ const ChartComponent = ({
                   const yPosition = -500;
                   const yPos = chartInstance.scales.y.getPixelForValue(
                     changedLevel[i] !== "unaltered"
-                      ? changedLevel[i]
+                      ? levelRange == 100
+                        ? changedLevel[i]
+                        : changedLevel[i] * (levelRange / 100)
                       : yPosition
                   );
                   ctx.save();
@@ -161,7 +228,9 @@ const ChartComponent = ({
                     level: levelNames[i],
                     levelPrice:
                       changedLevel[i] !== "unaltered"
-                        ? changedLevel[i]
+                        ? levelRange == 100
+                          ? changedLevel[i]
+                          : changedLevel[i] * (levelRange / 100)
                         : yPosition,
                   });
 
