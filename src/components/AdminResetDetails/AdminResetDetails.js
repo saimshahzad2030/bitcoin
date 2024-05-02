@@ -222,7 +222,7 @@ const AdminResetDetails = () => {
                           <p
                             className={`text-xs sm:text-sm ${"text-gray-500"}`}
                           >
-                            Password doesn't match
+                            Password doesn&apos;t match
                           </p>
                         </>
                       )}
