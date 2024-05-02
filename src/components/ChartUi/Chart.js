@@ -362,11 +362,12 @@ const ChartUi = () => {
           setInitalInvestmentOutLevel={setInitalInvestmentOutLevel}
           numberOfTokens={numberOfTokens}
           averagePurchasePrice={averagePurchasePrice}
+          levelRange={levelRange}
         />
       </div>
       <Totals
         initialInvestments={initialInvestments}
-        customSellPriceValue={customSellPriceLevel}
+        customSellPriceValue={customSellPriceValue}
         averagePurchasePrice={averagePurchasePrice}
         levelArray={levelArray}
         numberOfTokens={numberOfTokens}

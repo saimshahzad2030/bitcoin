@@ -14,6 +14,7 @@ const Table = ({
   changedLevel,
   initalInvestmentOutLevel,
   setInitalInvestmentOutLevel,
+  levelRange,
 }) => {
   const handleCustomSellPriceChange = (index, newValue) => {
     setLevelArray((prevLevels) => {
@@ -85,22 +86,22 @@ const Table = ({
                 <td className={`px-4 md:px-4 md:py-4    `}>
                   <input
                     type="text"
-                    inputmode="numeric"
-                    value={
-                      level.levelPrice < 0 || !level.levelPrice
-                        ? ""
-                        : level.levelPrice
-                    }
+                    // inputmode="numeric"
+                    value={level.levelPrice < 0 ? "" : level.levelPrice}
                     placeholder="Enter Custom Sell Price"
                     onChange={(e) => {
-                      const newValue = e.target.value.replace(/\D/g, "");
+                      const newValue = e.target.value.replace(/[^\d.]/g, "");
                       setCustomSellPriceLevel(newValue);
                       handleCustomSellPriceChange(index, newValue);
                       const updatedLevels = [...changedLevel];
-                      updatedLevels[index] = parseInt(e.target.value);
+                      console.log(updatedLevels);
+                      console.log(updatedLevels);
+                      updatedLevels[index] =
+                        parseFloat(e.target.value) * (100 / levelRange);
+                      console.log(updatedLevels);
                       setChangedLevel(updatedLevels);
                     }}
-                    pattern="(?!0\d+)\d+" // This pattern allows only positive integers without leading zeroes
+                    // pattern="(?!0\d+)\d+" // This pattern allows only positive integers without leading zeroes
                     className=" text-center sm:w-10/12  bg-white border  border-black rounded-xl py-4 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                   {/* <ChangeablePrice

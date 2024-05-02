@@ -179,7 +179,7 @@ const ChartComponent = ({
                     changedLevel[i] !== "unaltered"
                       ? levelRange == 100
                         ? changedLevel[i]
-                        : changedLevel[i] * (levelRange / 100)
+                        : parseInt(changedLevel[i] * (levelRange / 100))
                       : yPosition
                   );
                   ctx.save();
@@ -199,7 +199,7 @@ const ChartComponent = ({
                       changedLevel[i] !== "unaltered"
                         ? levelRange == 100
                           ? changedLevel[i]
-                          : changedLevel[i] * (levelRange / 100)
+                          : parseInt(changedLevel[i] * (levelRange / 100))
                         : yPosition,
                   });
                   setLevelArray(initialLevels);
@@ -210,7 +210,7 @@ const ChartComponent = ({
                     changedLevel[i] !== "unaltered"
                       ? levelRange == 100
                         ? changedLevel[i]
-                        : changedLevel[i] * (levelRange / 100)
+                        : parseInt(changedLevel[i] * (levelRange / 100))
                       : yPosition
                   );
                   ctx.save();
@@ -230,15 +230,12 @@ const ChartComponent = ({
                       changedLevel[i] !== "unaltered"
                         ? levelRange == 100
                           ? changedLevel[i]
-                          : changedLevel[i] * (levelRange / 100)
+                          : parseInt(changedLevel[i] * (levelRange / 100))
                         : yPosition,
                   });
 
-                  console.log(initialLevels, "initial Levels");
-
                   setLevelArray(initialLevels);
                   ctx.fillText(levelNames[i], labelX, labelY);
-                  console.log(changedLevel[i], "changedLevel[i]");
                 }
               }
             }
@@ -258,6 +255,7 @@ const ChartComponent = ({
     averagePurchasePrice,
     changedLevel,
   ]);
+
   return (
     <div className="flex flex-col items-center w-full">
       <div className={`flex flex-col items-center w-7/12`}>
