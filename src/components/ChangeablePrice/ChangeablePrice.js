@@ -13,7 +13,7 @@ const ChangeablePrice = ({
   return color ? (
     <div
       className={`${customMargin} flex flex-col items-center justify-between h-auto w-full ${
-        heading == "Enter Custom Sell Price" ? "" : "py-4 sm:py-16"
+        heading == "Enter Custom Sell Price" ? "" : "py-4 sm:py-8"
       } ${parentBg}`}
     >
       <div
@@ -36,7 +36,7 @@ const ChangeablePrice = ({
     </div>
   ) : (
     <div
-      className={`${customMargin}  flex flex-col items-center justify-between h-auto w-full ${parentBg} py-4 sm:py-16 `}
+      className={`${customMargin}  flex flex-col items-center justify-between h-auto w-full ${parentBg} py-4 sm:py-8 `}
     >
       {labelRequired && (
         <h2 className=" text-lg text-center w-full mb-1">{heading}</h2>

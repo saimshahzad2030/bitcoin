@@ -69,9 +69,9 @@ const Table = ({
                 className="border-t border-b border-black bg-purple-100"
               >
                 <td
-                  className={`md:px-4 md:py-4 text-center border-t  border-b border-black  `}
+                  className={`px-4 md:px-4 md:py-4 text-center border-t  border-b border-black `}
                 >{`# ${index + 1}`}</td>
-                <td className={`md:px-4 md:py-4    text-center pb-4`}>
+                <td className={` px-4 md:px-4 md:py-4    text-center pb-4`}>
                   <div className="h-[2px]  border-t-2 border-purple-500 border-dashed mb-2"></div>
                   <UnChangeAblePrices
                     text={"Sell Price: $ "}
@@ -82,7 +82,7 @@ const Table = ({
                     }
                   />
                 </td>
-                <td className={`md:px-4 md:py-4    `}>
+                <td className={`px-4 md:px-4 md:py-4    `}>
                   <input
                     type="text"
                     inputmode="numeric"
@@ -101,7 +101,7 @@ const Table = ({
                       setChangedLevel(updatedLevels);
                     }}
                     pattern="(?!0\d+)\d+" // This pattern allows only positive integers without leading zeroes
-                    className=" text-center w-10/12  bg-white border  border-black rounded-xl py-4 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className=" text-center sm:w-10/12  bg-white border  border-black rounded-xl py-4 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                   {/* <ChangeablePrice
                     heading={"Enter Custom Sell Price"}
@@ -114,7 +114,9 @@ const Table = ({
                     justifyPosition={""}
                   /> */}
                 </td>
-                <td className={`md:px-4 md:py-4    text-center text-black`}>
+                <td
+                  className={`px-4 md:px-4 md:py-4    text-center text-black`}
+                >
                   <UnChangeAblePrices
                     text={"ROI: $ "}
                     value={
