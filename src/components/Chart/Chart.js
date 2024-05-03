@@ -2,6 +2,10 @@
 import React, { useEffect, useRef } from "react";
 import Chart from "chart.js/auto";
 import style from "./Chart.module.css";
+import { addItem, removeItem, updateItem } from "@/redux/reducers/coin-reducer";
+import { useDispatch } from "react-redux";
+import { connect } from "react-redux";
+
 const ChartComponent = ({
   selectedCoin,
   levels,
@@ -12,8 +16,13 @@ const ChartComponent = ({
   isCoinSelected,
   levelNames,
   setLevelArray,
+  levelArray,
+  changedlevel,
+
+  customLevelPrice,
 }) => {
   const chartRef = useRef(null);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const ctx = chartRef.current.getContext("2d");
@@ -172,71 +181,94 @@ const ChartComponent = ({
               //     console.log(changedLevel[i], "changedLevel[i]");
               //   }
               // }
-              for (let i = 0; i < levels; i++) {
-                if (levels % 2 === 0) {
-                  const yPosition = -500;
-                  const yPos = chartInstance.scales.y.getPixelForValue(
-                    changedLevel[i] !== "unaltered"
-                      ? levelRange == 100
-                        ? changedLevel[i]
-                        : parseInt(changedLevel[i] * (levelRange / 100))
-                      : yPosition
-                  );
-                  ctx.save();
-                  ctx.beginPath();
-                  ctx.setLineDash([5, 5]);
-                  ctx.moveTo(chartArea.right, yPos);
-                  ctx.lineTo(chartArea.right + lineWidth, yPos);
-                  ctx.strokeStyle = "purple";
-                  ctx.stroke();
-                  ctx.restore();
-                  const labelX = chartArea.right + lineWidth - 20;
-                  const labelY = yPos;
-                  ctx.fillStyle = "purple";
-                  initialLevels.push({
-                    level: levelNames[i],
-                    levelPrice:
-                      changedLevel[i] !== "unaltered"
-                        ? levelRange == 100
-                          ? changedLevel[i]
-                          : parseInt(changedLevel[i] * (levelRange / 100))
-                        : yPosition,
-                  });
-                  setLevelArray(initialLevels);
-                  ctx.fillText(levelNames[i], labelX, labelY);
-                } else {
-                  const yPosition = -500;
-                  const yPos = chartInstance.scales.y.getPixelForValue(
-                    changedLevel[i] !== "unaltered"
-                      ? levelRange == 100
-                        ? changedLevel[i]
-                        : parseInt(changedLevel[i] * (levelRange / 100))
-                      : yPosition
-                  );
-                  ctx.save();
-                  ctx.beginPath();
-                  ctx.setLineDash([5, 5]);
-                  ctx.moveTo(chartArea.right, yPos);
-                  ctx.lineTo(chartArea.right + lineWidth, yPos);
-                  ctx.strokeStyle = "purple";
-                  ctx.stroke();
-                  ctx.restore();
-                  const labelX = chartArea.right + lineWidth - 20;
-                  const labelY = yPos;
-                  ctx.fillStyle = "purple";
-                  initialLevels.push({
-                    level: levelNames[i],
-                    levelPrice:
-                      changedLevel[i] !== "unaltered"
-                        ? levelRange == 100
-                          ? changedLevel[i]
-                          : parseInt(changedLevel[i] * (levelRange / 100))
-                        : yPosition,
-                  });
+              // dispatch(removeItem());
 
-                  setLevelArray(initialLevels);
-                  ctx.fillText(levelNames[i], labelX, labelY);
-                }
+              for (let i = 0; i < levels; i++) {
+                const yPosition = -500;
+                const yPos = chartInstance.scales.y.getPixelForValue(
+                  // changedLevel[i] !== "unaltered"
+                  //   ? levelRange == 100
+                  //     ? changedLevel[i]
+                  //     : parseInt(changedLevel[i] * (levelRange / 100))
+                  //   : yPosition
+                  // levelArray[i]
+                  // changedLevel[i] !== "unaltered"
+                  //   ? levelRange == 100
+                  //     ? changedLevel[i]
+                  //     : parseInt(changedLevel[i] * (levelRange / 100))
+                  //   : yPosition
+                  changedlevel[i] !== "unaltered"
+                    ? levelRange == 100
+                      ? changedlevel[i]
+                      : parseInt(changedlevel[i] * (levelRange / 100))
+                    : yPosition
+                );
+                ctx.save();
+                ctx.beginPath();
+                ctx.setLineDash([5, 5]);
+                ctx.moveTo(chartArea.right, yPos);
+                ctx.lineTo(chartArea.right + lineWidth, yPos);
+                ctx.strokeStyle = "purple";
+                ctx.stroke();
+                ctx.restore();
+                const labelX = chartArea.right + lineWidth - 20;
+                const labelY = yPos;
+                ctx.fillStyle = "purple";
+                // initialLevels.push({
+                //   level: levelNames[i],
+                //   levelPrice:
+                //     // changedLevel[i] !== "unaltered"
+                //     //   ? levelRange == 100
+                //     //     ? changedLevel[i]
+                //     //     : parseInt(changedLevel[i] * (levelRange / 100))
+                //     //   : yPosition < 0
+                //     //   ? 0
+                //     //   : yPosition,
+                //     // levelArray[i],
+                //     levelArray[i]
+                //       ? levelRange == 100
+                //         ? levelArray[i].levelPrice
+                //         : parseInt(
+                //             levelArray[i].levelPrice * (levelRange / 100)
+                //           )
+                //       : yPosition < 0
+                //       ? 0
+                //       : yPosition,
+                // });
+                // dispatch(
+                //   addItem({
+                //     level: levelNames[i],
+                //     levelPrice:
+                //       // changedLevel[i] !== "unaltered"
+                //       //   ? levelRange == 100
+                //       //     ? changedLevel[i]
+                //       //     : parseInt(changedLevel[i] * (levelRange / 100))
+                //       //   : yPosition < 0
+                //       //   ? 0
+                //       //   : yPosition,
+                //       changedlevel[i] !== "unaltered"
+                //         ? levelRange == 100
+                //           ? changedlevel[i]
+                //           : parseInt(changedlevel[i] * (levelRange / 100))
+                //         : yPosition,
+                //   })
+                // );
+                // dispatch(
+                //   updateItem({
+                //     i,
+                //     newItem: {
+                //       level: `# ${i + 1}`,
+                //       levelPrice:
+                //         changedlevel[i] !== "unaltered"
+                //           ? levelRange == 100
+                //             ? changedlevel[i]
+                //             : parseInt(changedlevel[i] * (levelRange / 100))
+                //           : yPosition,
+                //     },
+                //   })
+                // );
+                // setLevelArray(initialLevels);
+                ctx.fillText(levelNames[i], labelX, labelY);
               }
             }
           },
@@ -251,18 +283,23 @@ const ChartComponent = ({
     selectedCoin,
     levels,
     levelRange,
+    customLevelPrice,
     customSellPriceValue,
     averagePurchasePrice,
     changedLevel,
   ]);
 
   return (
-    <div className="flex flex-col items-center w-full">
-      <div className={`flex flex-col items-center w-7/12`}>
+    <div className="flex flex-col items-center w-full ">
+      <div className={`flex flex-col items-center w-7/12 `}>
         <canvas ref={chartRef} className={style.chartCanvas} />
       </div>
     </div>
   );
 };
-
-export default ChartComponent;
+const mapStateToProps = (state) => {
+  return {
+    changedlevel: state.changedlevel, // Assuming your reducer is named myReducer and it contains an array
+  };
+};
+export default connect(mapStateToProps)(ChartComponent);

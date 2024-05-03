@@ -17,7 +17,6 @@ const UserAuthentication = ({ children }) => {
           headersFunction()
         );
 
-        console.log("role", response.data);
         if (
           response.data.role === "admin" &&
           pathname !== "/admin/home" &&

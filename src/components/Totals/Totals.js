@@ -4,12 +4,14 @@ import {
   totalRevenue,
   totalProfit,
 } from "../../../utils/utils";
+import { connect } from "react-redux";
 const Totals = ({
   initialInvestments,
   customSellPriceValue,
   averagePurchasePrice,
   levelArray,
   numberOfTokens,
+  levelRange,
 }) => {
   return (
     <div
@@ -20,7 +22,7 @@ const Totals = ({
         <div className="mt-4 w-11/12 flex-col items-center  py-4 border border-black rounded-xl">
           <h2 className="text-center text-xl">
             Weighted Average: ${" "}
-            {weightedAveragePrice(levelArray, numberOfTokens)}
+            {weightedAveragePrice(levelRange, levelArray, numberOfTokens)}
           </h2>
         </div>
       </div>
@@ -34,7 +36,8 @@ const Totals = ({
       <div className="flex flex-col items-center justify-evenly h-auto w-12/12">
         <div className="mt-4 w-11/12 flex-col items-center  py-4 border border-black rounded-xl">
           <h2 className="text-center text-xl">
-            Total Revenue: $ {totalRevenue(levelArray, numberOfTokens)}
+            Total Revenue: ${" "}
+            {totalRevenue(levelRange, levelArray, numberOfTokens)}
           </h2>
         </div>
       </div>
@@ -42,7 +45,8 @@ const Totals = ({
         <div className="mt-4  w-11/12 flex-col items-center  py-4 border border-black rounded-xl">
           <h2 className="text-center text-xl">
             Total Profit: ${" "}
-            {totalProfit(levelArray, averagePurchasePrice, numberOfTokens)}
+            {totalRevenue(levelRange, levelArray, numberOfTokens) -
+              averagePurchasePrice * numberOfTokens}
           </h2>
         </div>
       </div>
@@ -50,4 +54,10 @@ const Totals = ({
   );
 };
 
-export default Totals;
+const mapStateToProps = (state) => {
+  return {
+    levelArray: state.array,
+  };
+};
+
+export default connect(mapStateToProps)(Totals);

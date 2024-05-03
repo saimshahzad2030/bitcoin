@@ -1,90 +1,32 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import {
-  // addApplication,
-  // cancelApplication,
-  fetchAllCoins,
-} from "../reducer-services/allCoins";
+import { createSlice } from "@reduxjs/toolkit";
 
-export const fetchCoinsThunk = createAsyncThunk(
-  "coins/fetchCoins",
-  fetchAllCoins
-);
+const initialState = [];
 
-// export const addApplicationThunk = createAsyncThunk(
-//   "applications/addApplications",
-//   addApplication
-// );
-
-// export const cancelApplicationThunk = createAsyncThunk(
-//   "applications/cancelApplication",
-//   cancelApplication
-// );
-
-const coinsSlice = createSlice({
-  name: "coins",
-  initialState: {
-    coinss: [],
-    loading: false,
-    error: null,
-  },
+const arraySlice = createSlice({
+  name: "array",
+  initialState,
   reducers: {
-    // updateApplicationStatus(state, action) {
-    //   const { id, status } = action.payload;
-    //   const applicationToUpdate = state.applications.find(
-    //     (app) => app._id === id
-    //   );
-    //   if (applicationToUpdate) {
-    //     applicationToUpdate.status = status;
-    //   }
-    // },
-  },
-  extraReducers: (builder) => {
-    builder.addCase(fetchCoinsThunk.pending, (state) => {
-      state.loading = true;
-      state.error = null;
-    });
-    builder.addCase(fetchCoinsThunk.fulfilled, (state, action) => {
-      state.coinss = action.payload;
-      state.loading = false;
-      state.error = null;
-    });
-    builder.addCase(fetchCoinsThunk.rejected, (state, action) => {
-      state.loading = false;
-      state.error = action.error.message;
-    });
-    // .addCase(addApplicationThunk.fulfilled, (state, action) => {
-    //   state.loading = false;
-    //   state.applications = [...state.applications, action.payload.data];
-    //   state.error = null;
-    //   console.log("fulfilled");
-
-    //   // setcompanyClicked(false)
-    // })
-    // .addCase(addApplicationThunk.rejected, (state, action) => {
-    //   state.loading = false;
-    //   state.error = action.payload;
-    //   console.log("rejected");
-    // })
-    // .addCase(cancelApplicationThunk.pending, (state) => {
-    //   state.loading = true;
-    //   console.log("pending");
-    // })
-    // .addCase(cancelApplicationThunk.fulfilled, (state, action) => {
-    //   // state.applications.pop(action.payload)
-    //   state.loading = false;
-    //   state.applications = state.applications.filter(
-    //     (app) => app._id !== action.payload.id
-    //   );
-    //   state.error = null;
-    //   console.log("payload", action.payload);
-    //   console.log("fulfilled");
-    // })
-    // .addCase(cancelApplicationThunk.rejected, (state, action) => {
-    //   state.loading = false;
-    //   state.error = action.payload;
-    //   console.log("rejected");
-    // });
+    addItem(state, action) {
+      state.push(action.payload);
+    },
+    removeItem(state, action) {
+      return [];
+    },
+    updateItem(state, action) {
+      const { index, newItem } = action.payload;
+      if (index >= 0 && index < state.length) {
+        state[index] = newItem;
+      }
+    },
+    updateArray(state, action) {
+      const { level } = action.payload;
+      return state.map((item) => ({
+        ...item,
+        levelPrice: (item.levelPrice * level) / 100,
+      }));
+    },
   },
 });
-// export const { updateApplicationStatus } = applicationsSlice.actions;
-export default coinsSlice.reducer;
+export const { addItem, removeItem, updateItem, updateArray } =
+  arraySlice.actions;
+export default arraySlice.reducer;

@@ -1,27 +1,53 @@
 import { createSlice } from "@reduxjs/toolkit";
-
-const initialState = {
-  studentDetails: {},
-};
-
-const slice = createSlice({
-  name: "student-details",
+const initialState = [
+  "unaltered",
+  "unaltered",
+  "unaltered",
+  "unaltered",
+  "unaltered",
+  "unaltered",
+  "unaltered",
+  "unaltered",
+  "unaltered",
+  "unaltered",
+  "unaltered",
+  "unaltered",
+  "unaltered",
+  "unaltered",
+  "unaltered",
+  "unaltered",
+  "unaltered",
+  "unaltered",
+  "unaltered",
+  "unaltered",
+  "unaltered",
+  "unaltered",
+  "unaltered",
+  "unaltered",
+  "unaltered",
+  "unaltered",
+  "unaltered",
+  "unaltered",
+  "unaltered",
+  "unaltered",
+];
+const changedSlice = createSlice({
+  name: "changedlevel",
   initialState,
   reducers: {
-    fetchDetails: (state, action) => {
-      console.log(action);
-      state.studentDetails = action.payload;
+    addchangedLevel(state, action) {
+      state.push(action.payload);
     },
-    // updateDetails:(state, action) => {
-    //     console.log(action)
-    // state.applications = state.applications.filter(app =>{ return app._id !== action.payload})
-    // },
-    // add_Application:(state, action) => {
-    //     console.log(action)
-    // // state.applications.push(action.payload)
-    // },
+
+    updateChangeLevel(state, action) {
+      const { index, newItem } = action.payload;
+      if (index >= 0 && index < state.length) {
+        state[index] = newItem;
+      }
+    },
   },
 });
 
-export const { fetchDetails } = slice.actions;
-export default slice.reducer;
+export const { addchangedLevel, updateChangeLevel } = changedSlice.actions;
+
+export default changedSlice.reducer;

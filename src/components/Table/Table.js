@@ -2,7 +2,10 @@ import React from "react";
 import { returnOnServiceEachLevel } from "../../../utils/utils";
 import UnChangeAblePrices from "../UnChangeAblePrices/UnChangeAblePrices";
 import ChangeablePrice from "../ChangeablePrice/ChangeablePrice";
-
+import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
+import { updateItem } from "@/redux/reducers/coin-reducer";
+import { updateChangeLevel } from "@/redux/reducers/student-slice";
 const Table = ({
   initialInvestments,
   setLevelArray,
@@ -15,7 +18,11 @@ const Table = ({
   initalInvestmentOutLevel,
   setInitalInvestmentOutLevel,
   levelRange,
+  setCustomLevelPrice,
+  customLevelPrice,
+  myArray,
 }) => {
+  const dispatch = useDispatch();
   const handleCustomSellPriceChange = (index, newValue) => {
     setLevelArray((prevLevels) => {
       const newLevels = [...prevLevels];
@@ -62,7 +69,7 @@ const Table = ({
           <div className="w-full h-4 "></div>
         </thead>
         <tbody>
-          {levelArray.map((level, index) => (
+          {myArray.map((level, index) => (
             <>
               <div className="w-full h-4 "></div>
               <tr
@@ -79,41 +86,75 @@ const Table = ({
                     value={
                       level.levelPrice < 0 || !level.levelPrice
                         ? 0
-                        : level.levelPrice
+                        : level.levelPrice * (levelRange / 100)
                     }
                   />
                 </td>
                 <td className={`px-4 md:px-4 md:py-4    `}>
-                  <input
+                  {/* <input
                     type="text"
-                    // inputmode="numeric"
-                    value={level.levelPrice < 0 ? "" : level.levelPrice}
+                    value={!level.levelPrice ? "" : level.levelPrice}
                     placeholder="Enter Custom Sell Price"
+                    pattern="\d*"
                     onChange={(e) => {
-                      const newValue = e.target.value.replace(/[^\d.]/g, "");
-                      setCustomSellPriceLevel(newValue);
-                      handleCustomSellPriceChange(index, newValue);
+                      // const newValue = e.target.value.replace(/\D/g, "");
+                      setCustomSellPriceLevel(e.target.value);
+                      handleCustomSellPriceChange(index, e.target.value);
                       const updatedLevels = [...changedLevel];
-                      console.log(updatedLevels);
-                      console.log(updatedLevels);
+
                       updatedLevels[index] =
                         parseFloat(e.target.value) * (100 / levelRange);
-                      console.log(updatedLevels);
                       setChangedLevel(updatedLevels);
+                      console.log("e.target.value", e.target.value);
                     }}
-                    // pattern="(?!0\d+)\d+" // This pattern allows only positive integers without leading zeroes
                     className=" text-center sm:w-10/12  bg-white border  border-black rounded-xl py-4 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                  {/* <ChangeablePrice
-                    heading={"Enter Custom Sell Price"}
-                    setUpdate={setCustomSellPriceLevel}
-                    inputVal={
+                  /> */}
+                  <input
+                    type="text"
+                    value={
                       level.levelPrice < 0 || !level.levelPrice
                         ? ""
-                        : level.levelPrice
+                        : level.levelPrice * (levelRange / 100)
                     }
-                    justifyPosition={""}
-                  /> */}
+                    placeholder={`Enter Custom Price`}
+                    onChange={(e) => {
+                      dispatch(
+                        updateChangeLevel({ index, newItem: e.target.value })
+                      );
+                      dispatch(
+                        updateItem({
+                          index,
+                          newItem: {
+                            level: `# ${index + 1}`,
+                            levelPrice: parseInt(e.target.value),
+                          },
+                        })
+                      );
+                      setCustomLevelPrice(!customLevelPrice);
+                      // const newValue = e.target.value.replace(/\D/g, "");
+                      // setLevelArray((prevLevels) => {
+                      //   const newLevels = [...prevLevels];
+                      //   newLevels[index] = {
+                      //     ...newLevels[index],
+                      //     levelPrice: newValue,
+                      //   };
+                      //   return newLevels;
+                      // });
+                      // const updatedLevels = [...changedLevel];
+
+                      // updatedLevels[index] =
+                      //   parseFloat(e.target.value) * (100 / levelRange);
+                      // setChangedLevel((prevLevels) => {
+                      //   const newLevels = [...prevLevels];
+                      //   newLevels[index] =
+                      //     parseFloat(e.target.value) * (100 / levelRange);
+                      //   return newLevels;
+                      // });
+                      // console.log(e.target.value);
+                    }}
+                    pattern="\d*"
+                    className="w-full text-center py-4 bg-white border border-black text-black px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg"
+                  />
                 </td>
                 <td
                   className={`px-4 md:px-4 md:py-4    text-center text-black`}
@@ -149,5 +190,10 @@ const Table = ({
     </div>
   );
 };
+const mapStateToProps = (state) => {
+  return {
+    myArray: state.array, // Assuming your reducer is named myReducer and it contains an array
+  };
+};
 
-export default Table;
+export default connect(mapStateToProps)(Table);

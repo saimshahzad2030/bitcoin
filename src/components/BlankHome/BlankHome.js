@@ -144,11 +144,9 @@ const BlankHome = () => {
             className=" h-auto mt-4 lg:mt-0 flex flex-col items-center justify-center w-full cursor-pointer"
             onClick={async () => {
               // setPLan("subscribed");
-              console.log("stripekey:", process.env.NEXT_PUBLIC_STRIPE_KEY);
               const stripe = await loadStripe(
                 process.env.NEXT_PUBLIC_STRIPE_KEY
               );
-              console.log(headersFunction());
               const response = await axios.post(
                 `${BASEURL}/subscribe`,
                 {},
@@ -159,7 +157,6 @@ const BlankHome = () => {
               //   {},
               //   headersFunction()
               // );
-              console.log(response.data.id);
               const result = await stripe.redirectToCheckout({
                 sessionId: response.data.id,
               });
@@ -393,11 +390,7 @@ const BlankHome = () => {
                   <button
                     className="p-4    font-bold  bg-indigo-700 text-white rounded-xl  mt-8 transition-transform transform duration-700  hover:scale-110"
                     onClick={async () => {
-                      // setPLan("subscribed");
-                      console.log(
-                        "stripekey:",
-                        process.env.NEXT_PUBLIC_STRIPE_KEY
-                      );
+                      
                       const stripe = await loadStripe(
                         process.env.NEXT_PUBLIC_STRIPE_KEY
                       );
@@ -407,7 +400,7 @@ const BlankHome = () => {
                         {},
                         headersFunction()
                       );
-                      console.log(response.data.id);
+                  
                       const result = await stripe.redirectToCheckout({
                         sessionId: response.data.id,
                       });

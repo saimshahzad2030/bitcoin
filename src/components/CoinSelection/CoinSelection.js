@@ -14,13 +14,6 @@ const CoinSelection = ({
     // setCustomSellPriceValue(
     //   matchedCoin.maxValue - matchedCoin.maxValue * (25 / 100)
     // );
-    console.log("matched coin:", matchedCoin);
-    console.log("actual coin:", coins[2]);
-
-    console.log(
-      "event.target.value === coin[2]:",
-      event.target.value === coins[2].name
-    );
     setIsCoinSelected(true);
   };
   return (

@@ -1,6 +1,8 @@
 import { combineReducers } from "@reduxjs/toolkit";
-import allCoinsReducer from "./reducers/coin-reducer";
+import arrayReducer from "./reducers/coin-reducer";
+import changedReducer from "./reducers/student-slice";
 
 export default combineReducers({
-  coins: allCoinsReducer,
+  array: arrayReducer,
+  changedlevel: changedReducer,
 });

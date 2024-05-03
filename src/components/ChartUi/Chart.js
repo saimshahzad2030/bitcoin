@@ -12,8 +12,11 @@ import UnChangeAblePrices from "../UnChangeAblePrices/UnChangeAblePrices";
 import ChangeablePrice from "../ChangeablePrice/ChangeablePrice";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
 
-const ChartUi = () => {
+import { connect } from "react-redux";
+import { addItem, removeItem } from "@/redux/reducers/coin-reducer";
+const ChartUi = ({ changedlevel }) => {
   const router = useRouter();
   const [changedLevel, setChangedLevel] = useState([
     "unaltered",
@@ -47,17 +50,27 @@ const ChartUi = () => {
     "unaltered",
     "unaltered",
   ]);
+  const [customLevelPrice, setCustomLevelPrice] = useState(false);
   const [levelArray, setLevelArray] = useState([]);
   const [selectedCoin, setSelectedCoin] = useState(undefined);
   const [customSellPriceValue, setCustomSellPriceValue] = useState(null);
   const [averagePurchasePrice, setAveragePurchasePrice] = useState(0);
   const [numberOfTokens, setNumberOfTokens] = useState(0);
   const [levelRange, setLevelRange] = useState(100);
-  const [levels, setLevels] = useState(5);
+  const [levels, setLevels] = useState(null);
   const [initialInvestments, setInitialInvestments] = useState(false);
+  const [levelSelected, setLevelsSelected] = useState(false);
   const [customSellPriceLevel, setCustomSellPriceLevel] = useState(0);
   const [isCoinSelected, setIsCoinSelected] = useState(false);
   const [initalInvestmentOutLevel, setInitalInvestmentOutLevel] = useState(0);
+
+  // useEffect(() => {
+  //   setChangedLevel((prevLevels) => {
+  //     const newLevels = JSON.parse(JSON.stringify([...prevLevels]));
+  //     newLevels[0] = parseFloat(2) * (100 / levelRange);
+  //     return newLevels;
+  //   });
+  // }, [levelArray]);
 
   const coins = [
     {
@@ -127,9 +140,31 @@ const ChartUi = () => {
   //   );
   //   coin.data.push(coin.maxValue * 1.5);
   // });
-
+  const dispatch = useDispatch();
   const handleLevelsChange = (event) => {
+    dispatch(removeItem());
+    for (var i = 0; i < event.target.value; i++) {
+      dispatch(
+        addItem({
+          level: i + 1,
+          levelPrice:
+            // changedLevel[i] !== "unaltered"
+            //   ? levelRange == 100
+            //     ? changedLevel[i]
+            //     : parseInt(changedLevel[i] * (levelRange / 100))
+            //   : yPosition < 0
+            //   ? 0
+            //   : yPosition,
+            changedlevel[i] !== "unaltered"
+              ? levelRange == 100
+                ? changedlevel[i]
+                : parseInt(changedlevel[i] * (levelRange / 100))
+              : -500,
+        })
+      );
+    }
     setLevels(parseInt(event.target.value));
+    setLevelsSelected(true);
   };
   const handleInitialInvestment = () => {
     setInitialInvestments(!initialInvestments);
@@ -199,6 +234,8 @@ const ChartUi = () => {
         isCoinSelected={isCoinSelected}
         levelNames={levelNames}
         setLevelArray={setLevelArray}
+        levelArray={levelArray}
+        customLevelPrice={customLevelPrice}
       />
       <CoinSelection
         selectedCoin={selectedCoin}
@@ -283,7 +320,6 @@ const ChartUi = () => {
       {isCoinSelected && (
         <div className="flex flex-col sm:flex-row items-center justify-center">
           <div className="flex flex-col items-center w-full lg:w-4/12 xl:w-4/12 2xl:w-3/12">
-            {" "}
             <ChangeablePrice
               labelRequired={true}
               heading={"Number of Levels"}
@@ -293,10 +329,11 @@ const ChartUi = () => {
               justifyPosition={""}
               selection={
                 <select
-                  value={levels}
+                  value={!levels ? "select number of levels" : levels}
                   onChange={handleLevelsChange}
                   className="w-full bg-black text-white border border-gray-300 rounded-md py-2 px-4 focus:outline-none "
                 >
+                  <option value={0}>select number of levels</option>
                   {[...Array(30).keys()].map((level) => (
                     <option key={level + 1} value={level + 1}>
                       {level + 1}
@@ -310,7 +347,6 @@ const ChartUi = () => {
             <ChangeablePrice
               labelRequired={true}
               heading={"Initial Investment?"}
-              setUpdate={setNumberOfTokens}
               inputVal={initialInvestments}
               customMargin={"mt-8 sm:mt-8 "}
               justifyPosition={""}
@@ -349,7 +385,9 @@ const ChartUi = () => {
       </div> */}
       <div
         className={`overflow-x-auto `}
-        style={{ display: !initialInvestments ? "none" : "" }}
+        style={{
+          display: !initialInvestments || !levelSelected ? "none" : "",
+        }}
       >
         <Table
           initialInvestments={initialInvestments}
@@ -363,17 +401,30 @@ const ChartUi = () => {
           numberOfTokens={numberOfTokens}
           averagePurchasePrice={averagePurchasePrice}
           levelRange={levelRange}
+          customLevelPrice={customLevelPrice}
+          setCustomLevelPrice={setCustomLevelPrice}
         />
       </div>
-      <Totals
-        initialInvestments={initialInvestments}
-        customSellPriceValue={customSellPriceValue}
-        averagePurchasePrice={averagePurchasePrice}
-        levelArray={levelArray}
-        numberOfTokens={numberOfTokens}
-      />
+      <div
+        style={{
+          display: !initialInvestments || !levelSelected ? "none" : "",
+        }}
+      >
+        <Totals
+          initialInvestments={initialInvestments}
+          customSellPriceValue={customSellPriceValue}
+          averagePurchasePrice={averagePurchasePrice}
+          // levelArray={levelArray}
+          numberOfTokens={numberOfTokens}
+          levelRange={levelRange}
+        />
+      </div>
     </div>
   );
 };
-
-export default ChartUi;
+const mapStateToProps = (state) => {
+  return {
+    changedlevel: state.changedlevel, // Assuming your reducer is named myReducer and it contains an array
+  };
+};
+export default connect(mapStateToProps)(ChartUi);

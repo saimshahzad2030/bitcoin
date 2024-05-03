@@ -1,8 +1,49 @@
+"use client";
 import React from "react";
-
-const LevelDifferenceSlider = ({ selectedCoin, levelRange, setLevelRange }) => {
-  const handleChangeSlider = (event) => {
-    setLevelRange(parseInt(event.target.value));
+import { updateArray, updateItem } from "@/redux/reducers/coin-reducer";
+import { useDispatch, connect } from "react-redux";
+const LevelDifferenceSlider = ({
+  selectedCoin,
+  levelRange,
+  setLevelRange,
+  myArray,
+}) => {
+  const dispatch = useDispatch();
+  const handleChangeSlider = (e) => {
+    // for (var i = 0; i < myArray.length; i++) {
+    //   console.log("i", i);
+    //   const array = [...myArray];
+    //   array[i] = 7;
+    //   // dispatch(
+    //   //   updateItem({
+    //   //     i,
+    //   //     newItem: {
+    //   //       level: `# 32`,
+    //   //       levelPrice: 7,
+    //   //     },
+    //   //   })
+    //   // );
+    //   // dispatch(
+    //   //   updateItem({
+    //   //     i,
+    //   //     newItem: {
+    //   //       level: `# ${i + 2}`,
+    //   //       levelPrice:
+    //   //         (parseInt(myArray[i].levelPrice) * parseInt(event.target.value)) /
+    //   //         100,
+    //   //     },
+    //   //   })
+    //   // );
+    //   console.log("myarray:", myArray);
+    // }
+    // dispatch(
+    //   updateArray({
+    //     level: parseInt(e.target.value),
+    //   })
+    // );
+    console.log(parseInt(e.target.value));
+    console.log("levelRange:", levelRange);
+    setLevelRange(parseInt(e.target.value));
   };
   return (
     // <div className="flex w-full flex-col items-center mt-8">
@@ -51,5 +92,10 @@ const LevelDifferenceSlider = ({ selectedCoin, levelRange, setLevelRange }) => {
     </div>
   );
 };
+const mapStateToProps = (state) => {
+  return {
+    myArray: state.array,
+  };
+};
 
-export default LevelDifferenceSlider;
+export default connect(mapStateToProps)(LevelDifferenceSlider);

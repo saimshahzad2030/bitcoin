@@ -1,14 +1,18 @@
-export const weightedAveragePrice = (levelArray, numberOfTokens) => {
+export const weightedAveragePrice = (
+  levelRange,
+  levelArray,
+  numberOfTokens
+) => {
   var value = 0;
   levelArray.map((level) => {
-    value += parseInt(level.levelPrice) * numberOfTokens;
+    value += ((parseInt(level.levelPrice) * levelRange) / 100) * numberOfTokens;
   });
   return numberOfTokens == 0 ? 0 : value / numberOfTokens;
 };
-export const totalRevenue = (levelArray, numberOfTokens) => {
+export const totalRevenue = (levelRange, levelArray, numberOfTokens) => {
   var value = 0;
   levelArray.map((level) => {
-    value += parseInt(level.levelPrice) * numberOfTokens;
+    value += ((parseInt(level.levelPrice) * levelRange) / 100) * numberOfTokens;
   });
   return typeof value !== "number" ? 0 : value;
 };

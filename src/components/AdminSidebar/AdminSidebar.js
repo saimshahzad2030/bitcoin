@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import Link from "next/link";
 import style from "./AdminSideBar.module.css";
 const AdminSidebar = ({ isOpen, toggleSidebar, selectedLink }) => {
-  console.log(selectedLink, "selected link");
   return (
     <div
       className={`z-40 absolute md:relative flex flex-col items-center w-3/12 md:w-4/12  lg:w-3/12 xl:w-2/12 h-[100vh]  sidebar  ${

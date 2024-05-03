@@ -43,7 +43,6 @@ const ChartAuthentication = ({ children }) => {
       } catch (error) {
         setLoading(false);
         setUserAuthenticated(false);
-        console.log(error);
         return <BlankHome />;
       }
     }
