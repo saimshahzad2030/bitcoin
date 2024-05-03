@@ -534,254 +534,238 @@ const ChartUi = ({ changedlevel }) => {
   const name = Cookies.get("name");
   const [avatarClicked, setAvatarClicked] = useState(false);
   return (
-    <div className="container mx-auto relative alegreya">
-      {avatarClicked && (
-        <div
-          id="avatarDiv"
-          className={`absolute right-0 w-[150px] h-[150px] pb-8 pt-4 z-5 `}
-        >
+    <Modal loading={loading}>
+      <div className="container mx-auto relative alegreya">
+        {avatarClicked && (
           <div
-            className="mt-16 flex flex-col items-center  w-full h-full rounded-lg"
-            onMouseLeave={() => setAvatarClicked(false)}
+            id="avatarDiv"
+            className={`absolute right-0 w-[150px] h-[150px] pb-8 pt-4 z-5 `}
           >
-            <div className="w-full h-auto bg-slate-100 flex flex-col items-start pt-4  rounded-lg">
-              <p
-                className="mt-1 w-full pl-4  text-lg    transition-transform transform duration-700  hover:scale-110 cursor-pointer"
-                onClick={() => {
-                  const benefitsSection =
-                    document.getElementById("benefitsSection");
-                  benefitsSection.scrollIntoView({ behavior: "smooth" });
-                }}
-              >
-                Chart
-              </p>
+            <div
+              className="mt-16 flex flex-col items-center  w-full h-full rounded-lg"
+              onMouseLeave={() => setAvatarClicked(false)}
+            >
+              <div className="w-full h-auto bg-slate-100 flex flex-col items-start pt-4  rounded-lg">
+                <p
+                  className="mt-1 w-full pl-4  text-lg    transition-transform transform duration-700  hover:scale-110 cursor-pointer"
+                  onClick={() => {
+                    const benefitsSection =
+                      document.getElementById("benefitsSection");
+                    benefitsSection.scrollIntoView({ behavior: "smooth" });
+                  }}
+                >
+                  Chart
+                </p>
 
-              <p
-                className="mt-1 mb-4 w-full pl-4 text-red-900 text-lg font-bold transition-transform transform duration-700  hover:scale-110  cursor-pointer"
-                onClick={() => {
-                  Cookies.remove("token");
-                  Cookies.remove("name");
-                  router.push("/");
-                }}
-              >
-                Logout
-              </p>
+                <p
+                  className="mt-1 mb-4 w-full pl-4 text-red-900 text-lg font-bold transition-transform transform duration-700  hover:scale-110  cursor-pointer"
+                  onClick={() => {
+                    Cookies.remove("token");
+                    Cookies.remove("name");
+                    router.push("/");
+                  }}
+                >
+                  Logout
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-      )}
-      <div className="flex flex-row items-center justify-end  w-full p-4 z-10 ">
-        <p className="text-indigo-700 text-2xl mr-4">{name}</p>
-        <div className="flex flex-col items-center justify-center h-12 w-12 bg-indigo-700 rounded-full cursor-pointer">
-          <p
-            className="text-white text-3xl font-bold"
-            onClick={() => setAvatarClicked(true)}
-          >
-            {name.charAt(0).toUpperCase()}
-          </p>
-        </div>
-      </div>
-
-      <ChartComponent
-        selectedCoin={selectedCoin}
-        levelRange={levelRange}
-        levels={levels}
-        customSellPriceValue={customSellPriceValue}
-        averagePurchasePrice={averagePurchasePrice}
-        changedLevel={changedLevel}
-        isCoinSelected={isCoinSelected}
-        levelNames={levelNames}
-        setLevelArray={setLevelArray}
-        levelArray={levelArray}
-        customLevelPrice={customLevelPrice}
-        singleCoin={singleCoin}
-      />
-
-      <CoinSelectiontwo
-        selectedCoin={singleCoin}
-        setSelectedCoin={setSingleCoin}
-        setIsCoinSelected={setIsCoinSelected}
-        coins={coinsdata}
-      />
-      {isCoinSelected && (
-        <>
-          <LevelDifferenceSlider
-            levelRange={levelRange}
-            selectedCoin={selectedCoin}
-            setLevelRange={setLevelRange}
-          />
-          <div className="flex flex-col lg:flex-row items-center justify-between  bg-red-100 mt-8">
-            <div className="flex flex-row items-center justify-between mt-8 lg:mt-0">
-              <h1 className={`text-6xl font-bold ml-8`}>Sell</h1>
-            </div>
-            <div className="grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-3 w-full h-auto py-4">
-              <UnChangeAblePrices
-                color={"bg-orange-900"}
-                text={"Price Prediction: $"}
-                value={parseFloat(
-                  singleCoin["MAX Prediction (Data) Price"]?.replace("$", "")
-                )}
-                parentBg={"bg-red-100"}
-              />
-              <UnChangeAblePrices
-                color={"bg-orange-500"}
-                text={"Max Ladder SP:  $"}
-                value={parseFloat(
-                  singleCoin["MAX Ladder Sell Level (-25%)	Price"]?.replace(
-                    "$",
-                    ""
-                  )
-                )}
-                parentBg={"bg-red-100"}
-              />
-              <ChangeablePrice
-                heading={"Custom Price Sell Level"}
-                setUpdate={setCustomSellPriceValue}
-                color={"border-pink-500"}
-                inputVal={customSellPriceValue}
-                parentBg={"bg-red-100"}
-                customMargin={"mt-0"}
-                justifyPosition={"justify-end"}
-              />
-            </div>
-            <div className="bg-red-100 w-2/12"></div>
+        )}
+        <div className="flex flex-row items-center justify-end  w-full p-4 z-10 ">
+          <p className="text-indigo-700 text-2xl mr-4">{name}</p>
+          <div className="flex flex-col items-center justify-center h-12 w-12 bg-indigo-700 rounded-full cursor-pointer">
+            <p
+              className="text-white text-3xl font-bold"
+              onClick={() => setAvatarClicked(true)}
+            >
+              {name.charAt(0).toUpperCase()}
+            </p>
           </div>
-          <div className="flex flex-col lg:flex-row items-center justify-between  bg-green-100 mt-8">
-            <div className="flex flex-col lg:flex-row items-center justify-between  mt-8 lg:mt-0  ">
-              <h1 className={`text-6xl font-bold ml-8`}>Buy</h1>
-            </div>
-            <div className="grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-3 w-full h-auto py-4">
-              <ChangeablePrice
-                heading={"Average Purchase Price"}
-                setUpdate={setAveragePurchasePrice}
-                inputVal={averagePurchasePrice}
-                color={"border-green-500"}
-                customMargin={"mt-0"}
-                justifyPosition={""}
-                parentBg={"bg-green-100"}
-              />
+        </div>
 
+        <ChartComponent
+          selectedCoin={selectedCoin}
+          levelRange={levelRange}
+          levels={levels}
+          customSellPriceValue={customSellPriceValue}
+          averagePurchasePrice={averagePurchasePrice}
+          changedLevel={changedLevel}
+          isCoinSelected={isCoinSelected}
+          levelNames={levelNames}
+          setLevelArray={setLevelArray}
+          levelArray={levelArray}
+          customLevelPrice={customLevelPrice}
+          singleCoin={singleCoin}
+        />
+
+        <CoinSelectiontwo
+          selectedCoin={singleCoin}
+          setSelectedCoin={setSingleCoin}
+          setIsCoinSelected={setIsCoinSelected}
+          coins={coinsdata}
+        />
+        {isCoinSelected && (
+          <>
+            <LevelDifferenceSlider
+              levelRange={levelRange}
+              selectedCoin={selectedCoin}
+              setLevelRange={setLevelRange}
+            />
+            <div className="flex flex-col lg:flex-row items-center justify-between  bg-red-100 mt-8">
+              <div className="flex flex-row items-center justify-between mt-8 lg:mt-0">
+                <h1 className={`text-6xl font-bold ml-8`}>Sell</h1>
+              </div>
+              <div className="grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-3 w-full h-auto py-4">
+                <UnChangeAblePrices
+                  color={"bg-orange-900"}
+                  text={"Price Prediction: $"}
+                  value={parseFloat(
+                    singleCoin["MAX Prediction (Data) Price"]?.replace("$", "")
+                  )}
+                  parentBg={"bg-red-100"}
+                />
+                <UnChangeAblePrices
+                  color={"bg-orange-500"}
+                  text={"Max Ladder SP:  $"}
+                  value={parseFloat(
+                    singleCoin["MAX Ladder Sell Level (-25%)	Price"]?.replace(
+                      "$",
+                      ""
+                    )
+                  )}
+                  parentBg={"bg-red-100"}
+                />
+                <ChangeablePrice
+                  heading={"Custom Price Sell Level"}
+                  setUpdate={setCustomSellPriceValue}
+                  color={"border-pink-500"}
+                  inputVal={customSellPriceValue}
+                  parentBg={"bg-red-100"}
+                  customMargin={"mt-0"}
+                  justifyPosition={"justify-end"}
+                />
+              </div>
+              <div className="bg-red-100 w-2/12"></div>
+            </div>
+            <div className="flex flex-col lg:flex-row items-center justify-between  bg-green-100 mt-8">
+              <div className="flex flex-col lg:flex-row items-center justify-between  mt-8 lg:mt-0  ">
+                <h1 className={`text-6xl font-bold ml-8`}>Buy</h1>
+              </div>
+              <div className="grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-3 w-full h-auto py-4">
+                <ChangeablePrice
+                  heading={"Average Purchase Price"}
+                  setUpdate={setAveragePurchasePrice}
+                  inputVal={averagePurchasePrice}
+                  color={"border-green-500"}
+                  customMargin={"mt-0"}
+                  justifyPosition={""}
+                  parentBg={"bg-green-100"}
+                />
+
+                <ChangeablePrice
+                  heading={"No. of Tokens Hold"}
+                  setUpdate={setNumberOfTokens}
+                  inputVal={numberOfTokens}
+                  customMargin={"mt-0"}
+                  justifyPosition={""}
+                  parentBg={"bg-green-100"}
+                />
+
+                <UnChangeAblePrices
+                  text={" Initial Investment: $ "}
+                  value={numberOfTokens * averagePurchasePrice}
+                  parentBg={"bg-green-100"}
+                />
+              </div>
+              <div className="bg-red-100 w-2/12"></div>
+            </div>
+          </>
+        )}
+        {isCoinSelected && (
+          <div className="flex flex-col sm:flex-row items-center justify-center">
+            <div className="flex flex-col items-center w-full lg:w-4/12 xl:w-4/12 2xl:w-3/12">
               <ChangeablePrice
-                heading={"No. of Tokens Hold"}
+                labelRequired={true}
+                heading={"Number of Levels"}
                 setUpdate={setNumberOfTokens}
                 inputVal={numberOfTokens}
-                customMargin={"mt-0"}
+                customMargin={"mt-8 sm:mt-8 "}
                 justifyPosition={""}
-                parentBg={"bg-green-100"}
-              />
-
-              <UnChangeAblePrices
-                text={" Initial Investment: $ "}
-                value={numberOfTokens * averagePurchasePrice}
-                parentBg={"bg-green-100"}
+                selection={
+                  <select
+                    value={!levels ? "select number of levels" : levels}
+                    onChange={handleLevelsChange}
+                    className="w-full bg-black text-white border border-gray-300 rounded-md py-2 px-4 focus:outline-none "
+                  >
+                    <option value={0}>select number of levels</option>
+                    {[...Array(30).keys()].map((level) => (
+                      <option key={level + 1} value={level + 1}>
+                        {level + 1}
+                      </option>
+                    ))}
+                  </select>
+                }
               />
             </div>
-            <div className="bg-red-100 w-2/12"></div>
+            <div className="flex flex-col items-center   w-full lg:w-4/12 xl:w-4/12 2xl:w-3/12">
+              <ChangeablePrice
+                labelRequired={true}
+                heading={"Initial Investment?"}
+                inputVal={initialInvestments}
+                customMargin={"mt-8 sm:mt-8 "}
+                justifyPosition={""}
+                selection={
+                  <select
+                    value={initialInvestments}
+                    onChange={handleInitialInvestment}
+                    className="w-full bg-black text-white border border-gray-300 rounded-md py-2 px-4 focus:outline-none "
+                  >
+                    <option value={true}>yes</option>
+                    <option value={false}>no</option>
+                  </select>
+                }
+              />
+            </div>
           </div>
-        </>
-      )}
-      {isCoinSelected && (
-        <div className="flex flex-col sm:flex-row items-center justify-center">
-          <div className="flex flex-col items-center w-full lg:w-4/12 xl:w-4/12 2xl:w-3/12">
-            <ChangeablePrice
-              labelRequired={true}
-              heading={"Number of Levels"}
-              setUpdate={setNumberOfTokens}
-              inputVal={numberOfTokens}
-              customMargin={"mt-8 sm:mt-8 "}
-              justifyPosition={""}
-              selection={
-                <select
-                  value={!levels ? "select number of levels" : levels}
-                  onChange={handleLevelsChange}
-                  className="w-full bg-black text-white border border-gray-300 rounded-md py-2 px-4 focus:outline-none "
-                >
-                  <option value={0}>select number of levels</option>
-                  {[...Array(30).keys()].map((level) => (
-                    <option key={level + 1} value={level + 1}>
-                      {level + 1}
-                    </option>
-                  ))}
-                </select>
-              }
-            />
-          </div>
-          <div className="flex flex-col items-center   w-full lg:w-4/12 xl:w-4/12 2xl:w-3/12">
-            <ChangeablePrice
-              labelRequired={true}
-              heading={"Initial Investment?"}
-              inputVal={initialInvestments}
-              customMargin={"mt-8 sm:mt-8 "}
-              justifyPosition={""}
-              selection={
-                <select
-                  value={initialInvestments}
-                  onChange={handleInitialInvestment}
-                  className="w-full bg-black text-white border border-gray-300 rounded-md py-2 px-4 focus:outline-none "
-                >
-                  <option value={true}>yes</option>
-                  <option value={false}>no</option>
-                </select>
-              }
-            />
-          </div>
-        </div>
-      )}
-      {/* <div
-        className="flex flex-col lg:flex-row items-center justify-start bg-purple-100"
-        style={{ display: initialInvestments ? "" : "none" }}
-      >
-        <div className="flex flex-col lg:flex-row items-center justify-between  mt-8 lg:mt-0  ">
-          <h1 className={`text-2xl font-bold ml-8`}>#I.I.O</h1>
-        </div>
+        )}
+
         <div
-          className="grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-3 w-full h-auto   mt-1"
-          style={{ display: initialInvestments ? "" : "none" }}
+          className={`overflow-x-auto `}
+          style={{
+            display: !initialInvestments || !levelSelected ? "none" : "",
+          }}
         >
-          <ReturnOnInvestment
+          <Table
+            initialInvestments={initialInvestments}
+            levelArray={levelArray}
+            setLevelArray={setLevelArray}
+            setCustomSellPriceLevel={setCustomSellPriceLevel}
+            setChangedLevel={setChangedLevel}
+            changedLevel={changedLevel}
             initalInvestmentOutLevel={initalInvestmentOutLevel}
             setInitalInvestmentOutLevel={setInitalInvestmentOutLevel}
             numberOfTokens={numberOfTokens}
             averagePurchasePrice={averagePurchasePrice}
+            levelRange={levelRange}
+            customLevelPrice={customLevelPrice}
+            setCustomLevelPrice={setCustomLevelPrice}
           />
         </div>
-      </div> */}
-      <div
-        className={`overflow-x-auto `}
-        style={{
-          display: !initialInvestments || !levelSelected ? "none" : "",
-        }}
-      >
-        <Table
-          initialInvestments={initialInvestments}
-          levelArray={levelArray}
-          setLevelArray={setLevelArray}
-          setCustomSellPriceLevel={setCustomSellPriceLevel}
-          setChangedLevel={setChangedLevel}
-          changedLevel={changedLevel}
-          initalInvestmentOutLevel={initalInvestmentOutLevel}
-          setInitalInvestmentOutLevel={setInitalInvestmentOutLevel}
-          numberOfTokens={numberOfTokens}
-          averagePurchasePrice={averagePurchasePrice}
-          levelRange={levelRange}
-          customLevelPrice={customLevelPrice}
-          setCustomLevelPrice={setCustomLevelPrice}
-        />
+        <div
+          style={{
+            display: !initialInvestments || !levelSelected ? "none" : "",
+          }}
+        >
+          <Totals
+            initialInvestments={initialInvestments}
+            customSellPriceValue={customSellPriceValue}
+            averagePurchasePrice={averagePurchasePrice}
+            numberOfTokens={numberOfTokens}
+            levelRange={levelRange}
+          />
+        </div>
       </div>
-      <div
-        style={{
-          display: !initialInvestments || !levelSelected ? "none" : "",
-        }}
-      >
-        <Totals
-          initialInvestments={initialInvestments}
-          customSellPriceValue={customSellPriceValue}
-          averagePurchasePrice={averagePurchasePrice}
-          numberOfTokens={numberOfTokens}
-          levelRange={levelRange}
-        />
-      </div>
-    </div>
+    </Modal>
   );
 };
 const mapStateToProps = (state) => {

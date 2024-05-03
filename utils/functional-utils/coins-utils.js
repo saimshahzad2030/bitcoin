@@ -25,14 +25,12 @@ export const fetchCoins = async (setLoading, setCoinsdata) => {
 };
 export const fetchSingleCoinDetails = async (setSelectedCoin, coinname) => {
   try {
-    console.log(headersFunction());
     const response = await axios.get(
       `${BASEURL}/fetchSingleCoin?coin=${coinname}`,
       headersFunction()
     );
 
     if (response.status === 200) {
-      console.log(response.data.coinDetails);
       setSelectedCoin(response.data.coinDetails);
     }
   } catch (error) {
