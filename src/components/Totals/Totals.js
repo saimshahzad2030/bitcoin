@@ -22,7 +22,11 @@ const Totals = ({
         <div className="mt-4 w-11/12 flex-col items-center  py-4 border border-black rounded-xl">
           <h2 className="text-center text-xl">
             Weighted Average: ${" "}
-            {weightedAveragePrice(levelRange, levelArray, numberOfTokens)}
+            {weightedAveragePrice(
+              levelRange,
+              levelArray,
+              numberOfTokens
+            ).toFixed(2)}
           </h2>
         </div>
       </div>
@@ -37,7 +41,7 @@ const Totals = ({
         <div className="mt-4 w-11/12 flex-col items-center  py-4 border border-black rounded-xl">
           <h2 className="text-center text-xl">
             Total Revenue: ${" "}
-            {totalRevenue(levelRange, levelArray, numberOfTokens)}
+            {totalRevenue(levelRange, levelArray, numberOfTokens).toFixed(2)}
           </h2>
         </div>
       </div>
@@ -45,7 +49,7 @@ const Totals = ({
         <div className="mt-4  w-11/12 flex-col items-center  py-4 border border-black rounded-xl">
           <h2 className="text-center text-xl">
             Total Profit: ${" "}
-            {totalRevenue(levelRange, levelArray, numberOfTokens) -
+            {totalRevenue(levelRange, levelArray, numberOfTokens).toFixed(2) -
               averagePurchasePrice * numberOfTokens}
           </h2>
         </div>

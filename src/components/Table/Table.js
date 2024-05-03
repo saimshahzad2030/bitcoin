@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import { returnOnServiceEachLevel } from "../../../utils/utils";
 import UnChangeAblePrices from "../UnChangeAblePrices/UnChangeAblePrices";
 import ChangeablePrice from "../ChangeablePrice/ChangeablePrice";
@@ -86,7 +87,7 @@ const Table = ({
                     value={
                       level.levelPrice < 0 || !level.levelPrice
                         ? 0
-                        : level.levelPrice * (levelRange / 100)
+                        : parseInt(level.levelPrice * (levelRange / 100))
                     }
                   />
                 </td>
@@ -114,7 +115,7 @@ const Table = ({
                     value={
                       level.levelPrice < 0 || !level.levelPrice
                         ? ""
-                        : level.levelPrice * (levelRange / 100)
+                        : level.levelPrice
                     }
                     placeholder={`Enter Custom Price`}
                     onChange={(e) => {
