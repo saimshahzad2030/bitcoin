@@ -87,29 +87,11 @@ const Table = ({
                     value={
                       level.levelPrice < 0 || !level.levelPrice
                         ? 0
-                        : parseInt(level.levelPrice * (levelRange / 100))
+                        : parseFloat(level.levelPrice * (levelRange / 100))
                     }
                   />
                 </td>
                 <td className={`px-4 md:px-4 md:py-4    `}>
-                  {/* <input
-                    type="text"
-                    value={!level.levelPrice ? "" : level.levelPrice}
-                    placeholder="Enter Custom Sell Price"
-                    pattern="\d*"
-                    onChange={(e) => {
-                      // const newValue = e.target.value.replace(/\D/g, "");
-                      setCustomSellPriceLevel(e.target.value);
-                      handleCustomSellPriceChange(index, e.target.value);
-                      const updatedLevels = [...changedLevel];
-
-                      updatedLevels[index] =
-                        parseFloat(e.target.value) * (100 / levelRange);
-                      setChangedLevel(updatedLevels);
-                      console.log("e.target.value", e.target.value);
-                    }}
-                    className=" text-center sm:w-10/12  bg-white border  border-black rounded-xl py-4 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  /> */}
                   <input
                     type="text"
                     value={
@@ -120,14 +102,17 @@ const Table = ({
                     placeholder={`Enter Custom Price`}
                     onChange={(e) => {
                       dispatch(
-                        updateChangeLevel({ index, newItem: e.target.value })
+                        updateChangeLevel({
+                          index,
+                          newItem: e.target.value,
+                        })
                       );
                       dispatch(
                         updateItem({
                           index,
                           newItem: {
                             level: `# ${index + 1}`,
-                            levelPrice: parseInt(e.target.value),
+                            levelPrice: e.target.value,
                           },
                         })
                       );
@@ -153,7 +138,7 @@ const Table = ({
                       // });
                       // console.log(e.target.value);
                     }}
-                    pattern="\d*"
+                    pattern="^\d*(\.\d+)?$"
                     className="w-full text-center py-4 bg-white border border-black text-black px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg"
                   />
                 </td>
