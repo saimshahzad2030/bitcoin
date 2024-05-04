@@ -358,6 +358,7 @@ const ChartComponent = ({
                       ),
                   parseFloat(
                     singleCoin["MAX Prediction (Data) Price"]?.replace(/[\$,]/g, "")),
+                    customSellPriceValue
                 ]
               : "",
             fill: true,
