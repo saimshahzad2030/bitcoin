@@ -18,6 +18,12 @@ const arraySlice = createSlice({
         state[index] = newItem;
       }
     },
+    resetArray(state, action) {
+      return state.map((item) => ({
+        ...item,
+        levelPrice:-500,
+      }));
+    },
     updateArray(state, action) {
       const { level } = action.payload;
       return state.map((item) => ({
@@ -27,6 +33,6 @@ const arraySlice = createSlice({
     },
   },
 });
-export const { addItem, removeItem, updateItem, updateArray } =
+export const { addItem, removeItem, updateItem, updateArray,resetArray } =
   arraySlice.actions;
 export default arraySlice.reducer;

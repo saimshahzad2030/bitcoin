@@ -1,5 +1,8 @@
 import React from "react";
 import { fetchSingleCoinDetails } from "../../../utils/functional-utils/coins-utils"; 
+import { useDispatch } from "react-redux";
+import { resetArray } from "@/redux/reducers/coin-reducer";
+import { resetChangedLevel } from "@/redux/reducers/student-slice";
 const CoinSelectiontwo = ({
   selectedCoin, 
   setIsCoinSelected,
@@ -12,8 +15,12 @@ const CoinSelectiontwo = ({
   setInitialInvestments,
   setInitalInvestmentOutLevel
 }) => { 
+  const dispatch = useDispatch()
   const handleSelectCoin = (event) => {
-    fetchSingleCoinDetails(setSelectedCoin, event.target.value); 
+
+    fetchSingleCoinDetails(setSelectedCoin, event.target.value);
+    dispatch(resetArray())
+    dispatch(resetChangedLevel()) 
     setIsCoinSelected(true);
     setCustomSellPriceValue('');
   setAveragePurchasePrice('');

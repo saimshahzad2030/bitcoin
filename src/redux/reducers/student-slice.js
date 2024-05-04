@@ -45,9 +45,13 @@ const changedSlice = createSlice({
         state[index] = newItem;
       }
     },
+    resetChangedLevel(state, action) {
+      return state.map(() => 'unaltered');
+
+    }
   },
 });
 
-export const { addchangedLevel, updateChangeLevel } = changedSlice.actions;
+export const { addchangedLevel, updateChangeLevel,resetChangedLevel } = changedSlice.actions;
 
 export default changedSlice.reducer;
