@@ -87,7 +87,7 @@ const Table = ({
                     value={
                       level.levelPrice < 0 || !level.levelPrice
                         ? 0
-                        : parseFloat(level.levelPrice * (levelRange / 100))
+                        : parseFloat(level.levelPrice * (levelRange / 100)).toFixed(2)
                     }
                   />
                 </td>
@@ -101,10 +101,15 @@ const Table = ({
                     }
                     placeholder={`Enter Custom Price`}
                     onChange={(e) => {
+                      const newValue = e.target.value.replace(/[^\d.]/g, ''); // Remove all characters except digits and dots
+                      const decimalCount = (newValue.match(/\./g) || []).length; // Count the number of dots
+                    
+                      if (decimalCount <= 1) {  
+                      
                       dispatch(
                         updateChangeLevel({
                           index,
-                          newItem: e.target.value,
+                          newItem: newValue,
                         })
                       );
                       dispatch(
@@ -112,11 +117,12 @@ const Table = ({
                           index,
                           newItem: {
                             level: `# ${index + 1}`,
-                            levelPrice: e.target.value,
+                            levelPrice: newValue,
                           },
                         })
                       );
                       setCustomLevelPrice(!customLevelPrice);
+                    }
                       // const newValue = e.target.value.replace(/\D/g, "");
                       // setLevelArray((prevLevels) => {
                       //   const newLevels = [...prevLevels];
@@ -159,11 +165,11 @@ const Table = ({
                         numberOfTokens
                       )
                         ? 0
-                        : returnOnServiceEachLevel(
+                        : parseFloat(returnOnServiceEachLevel(
                             level,
                             averagePurchasePrice,
                             numberOfTokens
-                          )
+                          )).toFixed(2)
                     }
                     // parentBg={"mt-4"}
                   />

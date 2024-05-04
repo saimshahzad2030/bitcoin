@@ -25,9 +25,15 @@ const ChangeablePrice = ({
           value={inputVal ? inputVal : ""}
           placeholder={`${heading}`}
           onChange={(e) => {
-            const newValue = e.target.value;
+            // const newValue = e.target.value;
 
-            setUpdate(newValue);
+            // setUpdate(newValue);
+            const newValue = e.target.value.replace(/[^\d.]/g, ''); // Remove all characters except digits and dots
+            const decimalCount = (newValue.match(/\./g) || []).length; // Count the number of dots
+          
+            if (decimalCount <= 1) { // Allow only one dot
+              setUpdate(newValue);
+            }
           }}
           pattern="^\d*(\.\d+)?$" // Allow integer or decimal numbers
           className="w-full text-center py-4 bg-white border border-black text-black px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg"
@@ -51,10 +57,9 @@ const ChangeablePrice = ({
             value={inputVal ? inputVal : ""}
             placeholder={`${heading}`}
             onChange={(e) => {
-              const newValue = e.target.value.replace(/\D/g, "");
+              const newValue = e.target.value
               setUpdate(newValue);
-            }}
-            pattern="^\d*(\.\d+)?$" // Allow integer or decimal numbers
+            }} 
             className="w-full text-center bg-white border border-black rounded-lg py-4 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         )}

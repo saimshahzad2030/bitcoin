@@ -1,6 +1,6 @@
 import Cookies from "js-cookie";
-export const BASEURL = "https://bitcoin-backend-lyart.vercel.app/api";
-// export const BASEURL = "http://localhost:4000/api";
+// export const BASEURL = "https://bitcoin-backend-lyart.vercel.app/api";
+export const BASEURL = "http://localhost:4000/api";
 
 export const headersFunction = () => {
   const token = Cookies.get("token");

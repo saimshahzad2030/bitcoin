@@ -1,21 +1,29 @@
 import React from "react";
-import { fetchSingleCoinDetails } from "../../../utils/functional-utils/coins-utils";
-
+import { fetchSingleCoinDetails } from "../../../utils/functional-utils/coins-utils"; 
 const CoinSelectiontwo = ({
-  selectedCoin,
-  setCustomSellPriceValue,
+  selectedCoin, 
   setIsCoinSelected,
   setSelectedCoin,
-  isCoinSelected,
   coins,
-}) => {
+  setCustomSellPriceValue,
+  setAveragePurchasePrice,
+  setNumberOfTokens,
+  setLevelRange,
+  setInitialInvestments,
+  setInitalInvestmentOutLevel
+}) => { 
   const handleSelectCoin = (event) => {
-    fetchSingleCoinDetails(setSelectedCoin, event.target.value);
-
+    fetchSingleCoinDetails(setSelectedCoin, event.target.value); 
     setIsCoinSelected(true);
+    setCustomSellPriceValue('');
+  setAveragePurchasePrice('');
+  setNumberOfTokens('');
+  setLevelRange(100);
+  setInitialInvestments(false);
+  setInitalInvestmentOutLevel('');
   };
   return (
-    <div className="flex flex-col items-center w-full mt-20">
+    <div className="flex flex-col items-center w-full mt-20 mb-8">
       <div className="w-8/12 sm:w-4/12 flex felx-col items-center">
         <select
           value={selectedCoin.name}

@@ -603,6 +603,12 @@ const ChartUi = ({ changedlevel }) => {
           setSelectedCoin={setSingleCoin}
           setIsCoinSelected={setIsCoinSelected}
           coins={coinsdata}
+          setCustomSellPriceValue={setCustomSellPriceValue}
+          setAveragePurchasePrice={setAveragePurchasePrice}
+          setNumberOfTokens={setNumberOfTokens}
+          setLevelRange={setLevelRange}
+          setInitialInvestments={setInitialInvestments}
+          setInitalInvestmentOutLevel={setInitalInvestmentOutLevel}
         />
         {isCoinSelected && (
           <>
@@ -620,19 +626,16 @@ const ChartUi = ({ changedlevel }) => {
                   color={"bg-orange-900"}
                   text={"Price Prediction: $"}
                   value={parseFloat(
-                    singleCoin["MAX Prediction (Data) Price"]?.replace("$", "")
-                  )}
+                    singleCoin["MAX Prediction (Data) Price"]?.replace(/[\$,]/g, "")
+                  ).toFixed(2)}
                   parentBg={"bg-red-100"}
                 />
                 <UnChangeAblePrices
                   color={"bg-orange-500"}
                   text={"Max Ladder SP:  $"}
                   value={parseFloat(
-                    singleCoin["MAX Ladder Sell Level (-25%)	Price"]?.replace(
-                      "$",
-                      ""
-                    )
-                  )}
+                    singleCoin["MAX Ladder Sell Level (-25%)	Price"]?.replace(/[\$,]/g, "")
+                  ).toFixed(2)}
                   parentBg={"bg-red-100"}
                 />
                 <ChangeablePrice
