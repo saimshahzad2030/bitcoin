@@ -500,7 +500,7 @@ const ChartUi = ({ changedlevel }) => {
   const [loading, setLoading] = useState(false);
   const [coinsdata, setCoinsdata] = useState([]);
   const [singleCoin, setSingleCoin] = useState([]);
-
+  const [selectedCoinHistory, setSelectedCoinHistory] = useState(null);
   useEffect(() => {
     fetchCoins(setLoading, setCoinsdata);
   }, []);
@@ -596,6 +596,7 @@ const ChartUi = ({ changedlevel }) => {
           levelArray={levelArray}
           customLevelPrice={customLevelPrice}
           singleCoin={singleCoin}
+          selectedCoinHistory={selectedCoinHistory}
         />
 
         <CoinSelectiontwo
@@ -609,6 +610,7 @@ const ChartUi = ({ changedlevel }) => {
           setLevelRange={setLevelRange}
           setInitialInvestments={setInitialInvestments}
           setInitalInvestmentOutLevel={setInitalInvestmentOutLevel}
+          setSelectedCoinHistory={setSelectedCoinHistory}
         />
         {isCoinSelected && (
           <>
@@ -626,7 +628,10 @@ const ChartUi = ({ changedlevel }) => {
                   color={"bg-orange-900"}
                   text={"Price Prediction: $"}
                   value={parseFloat(
-                    singleCoin["MAX Prediction (Data) Price"]?.replace(/[\$,]/g, "")
+                    singleCoin["MAX Prediction (Data) Price"]?.replace(
+                      /[\$,]/g,
+                      ""
+                    )
                   ).toFixed(2)}
                   parentBg={"bg-red-100"}
                 />
@@ -634,7 +639,10 @@ const ChartUi = ({ changedlevel }) => {
                   color={"bg-orange-500"}
                   text={"Max Ladder SP:  $"}
                   value={parseFloat(
-                    singleCoin["MAX Ladder Sell Level (-25%)	Price"]?.replace(/[\$,]/g, "")
+                    singleCoin["MAX Ladder Sell Level (-25%)	Price"]?.replace(
+                      /[\$,]/g,
+                      ""
+                    )
                   ).toFixed(2)}
                   parentBg={"bg-red-100"}
                 />

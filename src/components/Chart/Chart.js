@@ -326,49 +326,79 @@ const ChartComponent = ({
   changedlevel,
   singleCoin,
   customLevelPrice,
-}) => { 
+  selectedCoinHistory,
+}) => {
   const chartRef = useRef(null);
   const dispatch = useDispatch();
   useEffect(() => {
+    console.log("history", selectedCoinHistory);
     console.log(
       parseFloat(singleCoin["currentPrice"]?.replace("$", "")) +
         parseFloat(singleCoin["currentPrice"]?.replace("$", "")) *
           parseFloat(singleCoin["(2024 => 2025)"]?.replace("/[$%s]/g", ""))
     );
+    console.log(
+      "max-prediction:",
+      parseFloat(
+        singleCoin["MAX Prediction (Data) Price"]?.replace(/[\$,]/g, "")
+      )
+    );
     const ctx = chartRef.current.getContext("2d");
     const chartInstance = new Chart(ctx, {
       type: "line",
       data: {
-        labels: ["2021", "2022", "2024-2025"],
+        labels: singleCoin ? selectedCoinHistory : [],
         datasets: [
           {
             label: singleCoin.name ? singleCoin.name : "Select a coin",
             data: singleCoin
-              ? [
-                  parseFloat(singleCoin["currentPrice"]?.replace("$", "")) +
-                    parseFloat(singleCoin["currentPrice"]?.replace("$", "")) *
-                      parseFloat(singleCoin["2021/ATH"]?.replace("%", "")),
-                  parseFloat(singleCoin["currentPrice"]?.replace("$", "")) +
-                    parseFloat(singleCoin["currentPrice"]?.replace("$", "")) *
-                      parseFloat(singleCoin["2022 LOW"]?.replace("%", "")),
-                  parseFloat(singleCoin["currentPrice"]?.replace("$", "")) +
-                    parseFloat(singleCoin["currentPrice"]?.replace("$", "")) *
-                      parseFloat(
-                        singleCoin["(2024 => 2025)"]?.replace("/[$%s]/g", "")
-                      ),
-                  parseFloat(
-                    singleCoin["MAX Prediction (Data) Price"]?.replace(/[\$,]/g, "")),
-                    customSellPriceValue
-                ]
+              ? // ? [
+                //     parseFloat(singleCoin["currentPrice"]?.replace("$", "")) +
+                //       parseFloat(singleCoin["currentPrice"]?.replace("$", "")) *
+                //         parseFloat(singleCoin["2021/ATH"]?.replace("%", "")),
+                //     parseFloat(singleCoin["currentPrice"]?.replace("$", "")) +
+                //       parseFloat(singleCoin["currentPrice"]?.replace("$", "")) *
+                //         parseFloat(singleCoin["2022 LOW"]?.replace("%", "")),
+                //     parseFloat(singleCoin["currentPrice"]?.replace("$", "")) +
+                //       parseFloat(singleCoin["currentPrice"]?.replace("$", "")) *
+                //         parseFloat(
+                //           singleCoin["(2024 => 2025)"]?.replace("/[$%s]/g", "")
+                //         ),
+                //     parseFloat(
+                //       singleCoin["MAX Prediction (Data) Price"]?.replace(
+                //         /[\$,]/g,
+                //         ""
+                //       )
+                //     ),
+                //     customSellPriceValue,
+                //   ]
+
+                selectedCoinHistory
+                ? [
+                    ...selectedCoinHistory,
+                    parseFloat(
+                      singleCoin["MAX Prediction (Data) Price"]?.replace(
+                        /[\$,]/g,
+                        ""
+                      )
+                    ),
+
+                    customSellPriceValue,
+                  ]
+                : []
               : "",
             fill: true,
             borderColor: "#0000B9",
-            tension: 0.4,
+            tension: 0.1,
+            pointRadius: 0, // Set point radius to 0 to hide points
           },
         ],
       },
       options: {
         scales: {
+          x: {
+            display: false, // Hide the x-axis
+          },
           y: {
             position: "right",
             beginAtZero: true,
@@ -399,14 +429,19 @@ const ChartComponent = ({
             const maxValueY = chartInstance.scales.y.getPixelForValue(
               isCoinSelected
                 ? parseFloat(
-                  singleCoin["MAX Prediction (Data) Price"]?.replace(/[\$,]/g, ""))
+                    singleCoin["MAX Prediction (Data) Price"]?.replace(
+                      /[\$,]/g,
+                      ""
+                    )
+                  )
                 : 100
             );
             const maxValueYAverage = chartInstance.scales.y.getPixelForValue(
               isCoinSelected
                 ? parseFloat(
                     singleCoin["MAX Ladder Sell Level (-25%)	Price"]?.replace(
-                      /[\$,]/g, ""
+                      /[\$,]/g,
+                      ""
                     )
                   )
                 : 75

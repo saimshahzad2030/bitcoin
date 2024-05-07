@@ -5,16 +5,11 @@ import { BASEURL, headersFunction } from "../../constants/constants";
 export const fetchCoins = async (setLoading, setCoinsdata) => {
   setLoading(true);
   try {
-    console.log(headersFunction());
-    const response = await axios.get(
-      `${BASEURL}/fetchdata`,
-
-      headersFunction()
-    );
+    const response = await axios.get(`${BASEURL}/fetchAllCoins`);
 
     if (response.status === 200) {
-      console.log(response.data);
-      setCoinsdata(response.data.coins);
+      console.log(response.data.filteredCoins);
+      setCoinsdata(response.data.filteredCoins);
       setLoading(false);
     }
   } catch (error) {
@@ -23,6 +18,7 @@ export const fetchCoins = async (setLoading, setCoinsdata) => {
     console.log(error);
   }
 };
+
 export const fetchSingleCoinDetails = async (setSelectedCoin, coinname) => {
   try {
     const response = await axios.get(
@@ -32,7 +28,30 @@ export const fetchSingleCoinDetails = async (setSelectedCoin, coinname) => {
 
     if (response.status === 200) {
       setSelectedCoin(response.data.coinDetails);
+      // console.log(response.data);
     }
+  } catch (error) {
+    console.log(error);
+  }
+};
+export const fetchSingleCoinHistory = async (
+  setSelectedCoin,
+  setHistory,
+  uuid,
+  coin
+) => {
+  try {
+    console.log("sda", uuid);
+    const response = await axios.get(
+      `${BASEURL}/fetchSingleCoin?uuid=${uuid}&coin=${coin}`,
+      headersFunction()
+    );
+
+    if (response.status === 200) {
+      setHistory(response.data.prices);
+      setSelectedCoin(response.data.coinDetails);
+    }
+    console.log(response.data);
   } catch (error) {
     console.log(error);
   }
