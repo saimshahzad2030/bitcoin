@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import {
   fetchSingleCoinDetails,
   fetchSingleCoinHistory,
@@ -18,18 +19,19 @@ const CoinSelectiontwo = ({
   setInitialInvestments,
   setInitalInvestmentOutLevel,
   setSelectedCoinHistory,
+  setLoading,
 }) => {
   const dispatch = useDispatch();
   const handleSelectCoin = (event) => {
+    const selected = coins.find((c) => c.name == event.target.value);
     fetchSingleCoinHistory(
       setSelectedCoin,
       setSelectedCoinHistory,
-      JSON.parse(event.target.value).uuid,
-      JSON.parse(event.target.value).name
+      setLoading,
+      selected.uuid,
+      selected.name
     );
-    console.log("event.target.value", JSON.parse(event.target.value));
-    // console.log("event.target", event.target);
-    // console.log("event.target.value.name", event.target.value[2].name);
+    console.log("selectedCoin", selectedCoin.name);
     dispatch(resetArray());
     dispatch(resetChangedLevel());
     setIsCoinSelected(true);
@@ -53,10 +55,7 @@ const CoinSelectiontwo = ({
           </option>
 
           {coins.map((coin, index) => (
-            <option
-              key={index}
-              value={JSON.stringify({ uuid: coin.uuid, name: coin.name })}
-            >
+            <option key={index} value={coin.name}>
               {coin.name}
             </option>
           ))}

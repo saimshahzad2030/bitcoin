@@ -611,6 +611,7 @@ const ChartUi = ({ changedlevel }) => {
           setInitialInvestments={setInitialInvestments}
           setInitalInvestmentOutLevel={setInitalInvestmentOutLevel}
           setSelectedCoinHistory={setSelectedCoinHistory}
+          setLoading={setLoading}
         />
         {isCoinSelected && (
           <>

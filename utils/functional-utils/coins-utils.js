@@ -37,10 +37,12 @@ export const fetchSingleCoinDetails = async (setSelectedCoin, coinname) => {
 export const fetchSingleCoinHistory = async (
   setSelectedCoin,
   setHistory,
+  setLoading,
   uuid,
   coin
 ) => {
   try {
+    setLoading(true);
     console.log("sda", uuid);
     const response = await axios.get(
       `${BASEURL}/fetchSingleCoin?uuid=${uuid}&coin=${coin}`,
@@ -49,10 +51,12 @@ export const fetchSingleCoinHistory = async (
 
     if (response.status === 200) {
       setHistory(response.data.prices);
+      console.log("response.data.coinDetails", response.data.coinDetails);
       setSelectedCoin(response.data.coinDetails);
     }
-    console.log(response.data);
+    setLoading(false);
   } catch (error) {
     console.log(error);
+    setLoading(false);
   }
 };
