@@ -36,6 +36,7 @@ export const login = async (
       setType("failed");
       setResponseMessage(response.data.message);
     }
+    console.log(response.data.message);
   } catch (error) {
     setLoginSuccesfull(false);
     setLoading(false);

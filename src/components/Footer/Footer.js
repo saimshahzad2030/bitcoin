@@ -51,17 +51,19 @@ const Footer = () => {
       </div>
       <div className="w-full flex  flex-col items-center lg:mt-0 md:mt-8 mt-12">
         <h3 className="text-white text-center mt-4 text-2xl">Query</h3>
-        <input
-          type="text"
-          id="username"
-          value={query}
-          placeholder="Type any query..."
-          onChange={(e) => setQuery(e.target.value)}
-          className="appearance-none border rounded-lg p-4 w-7/12 py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mt-4 "
-        />
-        <button className="p-4 rounded-lg  text-indigo-700 bg-white mt-4 ">
-          Submit
-        </button>
+        <div className="flex flex-row  items-center  mt-4 ">
+          <input
+            type="text"
+            id="username"
+            value={query}
+            placeholder="Type any query..."
+            onChange={(e) => setQuery(e.target.value)}
+            className="appearance-none border border-white h-10  w-7/12   px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          />
+          <button className="px-3 h-10 rounded-lg  text-indigo-700 bg-white ml-4">
+            Submit
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -43,8 +43,8 @@ const BlankHome = () => {
     // setAdminAuthenticated(true);
   };
   return (
-    <div className="relative flex flex-col items-center w-full container mx-auto alegreya">
-      <div className="flex flex-row items-center justify-end  w-full p-4 z-10 ">
+    <div className="relative flex flex-col items-center w-full container mx-auto postsenOne">
+      {/* <div className="flex fl ex-row items-center justify-end  w-full p-4 z-10 ">
         <p className="text-indigo-700 text-xl mr-4 ">{name}</p>
         <div className="flex flex-col items-center justify-center h-12 w-12 bg-indigo-700 rounded-full cursor-pointer">
           <p
@@ -54,7 +54,7 @@ const BlankHome = () => {
             {name?.charAt(0).toUpperCase()}
           </p>
         </div>
-      </div>
+      </div> */}
       <div className={`${plan ? "hidden" : ""}`}>
         <h1
           className="text-center text-5xl font-bold my-16  p-4"
@@ -140,32 +140,8 @@ const BlankHome = () => {
               </p>
             </div>
           </div>
-          <div
-            className=" h-auto mt-4 lg:mt-0 flex flex-col items-center justify-center w-full cursor-pointer"
-            onClick={async () => {
-              // setPLan("subscribed");
-              const stripe = await loadStripe(
-                process.env.NEXT_PUBLIC_STRIPE_KEY
-              );
-              const response = await axios.post(
-                `${BASEURL}/subscribe`,
-                {},
-                headersFunction()
-              );
-              // const response = await axios.post(
-              //   `http://localhost:4000/api/subscribe`,
-              //   {},
-              //   headersFunction()
-              // );
-              const result = await stripe.redirectToCheckout({
-                sessionId: response.data.id,
-              });
-              if (result.error) {
-                console.log(result.error);
-              }
-            }}
-          >
-            <div className="w-11/12 sm:w-7/12  lg:w-11/12 bg-white h-auto flex flex-col justify-start items-center p-4  rounded-lg  transition-transform transform duration-700  hover:scale-105 border  ">
+          <div className=" h-auto mt-4 lg:mt-0 flex flex-col items-center justify-center w-full">
+            <div className="w-11/12 sm:w-7/12  lg:w-11/12 bg-white h-auto flex flex-col justify-start items-center p-4  rounded-lg">
               <h1 className="font-bold text-4xl text-indigo-700 text-center mt-4">
                 {BLANKPAGE[4].name}
               </h1>
@@ -224,13 +200,33 @@ const BlankHome = () => {
                 src={BLANKPAGE[4].image}
                 alt={BLANKPAGE[4].name}
               />
+              <button
+                className="py-3 px-4 bg-indigo-700 text-white border border-indigo-700 rounded-md hover:bg-white hover:text-indigo-700 transition-colors duration-500"
+                onClick={async () => {
+                  // setPLan("subscribed");
+                  const stripe = await loadStripe(
+                    process.env.NEXT_PUBLIC_STRIPE_KEY
+                  );
+                  const response = await axios.post(
+                    `${BASEURL}/subscribe`,
+                    {},
+                    headersFunction()
+                  );
+
+                  const result = await stripe.redirectToCheckout({
+                    sessionId: response.data.id,
+                  });
+                  if (result.error) {
+                    console.log(result.error);
+                  }
+                }}
+              >
+                Subscribe
+              </button>
             </div>
           </div>
-          <div
-            className=" h-auto] mt-4 lg:mt-0 flex flex-col items-center justify-center w-full  cursor-pointer  "
-            onClick={() => setPLan("free")}
-          >
-            <div className="w-11/12 sm:w-7/12 lg:w-11/12 bg-white  h-auto flex flex-col justify-start items-center p-4  rounded-lg    transition-transform transform duration-700  hover:scale-105">
+          <div className=" h-auto] mt-4 lg:mt-0 flex flex-col items-center justify-center w-full  ">
+            <div className="w-11/12 sm:w-7/12 lg:w-11/12 bg-white  h-auto flex flex-col justify-start items-center p-4  rounded-lg ">
               <h1 className="font-bold text-4xl text-indigo-700 text-center mt-4">
                 {BLANKPAGE[5].name}
               </h1>
@@ -290,32 +286,34 @@ const BlankHome = () => {
                 src={BLANKPAGE[5].image}
                 alt={BLANKPAGE[5].name}
               />
+              <button
+                className="py-3 px-4 bg-indigo-700 text-white border border-indigo-700 rounded-md hover:bg-white hover:text-indigo-700 transition-colors duration-500"
+                onClick={async () => {
+                  const stripe = await loadStripe(
+                    process.env.NEXT_PUBLIC_STRIPE_KEY
+                  );
+                  // console.log(`${BASEURL}/subscribe`);
+                  const response = await axios.post(
+                    `${BASEURL}/subscribe`,
+                    {},
+                    headersFunction()
+                  );
+
+                  const result = await stripe.redirectToCheckout({
+                    sessionId: response.data.id,
+                  });
+                  if (result.error) {
+                    console.log(result.error);
+                  }
+                }}
+              >
+                Start trial
+              </button>
             </div>
           </div>
         </div>
-        {/* <div
-          className="flex flex-col items-start  w-full p-4 mt-20 alegreya"
-          id="statusSection"
-        >
-          <p className={`text-black mx-4 text-4xl `}>
-            Hey <span className="text-4xl font-bold">{name}</span>,
-          </p>
-          <p className={`text-black mx-4 text-2xl alegreya mt-2`}>
-            hope you are doing well, Your account is pending approval from an
-            administrator. You won&apos;t be able to access the features of our
-            application until your account is approved. Please wait patiently
-            for further instructions.
-          </p>
-        </div> */}
-
-        {/* <div className="flex flex-col items-end  w-full p-4   mb-8">
-          <p className={`text-black mx-4 text-2xl `}>
-            Best Regards,{" "}
-            <span className="font-bold">Team Exit Calculator</span>
-          </p>
-        </div> */}
       </div>
-      {plan && (
+      {/* {plan && (
         <div className="flex flex-col w-full items-center">
           <div className="flex flex-col items-start justify-center w-full ">
             <div
@@ -415,7 +413,7 @@ const BlankHome = () => {
             </div>
           )}
         </div>
-      )}
+      )} */}
       {avatarClicked && (
         <div
           id="avatarDiv"

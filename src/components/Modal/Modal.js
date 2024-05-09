@@ -22,6 +22,7 @@ const Modal = ({
         () => {
           if (route !== "" && message === "login successful") {
             router.push(route);
+            console.log("route:", route);
           } else {
             setIsVisible(false);
           }

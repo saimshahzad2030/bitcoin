@@ -20,8 +20,8 @@ const page = () => {
         </div>
       </div>
       <div className="h-[100vh] w-full bg-indigo-700"></div>
-      <CoinsSection />
       <div className="container mx-auto  ">
+        <CoinsSection />
         <SupportedCoins />
         <InvestmentPlan />
         <Services />

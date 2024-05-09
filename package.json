@@ -11,10 +11,13 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.3",
     "@stripe/stripe-js": "^3.3.0",
+    "@studio-freight/lenis": "^1.0.42",
+    "@studio-freight/tempus": "^0.0.44",
     "axios": "^1.6.8",
     "chart.js": "^4.4.2",
     "chartjs-plugin-annotation": "^3.0.1",
     "js-cookie": "^3.0.5",
+    "lenis": "^1.0.45",
     "next": "14.2.2",
     "react": "^18",
     "react-chartjs-2": "^5.2.0",

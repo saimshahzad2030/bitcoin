@@ -11,12 +11,12 @@ const LandingSection = () => {
           <h2 className="mt-8 text-sm text-white">
             Lorem Epsum adasd casdc lohgfphk wqen qwenwqen qweqw nqwewnq
           </h2>
-          <div className="flex flex-row items-center justify-between  w-full sm:w-9/12 mt-8">
-            <button className="bg-green-600 text-white p-4  rounded-xl hover:scale-110 transition-transform duration-300">
-              Get Started
+          <div className="flex flex-row items-center   w-full sm:w-9/12 mt-8">
+            <button className="bg-white text-indigo-700 px-4 py-3 rounded-md border border-white hover:bg-indigo-700 hover:text-white transition-colors duration-500">
+              GET STARTED
             </button>
-            <button className="border border-white text-white  p-4  hover:scale-110 transition-transform duration-300">
-              View Market
+            <button className="ml-4 border border-white text-white  rounded-md  px-4 py-3 hover:bg-white hover:text-indigo-700 transition-colors duration-500">
+              VIEW MARKET
             </button>
           </div>
         </div>

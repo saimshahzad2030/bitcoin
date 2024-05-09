@@ -1,4 +1,8 @@
 /* CSS */
 .parent:hover > .child {
-    width: 100%;
-  }
+  width: 100%;
+}
+
+.blurredBackground {
+  backdrop-filter: blur(20px);
+}

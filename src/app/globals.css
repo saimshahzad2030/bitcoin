@@ -53,8 +53,17 @@
   font-optical-sizing: auto;
   font-style: normal;
 }
-.postsenOne {
+/* .postsenOne {
   font-family: "Poetsen One", sans-serif;
   font-weight: 400;
+  font-style: normal;
+} */
+body {
+  scroll-behavior: smooth;
+}
+
+.postsenOne {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
   font-style: normal;
 }

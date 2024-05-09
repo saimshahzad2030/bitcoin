@@ -9,8 +9,8 @@ const Services = () => {
           alt="security"
           className="w-16 h-auto"
         />
-        <h1 className="text-xl text-center font-bold mt-2">Security</h1>
-        <p className="text-xs text-center mt-4 md:px-0 px-8">
+        <h1 className="text-xl text-center font-bold mt-2">SECURITY</h1>
+        <p className="text-md text-center mt-4 md:px-0 px-8">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, consectetur
           adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing
           elit, consectetur adipiscing elit.
@@ -22,8 +22,8 @@ const Services = () => {
           alt="security"
           className="w-16 h-auto"
         />
-        <h1 className="text-xl text-center font-bold mt-2 px-8">Currencies</h1>
-        <p className="text-xs text-center mt-4 md:px-0 px-8">
+        <h1 className="text-xl text-center font-bold mt-2 px-8">CURRENCY</h1>
+        <p className="text-md text-center mt-4 md:px-0 px-8">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, consectetur
           adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing
           elit, consectetur adipiscing elit.
@@ -36,9 +36,9 @@ const Services = () => {
           className="w-16 h-auto"
         />
         <h1 className="text-xl text-center font-bold mt-2 px-8">
-          Graphical view
+          GRAPHICAL VIEW
         </h1>
-        <p className="text-xs text-center mt-4 md:px-0 px-8">
+        <p className="text-md text-center mt-4 md:px-0 px-8">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, consectetur
           adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing
           elit, consectetur adipiscing elit.

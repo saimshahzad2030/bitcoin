@@ -4,7 +4,7 @@ import Link from "next/link";
 import style from "./Navbar.module.css";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
-const Navbar = ({ bg, calculatorPage }) => {
+const Navbar = ({ bg, calculatorPage, nochartAccess, btnDisabled }) => {
   const router = useRouter();
   const [isScrolled, setIsScrolled] = React.useState(false);
   const [avatarClicked, setAvatarClicked] = React.useState(false);
@@ -35,7 +35,6 @@ const Navbar = ({ bg, calculatorPage }) => {
     setAvatarClicked(!avatarClicked);
   };
 
-  // Function to close avatar dropdown when clicking outside of it
   const closeAvatarDropdown = () => {
     setAvatarClicked(false);
   };
@@ -44,19 +43,21 @@ const Navbar = ({ bg, calculatorPage }) => {
     <>
       <div
         className={`${
-          isScrolled ? "bg-white  shadow-lg " : bg
-        }  h-auto w-full fixed z-30`}
+          isScrolled ? "   border border-gray-500 shadow-lg " : bg
+        } ${style.blurredBackground}   h-auto w-full fixed z-30`}
       >
         <nav
-          className={`postsenOne  container mx-auto py-4 z-40 px-4 ${
-            isScrolled ? "bg-white " : bg
-          }`}
+          className={`postsenOne  container mx-auto py-3 z-40 px-4 ${
+            isScrolled ? style.blurredBackground : ""
+          }
+          
+          `}
         >
           <div className=" flex flex-row justify-between items-center">
             <div>
               <Link href="/user/home" className="text-white text-xl font-bold ">
                 <img
-                  className="w-16 h-auto bg-no-repeat bg-center bg-cover"
+                  className="w-12 h-auto bg-no-repeat bg-center bg-cover"
                   src="/assets/landing/crypto-logo.png"
                   alt="crypto-logo"
                 />
@@ -69,32 +70,42 @@ const Navbar = ({ bg, calculatorPage }) => {
                   <li className="hidden sm:flex">
                     <Link
                       href="/user/home"
+                      disable={true}
                       className={` ${
                         style.parent
-                      } text-xl flex flex-col items-center  font-bold hover:scale-110 transition-transform duration-300  ${
-                        isScrolled ? "text-indigo-700" : "text-white"
-                      }`}
+                      } text-md flex flex-col items-center  font-bold hover:scale-110 transition-transform duration-300  ${
+                        isScrolled ? "text-black" : "text-white"
+                      }
+                      `}
                     >
-                      <h1>Home</h1>
+                      <h1>HOME</h1>
                       <div
                         className={`${
                           calculatorPage ? "w-0" : "w-full"
                         } h-[2px] ${
                           isScrolled ? "bg-indigo-700 " : "bg-white "
-                        } transition-all duration-300 ${style.child}`}
+                        } transition-all duration-300 ${style.child}
+                        `}
                       ></div>
                     </Link>
                   </li>
-                  <li className="hidden sm:flex">
+                  <li
+                    className={`hidden sm:flex  ${
+                      btnDisabled === "EXIT CHART" ? "sm:hidden" : "sm:flex"
+                    }`}
+                  >
                     <Link
                       href={`${name ? "/user/calculator" : "/login"}`}
                       className={` ${
                         style.parent
-                      } text-xl flex flex-col items-center  font-bold hover:scale-110 transition-transform duration-300  ${
-                        isScrolled ? "text-indigo-700" : "text-white"
-                      }`}
+                      } text-md flex flex-col items-center  font-bold hover:scale-110 transition-transform duration-300  ${
+                        isScrolled ? "text-black" : "text-white"
+                      }
+                     
+
+                      `}
                     >
-                      <h1>Exit Chart</h1>
+                      <h1>EXIT CHART</h1>
                       <div
                         className={`${
                           calculatorPage ? "w-full" : "w-0"
@@ -109,28 +120,16 @@ const Navbar = ({ bg, calculatorPage }) => {
               {!name ? (
                 <>
                   <li className="hidden sm:flex">
-                    <Link
-                      href="/login"
-                      className={`text-xl font-bold  hover:scale-110 transition-transform duration-300 ${
-                        isScrolled ? "text-indigo-700" : "text-white"
-                      }`}
-                    >
-                      <button className="p-4 ">Signin</button>
+                    <Link href="/login" className={`text-white   `}>
+                      <button className=" px-4 py-3 rounded-md border bg-indigo-700 border-indigo-700 hover:border-white hover:bg-white-700 hover:text-white transition-colors duration-500 ">
+                        SIGNIN
+                      </button>
                     </Link>
                   </li>
                   <li className="hidden sm:flex">
-                    <Link
-                      href="/login"
-                      className="text-white text-xl font-bold"
-                    >
-                      <button
-                        className={`p-3 rounded-lg  hover:scale-110 transition-transform duration-300  ${
-                          isScrolled
-                            ? "bg-indigo-700 text-white"
-                            : "bg-white text-indigo-700 "
-                        }`}
-                      >
-                        Signup
+                    <Link href="/login" className="text-white ">
+                      <button className=" px-4 py-3 rounded-md border bg-indigo-700 border-indigo-700 hover:border-white hover:bg-white-700 hover:text-white transition-colors duration-500 ">
+                        SIGNUP
                       </button>
                     </Link>
                   </li>
@@ -276,7 +275,7 @@ const Navbar = ({ bg, calculatorPage }) => {
           </div>
         )}
       </div>
-      {calculatorPage ? <div className="h-36 bg-white w-full"></div> : null}
+      {calculatorPage && <div className="h-36 bg-white w-full"></div>}
     </>
   );
 };

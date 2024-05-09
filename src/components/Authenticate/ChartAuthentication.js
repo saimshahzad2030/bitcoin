@@ -3,13 +3,13 @@ import { React, useEffect, useState } from "react";
 import axios from "axios";
 import Unauthorized from "../Unauthorized/Unauthorized";
 import { BASEURL, headersFunction } from "../../../constants/constants";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import BlankHome from "../BlankHome/BlankHome";
 const ChartAuthentication = ({ children }) => {
   const [userAuthenticated, setUserAuthenticated] = useState(false);
   const pathname = usePathname();
   const [loading, setLoading] = useState(true);
-
+  const router = useRouter();
   useEffect(() => {
     async function checkAuthentication() {
       try {
@@ -27,14 +27,15 @@ const ChartAuthentication = ({ children }) => {
         ) {
           setLoading(false);
           setUserAuthenticated(false);
-          return <BlankHome />;
+          // return <BlankHome />;
+          router.push("/user/home");
         } else if (
           response.data.role === "user" &&
           response.data.status !== "approved"
         ) {
           setLoading(false);
           setUserAuthenticated(false);
-          return <BlankHome />;
+          router.push("/user/home?subscribed=false");
         } else {
           setLoading(false);
           setUserAuthenticated(true);
@@ -43,7 +44,7 @@ const ChartAuthentication = ({ children }) => {
       } catch (error) {
         setLoading(false);
         setUserAuthenticated(false);
-        return <BlankHome />;
+        router.push("/user/home?subscribed=false");
       }
     }
 
@@ -51,7 +52,7 @@ const ChartAuthentication = ({ children }) => {
   }, []);
 
   if (!userAuthenticated && !loading) {
-    return <BlankHome />;
+    router.push("/user/home?subscribed=false");
   }
   if (userAuthenticated && !loading) {
     return <>{children}</>;

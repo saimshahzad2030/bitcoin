@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import ChartUi from "@/components/ChartUi/Chart";
 import ChartAuthentication from "@/components/Authenticate/ChartAuthentication";
@@ -10,27 +11,30 @@ import Services from "@/components/Services/Services";
 import HappyUsers from "@/components/HappyUsers/HappyUsers";
 import Footer from "@/components/Footer/Footer";
 import Copyright from "@/components/Copyright/Copyright";
-const page = () => {
+import BlankHome from "@/components/BlankHome/BlankHome";
+import { useSearchParams } from "next/navigation";
+import Chart from "@/components/Chart/Chart";
+const Page = () => {
+  const searchParams = useSearchParams();
+
+  const search = searchParams.get("subscribed");
+  console.log("search===false", typeof search);
+
+  console.log("search===false", search === "false");
   return (
     <>
-      <Navbar />
-      <div className="container mx-auto  ">
-        <div className="relative flex-col items-center">
-          <LandingSection />
-        </div>
-      </div>
-      <div className="h-[100vh] w-full bg-indigo-700  "></div>
-      <CoinsSection />
-      <div className="container mx-auto  ">
-        <SupportedCoins />
-        <InvestmentPlan />
-        <Services />
-        <HappyUsers />
-      </div>
+      <Navbar
+        bg={"bg-indigo-700"}
+        nochartAccess={true}
+        calculatorPage={true}
+        btnDisabled={search === "false" ? "EXIT CHART" : ""}
+      />
+
+      <BlankHome />
       <Footer />
       <Copyright />
     </>
   );
 };
 
-export default page;
+export default Page;

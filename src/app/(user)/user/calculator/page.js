@@ -8,7 +8,7 @@ const page = () => {
   return (
     <>
       <ChartAuthentication>
-        <Navbar bg={"bg-indigo-700"} calculatorPage={true} />
+        <Navbar bg={"bg-indigo-700"} calculatorPage={true}  />
         <ChartUi />
         <Footer />
         <Copyright />
