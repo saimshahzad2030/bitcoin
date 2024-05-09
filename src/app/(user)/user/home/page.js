@@ -15,19 +15,27 @@ import BlankHome from "@/components/BlankHome/BlankHome";
 import { useSearchParams } from "next/navigation";
 import Chart from "@/components/Chart/Chart";
 const Page = () => {
-  const searchParams = useSearchParams();
+  const [subscribed, setSubscribed] = React.useState(null);
+  const [loading, setLoading] = React.useState(true);
 
-  const search = searchParams.get("subscribed");
-  console.log("search===false", typeof search);
+  React.useEffect(() => {
+    const fetchSubscribedStatus = async () => {
+      const searchParams = new URLSearchParams(window.location.search);
+      const subscribedParam = searchParams.get("subscribed");
+      setSubscribed(subscribedParam === "true");
+      setLoading(false);
+    };
 
-  console.log("search===false", search === "false");
+    fetchSubscribedStatus();
+  }, []);
+
   return (
     <>
       <Navbar
         bg={"bg-indigo-700"}
         nochartAccess={true}
         calculatorPage={true}
-        btnDisabled={search === "false" ? "EXIT CHART" : ""}
+        btnDisabled={!subscribed === "false" ? "EXIT CHART" : ""}
       />
 
       <BlankHome />

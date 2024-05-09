@@ -44,7 +44,6 @@ export default function RootLayout({ children }) {
         </head>
         <head>
           <script src="https://cdn.jsdelivr.net/npm/chart.js" async></script>
-          {/* <script src="https://unpkg.com/lenis@1.0.45/dist/lenis.min.js"></script> */}
         </head>
         <body className={inter.className}>{children}</body>
       </html>
