@@ -42,6 +42,7 @@ export default function RootLayout({ children }) {
             href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..900&family=Anek+Devanagari:wght@100..800&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Inter:wght@100..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Lora&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+JP:wght@100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
             rel="stylesheet"
           ></link>
+      <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet" />
         </head>
         <head>
           <script src="https://cdn.jsdelivr.net/npm/chart.js" async></script>

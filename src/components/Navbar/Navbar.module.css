@@ -1,0 +1,4 @@
+/* CSS */
+.parent:hover > .child {
+    width: 100%;
+  }

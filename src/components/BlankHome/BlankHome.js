@@ -51,7 +51,7 @@ const BlankHome = () => {
             className="text-white text-3xl font-bold"
             onClick={() => setAvatarClicked(true)}
           >
-            {name.charAt(0).toUpperCase()}
+            {name?.charAt(0).toUpperCase()}
           </p>
         </div>
       </div>
@@ -390,7 +390,6 @@ const BlankHome = () => {
                   <button
                     className="p-4    font-bold  bg-indigo-700 text-white rounded-xl  mt-8 transition-transform transform duration-700  hover:scale-110"
                     onClick={async () => {
-                      
                       const stripe = await loadStripe(
                         process.env.NEXT_PUBLIC_STRIPE_KEY
                       );
@@ -400,7 +399,7 @@ const BlankHome = () => {
                         {},
                         headersFunction()
                       );
-                  
+
                       const result = await stripe.redirectToCheckout({
                         sessionId: response.data.id,
                       });

@@ -536,10 +536,10 @@ const ChartUi = ({ changedlevel }) => {
   return (
     <Modal loading={loading}>
       <div className="container mx-auto relative alegreya">
-        {avatarClicked && (
+        {/* {avatarClicked && (
           <div
             id="avatarDiv"
-            className={`absolute right-0 w-[150px] h-[150px] pb-8 pt-4 z-5 `}
+            className={`absolute right-0 w-[150px] h-[150px] pb-8 pt-4 z-5 postsenOne`}
           >
             <div
               className="mt-16 flex flex-col items-center  w-full h-full rounded-lg"
@@ -571,7 +571,7 @@ const ChartUi = ({ changedlevel }) => {
             </div>
           </div>
         )}
-        <div className="flex flex-row items-center justify-end  w-full p-4 z-10 ">
+        <div className="flex flex-row items-center justify-end  w-full p-4 z-10 postsenOne">
           <p className="text-indigo-700 text-2xl mr-4">{name}</p>
           <div className="flex flex-col items-center justify-center h-12 w-12 bg-indigo-700 rounded-full cursor-pointer">
             <p
@@ -581,7 +581,7 @@ const ChartUi = ({ changedlevel }) => {
               {name.charAt(0).toUpperCase()}
             </p>
           </div>
-        </div>
+        </div> */}
 
         <ChartComponent
           selectedCoin={selectedCoin}

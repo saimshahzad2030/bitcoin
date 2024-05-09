@@ -26,7 +26,7 @@ const UserAuthentication = ({ children }) => {
           setLoading(false);
           setUserAuthenticated(false);
           return <Unauthorized />;
-        } else if (response.data.role === "user" && pathname !== "/user/home") {
+        } else if (response.data.role === "user" && pathname !== "/user/home" && pathname !== "/user/calculator") {
           setLoading(false);
           setUserAuthenticated(false);
           return <Unauthorized />;
