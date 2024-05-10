@@ -406,89 +406,91 @@ const BlankHome = () => {
               </button>
             </div>
           </div>
-          <div className="w-11/12 sm:w-7/12 lg:w-11/12 bg-white  h-auto flex flex-col justify-start items-center p-4  rounded-lg ">
-            <h1 className="font-bold text-4xl text-indigo-700 text-center mt-4">
-              {BLANKPAGE[5].name}
-            </h1>
-            <div className="flex flex-row items-center  mt-4 w-full px-2">
-              <img
-                src="/assets/pass/tick.svg"
-                alt="coin"
-                className="w-6 h-auto"
-              />
-              <p className=" text-indigo-400 px-4 text-center font-bold">
-                14 days trial
-              </p>
-            </div>
-            <div className="flex flex-row items-center  mt-2 w-full px-2">
-              <img
-                src="/assets/pass/tick.svg"
-                alt="coin"
-                className="w-6 h-auto"
-              />
-              <p className=" text-indigo-400 px-4 text-center font-bold">
-                Customization
-              </p>
-            </div>
-            <div className="flex flex-row items-center  mt-2 w-full px-2">
-              <img
-                src="/assets/pass/tick.svg"
-                alt="coin"
-                className="w-6 h-auto"
-              />
-              <p className=" text-indigo-400 px-4 text-center font-bold">
-                Access to coin history
-              </p>
-            </div>
-            <div className="flex flex-row items-center  mt-2 w-full px-2">
-              <img
-                src="/assets/pass/tick.svg"
-                alt="coin"
-                className="w-6 h-auto"
-              />
-              <p className=" text-indigo-400 px-4 text-center font-bold">
-                free Graphical view
-              </p>
-            </div>
-            <div className="flex flex-row items-center  mt-2 w-full px-2">
-              <img
-                src="/assets/pass/tick.svg"
-                alt="coin"
-                className="w-6 h-auto"
-              />
-              <p className=" text-indigo-400 px-4 text-center font-bold">
-                Calculational Investments
-              </p>
-            </div>
+          <div className=" h-auto mt-4 lg:mt-0 flex flex-col items-center justify-center w-full">
+            <div className="w-11/12 sm:w-7/12 lg:w-11/12 bg-white  h-auto flex flex-col justify-start items-center p-4  rounded-lg ">
+              <h1 className="font-bold text-4xl text-indigo-700 text-center mt-4">
+                {BLANKPAGE[5].name}
+              </h1>
+              <div className="flex flex-row items-center  mt-4 w-full px-2">
+                <img
+                  src="/assets/pass/tick.svg"
+                  alt="coin"
+                  className="w-6 h-auto"
+                />
+                <p className=" text-indigo-400 px-4 text-center font-bold">
+                  14 days trial
+                </p>
+              </div>
+              <div className="flex flex-row items-center  mt-2 w-full px-2">
+                <img
+                  src="/assets/pass/tick.svg"
+                  alt="coin"
+                  className="w-6 h-auto"
+                />
+                <p className=" text-indigo-400 px-4 text-center font-bold">
+                  Customization
+                </p>
+              </div>
+              <div className="flex flex-row items-center  mt-2 w-full px-2">
+                <img
+                  src="/assets/pass/tick.svg"
+                  alt="coin"
+                  className="w-6 h-auto"
+                />
+                <p className=" text-indigo-400 px-4 text-center font-bold">
+                  Access to coin history
+                </p>
+              </div>
+              <div className="flex flex-row items-center  mt-2 w-full px-2">
+                <img
+                  src="/assets/pass/tick.svg"
+                  alt="coin"
+                  className="w-6 h-auto"
+                />
+                <p className=" text-indigo-400 px-4 text-center font-bold">
+                  free Graphical view
+                </p>
+              </div>
+              <div className="flex flex-row items-center  mt-2 w-full px-2">
+                <img
+                  src="/assets/pass/tick.svg"
+                  alt="coin"
+                  className="w-6 h-auto"
+                />
+                <p className=" text-indigo-400 px-4 text-center font-bold">
+                  Calculational Investments
+                </p>
+              </div>
 
-            <img
-              className={"w-[100px] h-auto mt-4"}
-              src={BLANKPAGE[5].image}
-              alt={BLANKPAGE[5].name}
-            />
-            <button
-              className="py-3 px-4 bg-indigo-700 text-white border border-indigo-700 rounded-md hover:bg-white hover:text-indigo-700 transition-colors duration-500"
-              onClick={async () => {
-                const stripe = await loadStripe(
-                  process.env.NEXT_PUBLIC_STRIPE_KEY
-                );
-                // console.log(`${BASEURL}/subscribe`);
-                const response = await axios.post(
-                  `${BASEURL}/subscribe`,
-                  {},
-                  headersFunction()
-                );
+              <img
+                className={"w-[100px] h-auto mt-4"}
+                src={BLANKPAGE[5].image}
+                alt={BLANKPAGE[5].name}
+              />
+              <button
+                className="py-3 px-4 bg-indigo-700 text-white border border-indigo-700 rounded-md hover:bg-white hover:text-indigo-700 transition-colors duration-500"
+                onClick={async () => {
+                  const stripe = await loadStripe(
+                    process.env.NEXT_PUBLIC_STRIPE_KEY
+                  );
+                  // console.log(`${BASEURL}/subscribe`);
+                  const response = await axios.post(
+                    `${BASEURL}/subscribe`,
+                    {},
+                    headersFunction()
+                  );
 
-                const result = await stripe.redirectToCheckout({
-                  sessionId: response.data.id,
-                });
-                if (result.error) {
-                  console.log(result.error);
-                }
-              }}
-            >
-              Start trial
-            </button>
+                  const result = await stripe.redirectToCheckout({
+                    sessionId: response.data.id,
+                  });
+                  if (result.error) {
+                    console.log(result.error);
+                  }
+                }}
+              >
+                Start trial
+              </button>
+            </div>
           </div>
         </div>
         <div className="w-full bg-white h-[1px]"></div>
