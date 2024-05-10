@@ -68,7 +68,10 @@ const BlankHome = () => {
             }}
           >
             <div className="flex flex-row items-center  p-4 border border-yellow-500 rounded-md">
-              <p> ⚠️ You need to buy subscription to excess the exit</p>
+              <p>
+                {" "}
+                ⚠️ You need to buy subscription to excess the exit calculator
+              </p>
 
               <button className="text-2xl ml-4" onClick={closeAlert}>
                 {"\u2716"}
@@ -79,12 +82,12 @@ const BlankHome = () => {
 
         <div className={`${plan ? "hidden" : ""}`}>
           <h1
-            className="text-center text-5xl font-bold my-16  p-4"
+            className="text-center text-4xl sm:text-5xl font-bold my-4 sm:my-16 px-2 sm:p-4"
             id="benefitsSection"
           >
             BENEFITS
           </h1>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 w-full p-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 w-full px-2 sm:p-4">
             <div className="bg-white h-[300px] flex flex-col items-center  w-full  cursor-pointer ">
               <div className="w-11/12 bg-gradient-to-b from-indigo-900 to-indigo-600 h-full flex flex-col justify-center items-center p-4  rounded-lg  transition-transform transform duration-700  hover:scale-105">
                 <h1 className="font-bold text-2xl text-white text-center">
@@ -196,13 +199,13 @@ const BlankHome = () => {
       </div>
 
       <div className=" h-auto mt-4 lg:mt-0 flex flex-col items-center justify-center w-full  postsenOne bg-indigo-700">
-        <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 w-full p-4 mt-16 mb-4 bg-indigo-700 h-auto container mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 w-full p-2 sm:p-4 mt-16 mb-4 bg-indigo-700 h-auto container mx-auto">
           <div className=" mt-4 sm:mt-0  flex flex-col items-center  w-full ">
-            <div className="w-11/12 h-full flex flex-col  items-center p-4  rounded-lg py-20">
-              <h1 className="font-bold text-4xl 2xl:text-5xl text-white text-center">
+            <div className="w-11/12 h-full flex flex-col  items-center sm:p-4  rounded-lg py-20">
+              <h1 className="font-bold text-3xl sm:text-4xl 2xl:text-5xl text-white text-center">
                 SUBSCRIPTION PLANS
               </h1>
-              <p className=" text-indigo-200  px-4 text-center mt-4 text-lg">
+              <p className=" text-indigo-200 px-2 sm:px-4 text-center mt-4 text-lg">
                 We offer subscribed(paid) plans as well as unsubscribed(free 14
                 days trial) plan for our users to access the features of our
                 application. The subscribed plan will provide users with more
@@ -211,17 +214,17 @@ const BlankHome = () => {
             </div>
           </div>
           <div className=" h-auto mt-4 lg:mt-0 flex flex-col items-center justify-center w-full">
-            <div className="w-11/12 sm:w-7/12  lg:w-11/12 bg-white h-auto flex flex-col justify-start items-center p-4  rounded-lg">
-              <h1 className="font-bold text-3xl 2xl:text-4xl text-indigo-700 text-center mt-4">
+            <div className="w-full sm:w-7/12  lg:w-11/12 bg-white h-auto flex flex-col justify-start items-center p-4  rounded-lg">
+              <h1 className="font-bold text-xl sm:text-3xl 2xl:text-4xl text-indigo-700 text-center mt-4">
                 {BLANKPAGE[4].name.toUpperCase()}
               </h1>
               <div className="flex flex-row items-center  mt-4 w-full px-2">
                 <img
                   src="/assets/pass/tick.svg"
                   alt="coin"
-                  className="w-6 h-auto"
+                  className="w-4 sm:w-6 h-auto"
                 />
-                <p className=" text-indigo-400 px-4 text-center font-bold">
+                <p className=" text-indigo-400 px-4  sm:font-bold">
                   Access to Coin history
                 </p>
               </div>
@@ -229,9 +232,9 @@ const BlankHome = () => {
                 <img
                   src="/assets/pass/tick.svg"
                   alt="coin"
-                  className="w-6 h-auto"
+                  className="w-4 sm:w-6 h-auto"
                 />
-                <p className=" text-indigo-400 px-4 text-center font-bold">
+                <p className=" text-indigo-400 px-4  sm:font-bold">
                   Customization
                 </p>
               </div>
@@ -239,9 +242,9 @@ const BlankHome = () => {
                 <img
                   src="/assets/pass/tick.svg"
                   alt="coin"
-                  className="w-6 h-auto"
+                  className="w-4 sm:w-6 h-auto"
                 />
-                <p className=" text-indigo-400 px-4 text-center font-bold">
+                <p className=" text-indigo-400 px-4 sm:font-bold">
                   Unlimited access
                 </p>
               </div>
@@ -249,9 +252,9 @@ const BlankHome = () => {
                 <img
                   src="/assets/pass/tick.svg"
                   alt="coin"
-                  className="w-6 h-auto"
+                  className="w-4 sm:w-6 h-auto"
                 />
-                <p className=" text-indigo-400 px-4 text-center font-bold">
+                <p className=" text-indigo-400 px-4 sm:font-bold">
                   Graphical view
                 </p>
               </div>
@@ -259,19 +262,19 @@ const BlankHome = () => {
                 <img
                   src="/assets/pass/tick.svg"
                   alt="coin"
-                  className="w-6 h-auto"
+                  className="w-4 sm:w-6 h-auto"
                 />
-                <p className=" text-indigo-400 px-4 text-center font-bold">
+                <p className=" text-indigo-400 px-4 sm:font-bold">
                   Calculational Investments
                 </p>
               </div>
               <img
-                className={"w-[100px] h-auto mt-4"}
+                className={"w-[100px] h-auto mt-4 sm:block hidden"}
                 src={BLANKPAGE[4].image}
                 alt={BLANKPAGE[4].name}
               />
               <button
-                className="py-3 px-4 bg-indigo-700 text-white border border-indigo-700 rounded-md hover:bg-white hover:text-indigo-700 transition-colors duration-500"
+                className="mt-4 sm:mt-0 py-3 px-4 bg-indigo-700 text-white border border-indigo-700 rounded-md hover:bg-white hover:text-indigo-700 transition-colors duration-500"
                 onClick={async () => {
                   // setPLan("subscribed");
                   const stripe = await loadStripe(
@@ -296,17 +299,17 @@ const BlankHome = () => {
             </div>
           </div>
           <div className=" h-auto mt-4 lg:mt-0 flex flex-col items-center justify-center w-full">
-            <div className="w-11/12 sm:w-7/12 lg:w-11/12 bg-white  h-auto flex flex-col justify-start items-center p-4  rounded-lg ">
-              <h1 className="font-bold text-3xl 2xl:text-4xl text-indigo-700 text-center mt-4">
+            <div className="w-full sm:w-7/12 lg:w-11/12 bg-white  h-auto flex flex-col justify-start items-center p-4  rounded-lg ">
+              <h1 className="font-bold text-xl sm:text-3xl 2xl:text-4xl text-indigo-700 text-center mt-4">
                 {BLANKPAGE[5].name.toUpperCase()}
               </h1>
               <div className="flex flex-row items-center  mt-4 w-full px-2">
                 <img
                   src="/assets/pass/tick.svg"
                   alt="coin"
-                  className="w-6 h-auto"
+                  className="w-4 sm:w-6 h-auto"
                 />
-                <p className=" text-indigo-400 px-4 text-center font-bold">
+                <p className=" text-indigo-400 px-4  sm:font-bold">
                   14 days trial
                 </p>
               </div>
@@ -314,9 +317,9 @@ const BlankHome = () => {
                 <img
                   src="/assets/pass/tick.svg"
                   alt="coin"
-                  className="w-6 h-auto"
+                  className="w-4 sm:w-6 h-auto"
                 />
-                <p className=" text-indigo-400 px-4 text-center font-bold">
+                <p className=" text-indigo-400 px-4  sm:font-bold">
                   Customization
                 </p>
               </div>
@@ -324,9 +327,9 @@ const BlankHome = () => {
                 <img
                   src="/assets/pass/tick.svg"
                   alt="coin"
-                  className="w-6 h-auto"
+                  className="w-4 sm:w-6 h-auto"
                 />
-                <p className=" text-indigo-400 px-4 text-center font-bold">
+                <p className=" text-indigo-400 px-4  sm:font-bold">
                   Access to coin history
                 </p>
               </div>
@@ -334,9 +337,9 @@ const BlankHome = () => {
                 <img
                   src="/assets/pass/tick.svg"
                   alt="coin"
-                  className="w-6 h-auto"
+                  className="w-4 sm:w-6 h-auto"
                 />
-                <p className=" text-indigo-400 px-4 text-center font-bold">
+                <p className=" text-indigo-400 px-4  sm:font-bold">
                   free Graphical view
                 </p>
               </div>
@@ -344,20 +347,20 @@ const BlankHome = () => {
                 <img
                   src="/assets/pass/tick.svg"
                   alt="coin"
-                  className="w-6 h-auto"
+                  className="w-4 sm:w-6 h-auto"
                 />
-                <p className=" text-indigo-400 px-4 text-center font-bold">
+                <p className=" text-indigo-400 px-4  sm:font-bold">
                   Calculational Investments
                 </p>
               </div>
 
               <img
-                className={"w-[100px] h-auto mt-4"}
+                className={"w-[100px] h-auto mt-4 sm:block hidden"}
                 src={BLANKPAGE[5].image}
                 alt={BLANKPAGE[5].name}
               />
               <button
-                className="py-3 px-4 bg-indigo-700 text-white border border-indigo-700 rounded-md hover:bg-white hover:text-indigo-700 transition-colors duration-500"
+                className="mt-4 sm:mt-0 py-3 px-4 bg-indigo-700 text-white border border-indigo-700 rounded-md hover:bg-white hover:text-indigo-700 transition-colors duration-500"
                 onClick={async () => {
                   const stripe = await loadStripe(
                     process.env.NEXT_PUBLIC_STRIPE_KEY

@@ -9,11 +9,11 @@ const Services = () => {
           alt="security"
           className="w-16 h-auto"
         />
-        <h1 className="text-xl text-center font-bold mt-2">SECURITY</h1>
+        <h1 className="text-2xl text-center font-bold mt-2">SECURITY</h1>
         <p className="text-md text-center mt-4 md:px-0 px-8">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, consectetur
-          adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing
-          elit, consectetur adipiscing elit.
+          Our app employs cutting-edge encryption and security protocols,
+          ensuring your assets are safeguarded at all times. Rest easy knowing
+          that your investments are protected against any potential threats.
         </p>
       </div>
       <div className="flex flex-col items-center w-full md:w-10/12 md:mt-0 mt-12">
@@ -22,11 +22,12 @@ const Services = () => {
           alt="security"
           className="w-16 h-auto"
         />
-        <h1 className="text-xl text-center font-bold mt-2 px-8">CURRENCY</h1>
+        <h1 className="text-2xl text-center font-bold mt-2 px-8">CURRENCY</h1>
         <p className="text-md text-center mt-4 md:px-0 px-8">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, consectetur
-          adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing
-          elit, consectetur adipiscing elit.
+          With real-time currency updates, our app keeps you informed about the
+          latest exchange rates and fluctuations across various
+          cryptocurrencies. Stay ahead of the curve and make informed decisions
+          with up-to-date currency information.
         </p>
       </div>
       <div className="flex flex-col items-center w-full md:w-10/12 md:mt-0 mt-12">
@@ -35,13 +36,14 @@ const Services = () => {
           alt="security"
           className="w-16 h-auto"
         />
-        <h1 className="text-xl text-center font-bold mt-2 px-8">
+        <h1 className="text-2xl text-center font-bold mt-2 px-8">
           GRAPHICAL VIEW
         </h1>
         <p className="text-md text-center mt-4 md:px-0 px-8">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, consectetur
-          adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing
-          elit, consectetur adipiscing elit.
+          Visualize market trends and patterns effortlessly with our intuitive
+          graph view feature. Analyze historical data and track price movements
+          over time, empowering you to make data-driven investment decisions
+          with confidence.
         </p>
       </div>
     </div>

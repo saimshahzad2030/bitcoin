@@ -4,11 +4,11 @@ const InvestmentPlan = () => {
   return (
     <div className="w-full h-auto flex flex-col md:flex-row items-center justify-evenly py-12">
       <img
-        className="w-full md:w-6/12 h-auto   bg-no-repeat bg-center bg-cover"
+        className="w-11/12 md:w-6/12 h-auto   bg-no-repeat bg-center bg-cover"
         src="/assets/invesmentplans/chart.jpg"
         alt="investment plans"
       />
-      <div className="flex flex-col items-center w-full md:w-5/12">
+      <div className="flex flex-col items-center w-full md:w-5/12 md:mt-0 mt-12">
         <h2 className="text-4xl font-bold text-black postsenOne text-center md:px-0 px-8">
           INVESTMENT PLAN
         </h2>

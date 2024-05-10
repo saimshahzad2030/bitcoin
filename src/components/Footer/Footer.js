@@ -13,11 +13,11 @@ const Footer = () => {
             alt="logo"
           />
           <p className="text-gray-300 text-sm text-center mt-4 px-12">
-            Crypto is a platform that allows you to invest in cryptocurrencies
-            with ease.Petroleum is the leader in the country sed diam nonumy
-            eirmod tempor invidunt ut labore and efficient strategy. We provide
-            the energy to medium and big company, sadipscing elitr, sed diam
-            nonumy.
+            Maximize your crypto investments with our intuitive calculator,
+            guiding you to optimal entry and exit points. Gain valuable trading
+            insights in just a few clicks, ensuring you're always ahead of the
+            market trends. Invest smarter, trade better, and watch your profits
+            soar with our crypto calculator.
           </p>
         </div>
         {/* <div className="w-full flex  flex-col items-center md:mt-0 mt-12">
@@ -39,7 +39,7 @@ const Footer = () => {
             EMAIL: nouser@gmail.com
           </p>
         </div>
-        <div className="w-full flex  flex-col items-start lg:mt-0 md:mt-8 mt-12">
+        <div className="w-full flex  flex-col items-start lg:mt-0 md:mt-8 mt-12 sm:px-0 px-8">
           <h3 className="text-white text-center mt-4 text-2xl">QUERY</h3>
           <p className="text-gray-300 text-sm text-center mt-2">
             Write any query/question about our app
