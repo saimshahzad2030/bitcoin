@@ -150,7 +150,7 @@ const Navbar = ({ bg, calculatorPage, btnDisabled, selectedLink }) => {
                     <div className="relative flex flex-row items-center justify-end  w-full p-4 z-10 postsenOne ">
                       <p
                         className={`hidden sm:flex ${
-                          isScrolled ? "text-indigo-700" : "text-white"
+                          isScrolled ? "text-black" : "text-white"
                         } text-2xl mr-4`}
                       >
                         {name?.split(" ")[0]}

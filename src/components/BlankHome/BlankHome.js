@@ -57,17 +57,6 @@ const BlankHome = () => {
   return (
     <>
       <div className="relative flex flex-col items-center w-full container mx-auto postsenOne">
-        {/* <div className="flex fl ex-row items-center justify-end  w-full p-4 z-10 ">
-        <p className="text-indigo-700 text-xl mr-4 ">{name}</p>
-        <div className="flex flex-col items-center justify-center h-12 w-12 bg-indigo-700 rounded-full cursor-pointer">
-          <p
-            className="text-white text-3xl font-bold"
-            onClick={() => setAvatarClicked(true)}
-          >
-            {name?.charAt(0).toUpperCase()}
-          </p>
-        </div>
-      </div> */}
         {isAlertVisible && (
           <div
             id="customAlertBox"
@@ -93,13 +82,13 @@ const BlankHome = () => {
             className="text-center text-5xl font-bold my-16  p-4"
             id="benefitsSection"
           >
-            Benefits (working with us)
+            BENEFITS
           </h1>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 w-full p-4">
             <div className="bg-white h-[300px] flex flex-col items-center  w-full  cursor-pointer ">
               <div className="w-11/12 bg-gradient-to-b from-indigo-900 to-indigo-600 h-full flex flex-col justify-center items-center p-4  rounded-lg  transition-transform transform duration-700  hover:scale-105">
-                <h1 className="font-bold text-4xl text-white text-center">
-                  {BLANKPAGE[0].name}
+                <h1 className="font-bold text-2xl text-white text-center">
+                  {BLANKPAGE[0].name.toUpperCase()}
                 </h1>
                 <p className=" text-white px-4 text-center mt-4">
                   We provide users with coins to sell and purchase
@@ -113,8 +102,8 @@ const BlankHome = () => {
             </div>
             <div className=" mt-4 sm:mt-0 bg-white h-[300px] flex flex-col items-center  w-full cursor-pointer ">
               <div className="w-11/12 bg-gradient-to-b from-indigo-900 to-indigo-600  h-full flex flex-col justify-center items-center p-4  rounded-lg  transition-transform transform duration-700  hover:scale-105">
-                <h1 className="font-bold  text-4xl text-white text-center">
-                  {BLANKPAGE[1].name}
+                <h1 className="font-bold  text-2xl text-white text-center">
+                  {BLANKPAGE[1].name.toUpperCase()}
                 </h1>
                 <p className=" text-white px-4 text-center mt-4">
                   Chart view makes it easier to know and understand the dynamix
@@ -129,8 +118,8 @@ const BlankHome = () => {
             </div>
             <div className="bg-white h-[300px] mt-4 lg:mt-0 flex flex-col items-center  w-full cursor-pointer">
               <div className="w-11/12 bg-gradient-to-b from-indigo-900 to-indigo-600  h-full flex flex-col justify-center items-center p-4  rounded-lg  transition-transform transform duration-700  hover:scale-105">
-                <h1 className="font-bold text-4xl text-white text-center">
-                  {BLANKPAGE[2].name}
+                <h1 className="font-bold text-2xl text-white text-center">
+                  {BLANKPAGE[2].name.toUpperCase()}
                 </h1>
                 <p className=" text-white px-4 text-center mt-4">
                   Custom Sell levels provided for users for their exit
@@ -144,8 +133,8 @@ const BlankHome = () => {
             </div>
             <div className="bg-white h-[300px] mt-4 lg:mt-0 flex flex-col items-center  w-full  cursor-pointer">
               <div className="w-11/12 bg-gradient-to-b from-indigo-900 to-indigo-600  h-full flex flex-col justify-center items-center p-4  rounded-lg  transition-transform transform duration-700  hover:scale-105">
-                <h1 className="font-bold text-4xl text-white text-center">
-                  {BLANKPAGE[3].name}
+                <h1 className="font-bold text-2xl text-white text-center">
+                  {BLANKPAGE[3].name.toUpperCase()}
                 </h1>
                 <p className=" text-white px-4 text-center mt-4">
                   around 30 coins provided for users for investments
@@ -159,108 +148,8 @@ const BlankHome = () => {
             </div>
           </div>
         </div>
-        {/* {plan && (
-        <div className="flex flex-col w-full items-center">
-          <div className="flex flex-col items-start justify-center w-full ">
-            <div
-              className="flex flex-col items-center justify-center m-2 px-4 py-2 rounded-xl bg-indigo-700 cursor-pointer"
-              onClick={() => {
-                setPLan(null);
-              }}
-            >
-              <img
-                src={GoBack.image}
-                alt={GoBack.name}
-                className="w-12 h-auto"
-              />
-            </div>
-          </div>
 
-          {plan === "free" && (
-            <div className="flex flex-col items-center w-full mt-12">
-              <h1 className="text-5xl font-bold">Free Plan</h1>
-              <p className="text-3xl px-8 mt-2 text-center">
-                Are you sure? you want to acces trial version of our app with
-                following terms and conditions?
-              </p>
-
-              <div className="flex flex-col w-full items-center mt-12 mb-8">
-                <div className=" bg-white  w-11/12 sm:w-9/12 md:w-7/12 lg:w-5/12 xl:w-4/12 border border-indigo-700  h-full flex flex-col justify-start items-center p-4  rounded-lg">
-                  <div className="flex flex-row items-center  mt-4 w-full px-2">
-                    <img
-                      src="/assets/pass/tick.svg"
-                      alt="coin"
-                      className="w-6 h-auto"
-                    />
-
-                    <p className="text-xl px-8 ">Access last till 14 days</p>
-                  </div>
-                  <div className="flex flex-row items-center  mt-2 w-full px-2">
-                    <img
-                      src="/assets/pass/tick.svg"
-                      alt="coin"
-                      className="w-6 h-auto"
-                    />
-                    <p className="text-xl px-8 ">
-                      Require subscription after trial period
-                    </p>
-                  </div>
-                  <div className="flex flex-row items-center  mt-2 w-full px-2">
-                    <img
-                      src="/assets/pass/tick.svg"
-                      alt="coin"
-                      className="w-6 h-auto"
-                    />
-                    <p className="text-xl px-8 ">Graphical View</p>
-                  </div>
-                  <div className="flex flex-row items-center  mt-2 w-full px-2">
-                    <img
-                      src="/assets/pass/tick.svg"
-                      alt="coin"
-                      className="w-6 h-auto"
-                    />
-                    <p className="text-xl px-8 ">
-                      Controlled investment environment
-                    </p>
-                  </div>
-                  <div className="flex flex-row items-center  mt-2 w-full px-2">
-                    <img
-                      src="/assets/pass/tick.svg"
-                      alt="coin"
-                      className="w-6 h-auto"
-                    />
-                    <p className="text-xl px-8 "> Calculational Investments</p>
-                  </div>
-                  <button
-                    className="p-4    font-bold  bg-indigo-700 text-white rounded-xl  mt-8 transition-transform transform duration-700  hover:scale-110"
-                    onClick={async () => {
-                      const stripe = await loadStripe(
-                        process.env.NEXT_PUBLIC_STRIPE_KEY
-                      );
-                      // console.log(`${BASEURL}/subscribe`);
-                      const response = await axios.post(
-                        `${BASEURL}/subscribe`,
-                        {},
-                        headersFunction()
-                      );
-
-                      const result = await stripe.redirectToCheckout({
-                        sessionId: response.data.id,
-                      });
-                      if (result.error) {
-                        console.log(result.error);
-                      }
-                    }}
-                  >
-                    Continue
-                  </button>
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
-      )} */}
-        {avatarClicked && (
+        {/* {avatarClicked && (
           <div
             id="avatarDiv"
             className={`absolute right-0 w-[150px] h-[150px] pb-8 pt-4 z-5 `}
@@ -303,15 +192,15 @@ const BlankHome = () => {
               </div>
             </div>
           </div>
-        )}
+        )} */}
       </div>
 
-      <div className=" h-auto mt-4 lg:mt-0 flex flex-col items-center justify-center w-full  bg-indigo-700">
+      <div className=" h-auto mt-4 lg:mt-0 flex flex-col items-center justify-center w-full  postsenOne bg-indigo-700">
         <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 w-full p-4 mt-16 mb-4 bg-indigo-700 h-auto container mx-auto">
           <div className=" mt-4 sm:mt-0  flex flex-col items-center  w-full ">
             <div className="w-11/12 h-full flex flex-col  items-center p-4  rounded-lg py-20">
-              <h1 className="font-bold  text-5xl text-white text-center">
-                Subscription Plans
+              <h1 className="font-bold text-4xl 2xl:text-5xl text-white text-center">
+                SUBSCRIPTION PLANS
               </h1>
               <p className=" text-indigo-200  px-4 text-center mt-4 text-lg">
                 We offer subscribed(paid) plans as well as unsubscribed(free 14
@@ -323,8 +212,8 @@ const BlankHome = () => {
           </div>
           <div className=" h-auto mt-4 lg:mt-0 flex flex-col items-center justify-center w-full">
             <div className="w-11/12 sm:w-7/12  lg:w-11/12 bg-white h-auto flex flex-col justify-start items-center p-4  rounded-lg">
-              <h1 className="font-bold text-4xl text-indigo-700 text-center mt-4">
-                {BLANKPAGE[4].name}
+              <h1 className="font-bold text-3xl 2xl:text-4xl text-indigo-700 text-center mt-4">
+                {BLANKPAGE[4].name.toUpperCase()}
               </h1>
               <div className="flex flex-row items-center  mt-4 w-full px-2">
                 <img
@@ -402,14 +291,14 @@ const BlankHome = () => {
                   }
                 }}
               >
-                Subscribe
+                SUBSCRIBE
               </button>
             </div>
           </div>
           <div className=" h-auto mt-4 lg:mt-0 flex flex-col items-center justify-center w-full">
             <div className="w-11/12 sm:w-7/12 lg:w-11/12 bg-white  h-auto flex flex-col justify-start items-center p-4  rounded-lg ">
-              <h1 className="font-bold text-4xl text-indigo-700 text-center mt-4">
-                {BLANKPAGE[5].name}
+              <h1 className="font-bold text-3xl 2xl:text-4xl text-indigo-700 text-center mt-4">
+                {BLANKPAGE[5].name.toUpperCase()}
               </h1>
               <div className="flex flex-row items-center  mt-4 w-full px-2">
                 <img
@@ -488,7 +377,7 @@ const BlankHome = () => {
                   }
                 }}
               >
-                Start trial
+                START TRIAL
               </button>
             </div>
           </div>

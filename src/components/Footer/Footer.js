@@ -40,7 +40,7 @@ const Footer = () => {
           </p>
         </div>
         <div className="w-full flex  flex-col items-start lg:mt-0 md:mt-8 mt-12">
-          <h3 className="text-white text-center mt-4 text-2xl">Query</h3>
+          <h3 className="text-white text-center mt-4 text-2xl">QUERY</h3>
           <p className="text-gray-300 text-sm text-center mt-2">
             Write any query/question about our app
           </p>
