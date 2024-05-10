@@ -180,7 +180,7 @@ const WelcomePage = () => {
                     htmlFor="username"
                     className="block text-gray-400 text-sm font-bold mb-2"
                   >
-                    Firstname
+                    Name
                   </label>
                   <input
                     type="text"
@@ -188,7 +188,6 @@ const WelcomePage = () => {
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                     className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    maxLength={10}
                     required
                   />
                 </div>
@@ -367,7 +366,9 @@ const WelcomePage = () => {
                         checked={isChecked}
                         onChange={handleCheckboxChange}
                       />
-                      <label className="ml-2 text-gray-700">Remember me</label>
+                      <label className="ml-2 text-gray-700 cursor-pointer">
+                        Remember me
+                      </label>
                     </div>
                   </div>
                 )

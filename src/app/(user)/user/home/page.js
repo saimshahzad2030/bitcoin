@@ -36,6 +36,7 @@ const Page = () => {
         nochartAccess={true}
         calculatorPage={true}
         btnDisabled={!subscribed === "false" ? "EXIT CHART" : ""}
+        selectedLink={"HOME"}
       />
 
       <BlankHome />

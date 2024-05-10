@@ -7,8 +7,12 @@ import Navbar from "@/components/Navbar/Navbar";
 const page = () => {
   return (
     <>
+      <Navbar
+        bg={"bg-indigo-700"}
+        calculatorPage={true}
+        selectedLink={"EXIT CHART"}
+      />
       <ChartAuthentication>
-        <Navbar bg={"bg-indigo-700"} calculatorPage={true}  />
         <ChartUi />
         <Footer />
         <Copyright />

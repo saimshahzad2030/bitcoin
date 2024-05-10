@@ -4,7 +4,7 @@ import Link from "next/link";
 import style from "./Navbar.module.css";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
-const Navbar = ({ bg, calculatorPage, nochartAccess, btnDisabled }) => {
+const Navbar = ({ bg, calculatorPage, btnDisabled, selectedLink }) => {
   const router = useRouter();
   const [isScrolled, setIsScrolled] = React.useState(false);
   const [avatarClicked, setAvatarClicked] = React.useState(false);
@@ -81,7 +81,7 @@ const Navbar = ({ bg, calculatorPage, nochartAccess, btnDisabled }) => {
                       <h1>HOME</h1>
                       <div
                         className={`${
-                          calculatorPage ? "w-0" : "w-full"
+                          selectedLink === "HOME" ? "w-full" : "w-0"
                         } h-[2px] ${
                           isScrolled ? "bg-indigo-700 " : "bg-white "
                         } transition-all duration-300 ${style.child}
@@ -108,7 +108,7 @@ const Navbar = ({ bg, calculatorPage, nochartAccess, btnDisabled }) => {
                       <h1>EXIT CHART</h1>
                       <div
                         className={`${
-                          calculatorPage ? "w-full" : "w-0"
+                          selectedLink === "EXIT CHART" ? "w-full" : "w-0"
                         }  h-[2px] ${
                           isScrolled ? "bg-indigo-700 " : "bg-white "
                         } transition-all duration-300 ${style.child}`}
@@ -153,7 +153,7 @@ const Navbar = ({ bg, calculatorPage, nochartAccess, btnDisabled }) => {
                           isScrolled ? "text-indigo-700" : "text-white"
                         } text-2xl mr-4`}
                       >
-                        {name}
+                        {name?.split(" ")[0]}
                       </p>
                       <div
                         className={`flex flex-col items-center justify-center h-12 w-12 ${
@@ -170,12 +170,12 @@ const Navbar = ({ bg, calculatorPage, nochartAccess, btnDisabled }) => {
                               : setAvatarClicked(true);
                           }}
                         >
-                          {name?.charAt(0).toUpperCase()}
+                          {name?.split(" ")[0]?.charAt(0).toUpperCase()}
                         </p>
                         {avatarClicked && (
                           <div
                             id="avatarDiv"
-                            className={`absolute right-0 top-4 w-[150px] h-[150px] pb-8 pt-4 z-5 postsenOne`}
+                            className={`absolute right-0 top-4 w-[150px] h-[150px] pb-8 pt-4 z-5 postsenOne  transform transition-transform duration-300 `}
                             onClick={closeAvatarDropdown}
                           >
                             <div

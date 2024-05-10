@@ -12,7 +12,7 @@ const HappyUsers = () => {
       <h1 className="text-md text-gray-600">
         Join us today and be a part of safe trading...
       </h1>
-      <button className="mt-8 p-4 bg-indigo-700 border border-indigo-700 text-white  rounded-md  px-4 py-3 hover:bg-white hover:text-indigo-700 transition-colors duration-500">
+      <button className="mt-8 bg-indigo-700 border border-indigo-700 text-white  rounded-md  px-4 py-3 hover:bg-white hover:text-indigo-700 transition-colors duration-500">
         JOIN NOW
       </button>
     </div>

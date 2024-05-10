@@ -36,9 +36,8 @@ const Modal = ({
     <div
       className={`w-screen h-screen flex justify-center items-center ${style.main} drop-shadow-lg `}
     >
-      <div className="rounded-lg bg-white p-8">
-        <div className="flex justify-center mb-4">
-          {type !== "" && type === "failed" && (
+      <div className="flex justify-center mb-4">
+        {/* {type !== "" && type === "failed" && (
             <img
               src="/assets/response/failed.png"
               className="h-12 2-12"
@@ -52,12 +51,10 @@ const Modal = ({
               className="h-12 2-12"
               alt="success"
             />
-          )}
-          {(type === "" || !type) && (
-            <div className="rounded-full h-12 w-12 border-t-4 border-blue-500 animate-spin"></div>
-          )}
-        </div>
-        <p className="text-center">{message}</p>
+          )} */}
+        {(type === "" || !type) && (
+          <div className="rounded-full h-12 w-12 border-t-4 border-indigo-700 animate-spin"></div>
+        )}
       </div>
     </div>
   ) : children ? (
