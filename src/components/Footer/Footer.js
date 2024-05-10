@@ -4,7 +4,7 @@ import React, { useState } from "react";
 const Footer = () => {
   const [query, setQuery] = useState("");
   return (
-    <div className={` bg-indigo-700 sm:py-8 md:py-20 h-auto w-full `}>
+    <div className={` bg-indigo-700 sm:py-8 md:py-12 h-auto w-full `}>
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 py-8 postsenOne bg-indigo-700">
         <div className="w-full flex flex-col items-center justify-end">
           <img
@@ -12,7 +12,7 @@ const Footer = () => {
             src="/assets/landing/crypto-logo.png"
             alt="logo"
           />
-          <p className="text-gray-300 text-sm text-center mt-4 px-12">
+          <p className="text-gray-300 text-md text-center mt-4 px-12">
             Maximize your crypto investments with our intuitive calculator,
             guiding you to optimal entry and exit points. Gain valuable trading
             insights in just a few clicks, ensuring you're always ahead of the
@@ -53,7 +53,12 @@ const Footer = () => {
               onChange={(e) => setQuery(e.target.value)}
               className="appearance-none border border-white text-white  w-7/12   px-4 py-3 bg-indigo-700 leading-tight focus:outline-none focus:shadow-outline"
             />
-            <button className="px-4 py-3 rounded-md border border-white text-indigo-700 bg-white ml-4 hover:bg-indigo-700 hover:text-white transition-colors duration-500">
+            <button
+              onClick={() => {
+                setQuery("");
+              }}
+              className="px-4 py-3 rounded-md border border-white text-indigo-700 bg-white ml-4 hover:bg-indigo-700 hover:text-white transition-colors duration-500"
+            >
               Submit
             </button>
           </div>
