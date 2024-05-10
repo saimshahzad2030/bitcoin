@@ -34,13 +34,25 @@ const BlankHome = () => {
       document.removeEventListener("mousedown", handleOutsideClick);
     };
   }, []);
-  const [username, setUsername] = useState("");
-  const [accountName, setAccountName] = useState("");
-  const [accountNo, setAccountNo] = useState("");
-  const [country, setCountry] = useState("");
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // setAdminAuthenticated(true);
+
+  const [subscribed, setSubscribed] = React.useState(null);
+  const [isAlertVisible, setAlertVisible] = useState(false);
+
+  React.useEffect(() => {
+    const fetchSubscribedStatus = async () => {
+      const searchParams = new URLSearchParams(window.location.search);
+      const subscribedParam = searchParams.get("subscribed");
+      setAlertVisible(subscribedParam === "false");
+    };
+
+    fetchSubscribedStatus();
+  }, []);
+
+  const closeAlert = () => {
+    setAlertVisible(false);
+    setTimeout(() => {
+      setAlertVisible(false);
+    }, 500);
   };
   return (
     <div className="relative flex flex-col items-center w-full container mx-auto postsenOne">
@@ -55,6 +67,26 @@ const BlankHome = () => {
           </p>
         </div>
       </div> */}
+      {isAlertVisible && (
+        <div
+          id="customAlertBox"
+          className="custom-alert absolute"
+          style={{
+            transition: "opacity 0.5s, transform 0.5s",
+            opacity: 1,
+            transform: "translateY(0)",
+          }}
+        >
+          <div className="flex flex-row items-center  p-4 border border-yellow-500 rounded-md">
+            <p> ⚠️ You need to buy subscription to excess the exit</p>
+
+            <button className="text-2xl ml-4" onClick={closeAlert}>
+              {"\u2716"}
+            </button>
+          </div>
+        </div>
+      )}
+
       <div className={`${plan ? "hidden" : ""}`}>
         <h1
           className="text-center text-5xl font-bold my-16  p-4"

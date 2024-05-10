@@ -55,7 +55,7 @@ const Navbar = ({ bg, calculatorPage, btnDisabled, selectedLink }) => {
         >
           <div className=" flex flex-row justify-between items-center">
             <div>
-              <Link href="/user/home" className="text-white text-xl font-bold ">
+              <Link href="/" className="text-white text-xl font-bold ">
                 <img
                   className="w-12 h-auto bg-no-repeat bg-center bg-cover"
                   src="/assets/landing/crypto-logo.png"

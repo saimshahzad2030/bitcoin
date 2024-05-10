@@ -14,12 +14,17 @@ import {
 } from "../../../utils/functional-utils/user-login-utils";
 import CustomCarousel from "../CustomCarousel/CustomCarousel";
 import Modal2 from "../Modal/Modal2";
+import Cookies from "js-cookie";
 
 const WelcomePage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [btnDisabled, setBtnDisabled] = useState(true);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState(
+    Cookies.get("email") ? Cookies.get("email") : ""
+  );
+  const [password, setPassword] = useState(
+    Cookies.get("pass") ? Cookies.get("pass") : ""
+  );
   const [username, setUsername] = useState("");
   const [isLogin, setIsLogin] = useState(true);
   const [token, setToken] = useState("");
@@ -88,6 +93,8 @@ const WelcomePage = () => {
       } else if (emailEntered && emailVerified) {
         setType("");
         setResponseMessage("");
+        Cookies.set("email", email);
+        Cookies.set("pass", password);
         Signup(
           email,
           username,
@@ -133,12 +140,6 @@ const WelcomePage = () => {
     <div
       className={`bg-gradient-to-b from-indigo-900 to-indigo-500  py-12 ${style.welcomePage} postsenOne`}
     >
-      {/* <Modal
-        loading={loading}
-        type={type}
-        message={responseMessage}
-        route={routeName}
-      > */}
       <div>
         <h1
           className={`text-5xl lg:text-6xl font-bold mb-12 text-center text-gray-50 ${style.heading}`}
@@ -274,6 +275,7 @@ const WelcomePage = () => {
                     }}
                     className={`pr-8 appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline`}
                     required
+                    autoComplete="off"
                   />
                   {showPassword ? (
                     <img
@@ -421,6 +423,8 @@ const WelcomePage = () => {
                     setEmail("");
                     setPassword("");
                     setUsername("");
+                    setEmailEntered(false);
+                    setEmailVerified(false);
                   }}
                   className="ml-2 text-indigo-800 hover:underline focus:outline-none"
                 >
