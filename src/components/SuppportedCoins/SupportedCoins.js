@@ -10,7 +10,7 @@ const SupportedCoins = () => {
         <h2 className="mt-8 text-sm text-gray-500 postsenOne md:text-start text-center  md:px-0 px-8">
           Discover a diverse range of over 90 cryptocurrencies supported on our
           platform. From popular options like Bitcoin and Ethereum to emerging
-          coins, we've got you covered. Explore the world of digital assets with
+          coins, we&apos;ve got you covered. Explore the world of digital assets with
           ease and confidence.
         </h2>
       </div>

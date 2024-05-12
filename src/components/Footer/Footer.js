@@ -15,7 +15,7 @@ const Footer = () => {
           <p className="text-gray-300 text-md text-center mt-4 px-12">
             Maximize your crypto investments with our intuitive calculator,
             guiding you to optimal entry and exit points. Gain valuable trading
-            insights in just a few clicks, ensuring you're always ahead of the
+            insights in just a few clicks, ensuring you&apos;re always ahead of the
             market trends. Invest smarter, trade better, and watch your profits
             soar with our crypto calculator.
           </p>
