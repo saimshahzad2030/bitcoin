@@ -196,6 +196,8 @@ const Navbar = ({ bg, calculatorPage, btnDisabled, selectedLink }) => {
                                   onClick={() => {
                                     Cookies.remove("token");
                                     Cookies.remove("name");
+                                    Cookies.remove("email");
+                                    Cookies.remove("pass");
                                     router.push("/");
                                   }}
                                 >

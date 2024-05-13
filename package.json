@@ -13,6 +13,7 @@
     "@stripe/stripe-js": "^3.3.0",
     "@studio-freight/lenis": "^1.0.42",
     "@studio-freight/tempus": "^0.0.44",
+    "antd": "^5.17.0",
     "axios": "^1.6.8",
     "chart.js": "^4.4.2",
     "chartjs-plugin-annotation": "^3.0.1",
