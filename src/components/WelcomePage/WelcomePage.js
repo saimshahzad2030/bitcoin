@@ -136,7 +136,15 @@ const WelcomePage = () => {
       }
     });
   }, []);
-
+  useEffect(() => {
+    let timeout;
+    if (responseMessage) {
+      timeout = setTimeout(() => {
+        setResponseMessage("");
+      }, 3000);
+    }
+    return () => clearTimeout(timeout);
+  }, [responseMessage]);
   const isPasswordValid = (password) => {
     return password.length >= 8;
   };
@@ -164,6 +172,7 @@ const WelcomePage = () => {
                 </h2>
                 <div className="flex flex-row items-center  my-3">
                   {type &&
+                    responseMessage &&
                     (type === "success" ? (
                       <img
                         src="/assets/response/success.png"
