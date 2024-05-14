@@ -95,11 +95,7 @@ const WelcomePage = () => {
       } else if (emailEntered && emailVerified) {
         setType("");
         setResponseMessage("");
-        if (isChecked) {
-          console.log("condition true");
-          Cookies.set("email", email);
-          Cookies.set("pass", password);
-        }
+
         Signup(
           email,
           username,
@@ -116,11 +112,15 @@ const WelcomePage = () => {
               setRouteName("/user/home");
               setLoading(false);
               setIsLogin(true);
-              setEmail("");
-              setPassword("");
               setToken("");
               setEmailEntered(false);
               setEmailVerified(false);
+              if (isChecked) {
+                Cookies.set("email", email);
+                Cookies.set("pass", password);
+              }
+              setEmail(Cookies.get("email"));
+              setPassword(Cookies.get("pass"));
             }
           }
         );

@@ -6,8 +6,8 @@ const UnChangeAblePrices = ({ value, color, text, parentBg }) => {
       className={` flex flex-col items-center justify-between h-auto w-full  ${parentBg} py-4 sm:py-8 `}
     >
       <div className={`w-10/12 h-[2px] ${color}`}></div>
-      <div className="mt-4 w-10/12 flex-col items-center py-4 border border-black rounded-xl bg-white">
-        <h2 className="text-center text-lg">
+      <div className="mt-4 w-10/12 flex-col items-center py-4 border border-white rounded-xl bg-indigo-700">
+        <h2 className="text-center text-white text-lg">
           {text}
           {value}
         </h2>
@@ -24,11 +24,11 @@ const UnChangeAblePrices = ({ value, color, text, parentBg }) => {
       }`}
     >
       <div
-        className={`  flex-col items-center border border-black  rounded-xl bg-white  ${
+        className={`  flex-col items-center border    rounded-xl border-white   bg-indigo-700 ${
           text == " Initial Investment: $ " ? "w-10/12 py-4" : "w-fit  p-4"
         }`}
       >
-        <h2 className="text-center text-xl text-black text-nowrap">
+        <h2 className="text-center text-white text-xl text-nowrap">
           {text}
           {value}
         </h2>

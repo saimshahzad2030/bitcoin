@@ -36,15 +36,17 @@ const Table = ({
       className={`overflow-x-auto `}
       style={{ display: !initialInvestments ? "none" : "" }}
     >
-      <table className="table-auto w-full bg-purple-100   mb-12">
-        <thead className="bg-purple-100 border-t border-b border-black">
+      <table className="table-auto w-full bg-white   my-8">
+        <thead className="bg-white border-t border-b border-indigo-700">
           <tr>
-            <th className={`md:px-4 md:py-2 border text-2xl w-1/12`}>
-              <h1 className={`text-2xl text-center font-bold sm:ml-8`}>
+            <th className={`md:px-4 md:py-2   text-2xl w-1/12`}>
+              <h1
+                className={`text-2xl text-center font-bold sm:ml-8 text-indigo-700`}
+              >
                 #I.I.O
               </h1>
             </th>
-            <th className={`md:px-4 md:py-2   border w-4/12 md:w-3/12  `}>
+            <th className={`md:px-4 md:py-2  w-4/12 md:w-3/12  `}>
               <input
                 type="text"
                 value={initalInvestmentOutLevel ? initalInvestmentOutLevel : ""}
@@ -54,18 +56,16 @@ const Table = ({
                 }}
                 placeholder="I.I.O Price "
                 pattern="\d*"
-                className="w-full  border border-black rounded-lg py-4 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full  border border-indigo-700 rounded-lg py-4 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </th>
-            <th className={`px-4 py-2 border w-4/12 md:w-3/12`}>
+            <th className={`px-4 py-2  w-4/12 md:w-3/12`}>
               <UnChangeAblePrices
                 text={"ROI: $ "}
                 value={numberOfTokens * averagePurchasePrice}
               />
             </th>
-            <th
-              className={`md:px-4 md:py-2 border text-2xl w-4/12 md:w-3/12 `}
-            ></th>
+            <th className={`md:px-4 md:py-2  text-2xl w-4/12 md:w-3/12 `}></th>
           </tr>
           <div className="w-full h-4 "></div>
         </thead>
@@ -75,10 +75,10 @@ const Table = ({
               <div className="w-full h-4 "></div>
               <tr
                 key={index}
-                className="border-t border-b border-black bg-purple-100"
+                className="border-t border-b border-indigo-700 bg-white"
               >
                 <td
-                  className={`px-4 md:px-4 md:py-4 text-center border-t  border-b border-black `}
+                  className={`px-4 md:px-4 md:py-4 text-center border-t  border-b border-indigo-700 `}
                 >{`# ${index + 1}`}</td>
                 <td className={` px-4 md:px-4 md:py-4    text-center pb-4`}>
                   <div className="h-[2px]  border-t-2 border-purple-500 border-dashed mb-2"></div>
@@ -87,7 +87,9 @@ const Table = ({
                     value={
                       level.levelPrice < 0 || !level.levelPrice
                         ? 0
-                        : parseFloat(level.levelPrice * (levelRange / 100)).toFixed(2)
+                        : parseFloat(
+                            level.levelPrice * (levelRange / 100)
+                          ).toFixed(2)
                     }
                   />
                 </td>
@@ -101,55 +103,34 @@ const Table = ({
                     }
                     placeholder={`Enter Custom Price`}
                     onChange={(e) => {
-                      const newValue = e.target.value.replace(/[^\d.]/g, ''); // Remove all characters except digits and dots
+                      const newValue = e.target.value.replace(/[^\d.]/g, ""); // Remove all characters except digits and dots
                       const decimalCount = (newValue.match(/\./g) || []).length; // Count the number of dots
-                    
-                      if (decimalCount <= 1) {  
-                      
-                      dispatch(
-                        updateChangeLevel({
-                          index,
-                          newItem: newValue,
-                        })
-                      );
-                      dispatch(
-                        updateItem({
-                          index,
-                          newItem: {
-                            level: `# ${index + 1}`,
-                            levelPrice: newValue,
-                          },
-                        })
-                      );
-                      setCustomLevelPrice(!customLevelPrice);
-                    }
-                      // const newValue = e.target.value.replace(/\D/g, "");
-                      // setLevelArray((prevLevels) => {
-                      //   const newLevels = [...prevLevels];
-                      //   newLevels[index] = {
-                      //     ...newLevels[index],
-                      //     levelPrice: newValue,
-                      //   };
-                      //   return newLevels;
-                      // });
-                      // const updatedLevels = [...changedLevel];
 
-                      // updatedLevels[index] =
-                      //   parseFloat(e.target.value) * (100 / levelRange);
-                      // setChangedLevel((prevLevels) => {
-                      //   const newLevels = [...prevLevels];
-                      //   newLevels[index] =
-                      //     parseFloat(e.target.value) * (100 / levelRange);
-                      //   return newLevels;
-                      // });
-                      // console.log(e.target.value);
+                      if (decimalCount <= 1) {
+                        dispatch(
+                          updateChangeLevel({
+                            index,
+                            newItem: newValue,
+                          })
+                        );
+                        dispatch(
+                          updateItem({
+                            index,
+                            newItem: {
+                              level: `# ${index + 1}`,
+                              levelPrice: newValue,
+                            },
+                          })
+                        );
+                        setCustomLevelPrice(!customLevelPrice);
+                      }
                     }}
                     pattern="^\d*(\.\d+)?$"
-                    className="w-full text-center py-4 bg-white border border-black text-black px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg"
+                    className="w-full text-center py-4 bg-white border border-indigo-700  text-indigo-700 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg"
                   />
                 </td>
                 <td
-                  className={`px-4 md:px-4 md:py-4    text-center text-black`}
+                  className={`px-4 md:px-4 md:py-4    text-center text-indigo-700`}
                 >
                   <UnChangeAblePrices
                     text={"ROI: $ "}
@@ -165,11 +146,13 @@ const Table = ({
                         numberOfTokens
                       )
                         ? 0
-                        : parseFloat(returnOnServiceEachLevel(
-                            level,
-                            averagePurchasePrice,
-                            numberOfTokens
-                          )).toFixed(2)
+                        : parseFloat(
+                            returnOnServiceEachLevel(
+                              level,
+                              averagePurchasePrice,
+                              numberOfTokens
+                            )
+                          ).toFixed(2)
                     }
                     // parentBg={"mt-4"}
                   />
