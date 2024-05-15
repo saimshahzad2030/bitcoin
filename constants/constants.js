@@ -35,3 +35,34 @@ export const GoBack = {
   name: "go back",
   image: "/assets/blankhome/go-back.svg",
 };
+
+export const CurrencyConverterBG = {
+  name: "bg",
+  image: "/assets/CurrencyConverter/bg.jpg",
+};
+export const TOPCURRENCIES = [
+  {
+    name: "Ethereum",
+    symbol: "ETH",
+    image: "/assets/CurrencyConverter/eth.svg",
+    price: 191.0,
+  },
+  {
+    name: "Bitcoin",
+    symbol: "BTC",
+    image: "/assets/CurrencyConverter/btc.svg",
+    price: 504.34,
+  },
+  {
+    name: "XRP",
+    symbol: "XRP",
+    image: "/assets/CurrencyConverter/xrp.svg",
+    price: 0.54,
+  },
+];
+
+export const DOLLAR = {
+  name: "US Dollar",
+  symbol: "US$",
+  image: "/assets/CurrencyConverter/dollar.svg",
+};

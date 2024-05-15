@@ -43,7 +43,7 @@ const Navbar = ({ bg, calculatorPage, btnDisabled, selectedLink }) => {
     <>
       <div
         className={`${
-          isScrolled ? "   border border-gray-500 shadow-lg " : bg
+          isScrolled ? "   border-b border-gray-500 shadow-lg " : bg
         } ${style.blurredBackground}   h-auto w-full fixed z-30`}
       >
         <nav
@@ -120,15 +120,8 @@ const Navbar = ({ bg, calculatorPage, btnDisabled, selectedLink }) => {
               {!name ? (
                 <>
                   <li className="hidden sm:flex">
-                    <Link href="/login" className={`text-white   `}>
-                      <button className=" px-4 py-3 rounded-md border bg-indigo-700 border-indigo-700 hover:border-white hover:bg-white-700 hover:text-white transition-colors duration-500 ">
-                        SIGNIN
-                      </button>
-                    </Link>
-                  </li>
-                  <li className="hidden sm:flex">
                     <Link href="/login" className="text-white ">
-                      <button className=" px-4 py-3 rounded-md border bg-indigo-700 border-indigo-700 hover:border-white hover:bg-white-700 hover:text-white transition-colors duration-500 ">
+                      <button className=" px-4 py-2 rounded-md border bg-indigo-700 border-indigo-700 hover:border-white hover:bg-white-700 hover:text-white transition-colors duration-500 ">
                         SIGNUP
                       </button>
                     </Link>

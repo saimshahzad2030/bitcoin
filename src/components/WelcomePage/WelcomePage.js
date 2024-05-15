@@ -8,7 +8,6 @@ import { WELCOMEPAGE } from "../../../constants/constants";
 import { sendVerificationEmail } from "../../../utils/functional-utils/verification-email-utils";
 import { matchToken } from "../../../utils/functional-utils/match-token-utils";
 
-import { Button, notification, Space } from "antd";
 import {
   Signup,
   autoLogin,
@@ -127,15 +126,15 @@ const WelcomePage = () => {
       }
     }
   };
-  useEffect(() => {
-    autoLogin(setLoading, (role) => {
-      if (role === "user") {
-        router.push("/user/home");
-      } else if (role === "admin") {
-        router.push("/admin/home");
-      }
-    });
-  }, []);
+  // useEffect(() => {
+  //   autoLogin(setLoading, (role) => {
+  //     if (role === "user") {
+  //       router.push("/user/home");
+  //     } else if (role === "admin") {
+  //       router.push("/admin/home");
+  //     }
+  //   });
+  // }, []);
   useEffect(() => {
     let timeout;
     if (responseMessage) {

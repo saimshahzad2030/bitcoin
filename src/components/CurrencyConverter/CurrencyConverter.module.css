@@ -1,0 +1,30 @@
+.blurredBackground {
+  backdrop-filter: blur(20px);
+}
+@keyframes expandH {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0;
+  }
+}
+.expandHorizontal {
+  overflow: hidden;
+  animation: expandH 5s linear infinite;
+}
+@keyframes expandHFast {
+  0% {
+    width: 100%;
+  }
+  10% {
+    width: 5%;
+  }
+  100% {
+    width: 0;
+  }
+}
+.expandHorizontalFast {
+  overflow: hidden;
+  animation: expandHFast 5s linear infinite;
+}
