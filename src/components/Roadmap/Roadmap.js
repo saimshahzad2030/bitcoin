@@ -2,7 +2,7 @@ import React from "react";
 
 const Roadmap = () => {
   return (
-    <div className="w-full bg-indigo-700 ">
+    <div className="w-full bg-indigo-700 py-12">
       <div className="container mx-auto">
         <div className=" relative flex flex-col items-center w-full h-auto bg-indigo-700 postsenOne">
           <div className="flex flex-col items-center w-auto">
