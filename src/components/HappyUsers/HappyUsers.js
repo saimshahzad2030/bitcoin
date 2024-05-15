@@ -1,10 +1,10 @@
 import React from "react";
-
+import style from "./HappyUsers.module.css";
 const HappyUsers = () => {
   return (
     <div className="flex flex-col items-center postsenOne py-12">
       <img
-        className="w-full h-auto   bg-no-repeat bg-center bg-cover"
+        className={`lg:w-7/12 w-10/12 h-auto   bg-no-repeat bg-center bg-cover`}
         src="https://www.pngkey.com/png/detail/834-8345249_delight-your-customers-with-inbound-marketing-happy-customers.png"
         alt="happy users"
       />
