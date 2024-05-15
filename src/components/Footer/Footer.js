@@ -24,21 +24,22 @@ const Footer = () => {
           <h3 className="text-white text-center mt-4 text-3xl sm:text-2xl">
             GET IN TOUCH
           </h3>
-          <p className="text-gray-300 text-md sm:text-sm text-center mt-4">
-            PHONE: +92 313-9183-132
-          </p>
-          <p className="text-gray-300 text-md sm:text-sm text-center mt-2">
-            FAX: +3213xxxxxxx
-          </p>
-          <p className="text-gray-300 text-md sm:text-sm text-center mt-2">
-            EMAIL: nouser@gmail.com
-          </p>
+          <div className="flex flex-col items-start">
+            {" "}
+            <p className="text-gray-300 text-md sm:text-sm text-center mt-4">
+              PHONE: +92 313-9183-132
+            </p>
+            <p className="text-gray-300 text-md sm:text-sm text-center mt-2">
+              FAX: +3213xxxxxxx
+            </p>
+            <p className="text-gray-300 text-md sm:text-sm text-center mt-2">
+              EMAIL: nouser@gmail.com
+            </p>
+          </div>
         </div>
         <div className="w-full flex  flex-col items-start lg:mt-0 md:mt-8 mt-12 sm:px-0 px-8">
-          <h3 className="text-white text-center mt-4 text-2xl">QUERY</h3>
-          <p className="text-gray-300 text-sm text-center mt-2">
-            Write any query/question about our app
-          </p>
+          <h3 className="text-white text-center mt-4 text-2xl">Contact us</h3>
+
           <div className="flex flex-row  items-center  mt-4 ">
             <input
               type="text"
@@ -54,7 +55,7 @@ const Footer = () => {
               }}
               className="px-4 py-3 rounded-md border border-white text-indigo-700 bg-white ml-4 hover:bg-indigo-700 hover:text-white transition-colors duration-500"
             >
-              Submit
+              Contact
             </button>
           </div>
           <div className="flex flex-row items-start mt-4">
