@@ -38,7 +38,7 @@ const Page = () => {
       <CurrencyConverter />
       <Roadmap />
       <div className=" h-auto mt-4 lg:mt-0 flex flex-col items-center justify-center w-full  postsenOne bg-white">
-        <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 w-full p-2 sm:p-4 mt-16 mb-4 bg-white h-auto container mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 w-full p-2 sm:p-4 mt-4 sm:mt-16 mb-4 bg-white h-auto container mx-auto">
           <div className=" mt-4 sm:mt-0  flex flex-col items-center  w-full ">
             <div className="w-11/12 h-full flex flex-col  items-center sm:p-4  rounded-lg py-20">
               <h1 className="font-bold text-3xl sm:text-4xl 2xl:text-5xl text-indigo-700 text-center">
@@ -63,7 +63,7 @@ const Page = () => {
                   alt="coin"
                   className="w-4 sm:w-6 h-auto"
                 />
-                <p className="  text-indigo-300   px-4  sm:font-bold">
+                <p className="  text-indigo-200   px-4  sm:font-bold">
                   Access to Coin history
                 </p>
               </div>
@@ -73,7 +73,7 @@ const Page = () => {
                   alt="coin"
                   className="w-4 sm:w-6 h-auto"
                 />
-                <p className="  text-indigo-300  px-4  sm:font-bold">
+                <p className="  text-indigo-200  px-4  sm:font-bold">
                   Customization
                 </p>
               </div>
@@ -83,7 +83,7 @@ const Page = () => {
                   alt="coin"
                   className="w-4 sm:w-6 h-auto"
                 />
-                <p className="  text-indigo-300  px-4 sm:font-bold">
+                <p className="  text-indigo-200  px-4 sm:font-bold">
                   Unlimited access
                 </p>
               </div>
@@ -93,7 +93,7 @@ const Page = () => {
                   alt="coin"
                   className="w-4 sm:w-6 h-auto"
                 />
-                <p className="  text-indigo-300  px-4 sm:font-bold">
+                <p className="  text-indigo-200  px-4 sm:font-bold">
                   Graphical view
                 </p>
               </div>
@@ -103,14 +103,14 @@ const Page = () => {
                   alt="coin"
                   className="w-4 sm:w-6 h-auto"
                 />
-                <p className=" text-indigo-300 px-4 sm:font-bold">
+                <p className=" text-indigo-200 px-4 sm:font-bold">
                   Calculational Investments
                 </p>
               </div>
               <img
                 className={"w-[100px] h-auto mt-4 sm:block hidden"}
-                src={BLANKPAGE[4].image}
-                alt={BLANKPAGE[4].name}
+                src={BLANKPAGE[6].image}
+                alt={BLANKPAGE[6].name}
               />
               <button
                 className="mt-4 sm:mt-0 py-3 px-4 bg-white text-indigo-700 border border-white rounded-md hover:bg-indigo-700 hover:text-white transition-colors duration-500"
@@ -153,7 +153,7 @@ const Page = () => {
                   alt="coin"
                   className="w-4 sm:w-6 h-auto"
                 />
-                <p className=" text-indigo-300 px-4  sm:font-bold">
+                <p className=" text-indigo-200 px-4  sm:font-bold">
                   14 days trial
                 </p>
               </div>
@@ -163,7 +163,7 @@ const Page = () => {
                   alt="coin"
                   className="w-4 sm:w-6 h-auto"
                 />
-                <p className=" text-indigo-300 px-4  sm:font-bold">
+                <p className=" text-indigo-200 px-4  sm:font-bold">
                   Customization
                 </p>
               </div>
@@ -173,7 +173,7 @@ const Page = () => {
                   alt="coin"
                   className="w-4 sm:w-6 h-auto"
                 />
-                <p className=" text-indigo-300 px-4  sm:font-bold">
+                <p className=" text-indigo-200 px-4  sm:font-bold">
                   Access to coin history
                 </p>
               </div>
@@ -183,7 +183,7 @@ const Page = () => {
                   alt="coin"
                   className="w-4 sm:w-6 h-auto"
                 />
-                <p className=" text-indigo-300 px-4  sm:font-bold">
+                <p className=" text-indigo-200 px-4  sm:font-bold">
                   free Graphical view
                 </p>
               </div>
@@ -193,15 +193,15 @@ const Page = () => {
                   alt="coin"
                   className="w-4 sm:w-6 h-auto"
                 />
-                <p className=" text-indigo-300 px-4  sm:font-bold">
+                <p className=" text-indigo-200 px-4  sm:font-bold">
                   Calculational Investments
                 </p>
               </div>
 
               <img
                 className={"w-[100px] h-auto mt-4 sm:block hidden"}
-                src={BLANKPAGE[5].image}
-                alt={BLANKPAGE[5].name}
+                src={BLANKPAGE[7].image}
+                alt={BLANKPAGE[7].name}
               />
               <button
                 className="mt-4 sm:mt-0 py-3 px-4 bg-white text-indigo-700 border border-white rounded-md hover:bg-indigo-700 hover:text-white transition-colors duration-500"

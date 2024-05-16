@@ -82,12 +82,12 @@ const BlankHome = () => {
 
         <div className={`${plan ? "hidden" : ""}`}>
           <h1
-            className="text-center text-4xl sm:text-5xl font-bold my-4 sm:my-16 px-2 sm:p-4"
+            className="text-center text-4xl sm:text-5xl font-bold my-4 sm:mt-16 sm:mb-4 px-2 sm:p-4"
             id="benefitsSection"
           >
             BENEFITS
           </h1>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 w-full px-2 sm:p-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 w-full px-2 sm:p-4 my-12  ">
             <div className="bg-white h-[300px] flex flex-col items-center  w-full  cursor-pointer ">
               <div className="w-11/12 bg-gradient-to-b from-indigo-900 to-indigo-600 h-full flex flex-col justify-center items-center p-4  rounded-lg  transition-transform transform duration-700  hover:scale-105">
                 <h1 className="font-bold text-2xl text-white text-center">

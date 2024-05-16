@@ -7,10 +7,6 @@ export function middleware(request) {
   const decoded = cookie ? jwtDecode(token) : "";
 
   const path = request.nextUrl.pathname;
-
-  console.log(cookie, "cookie");
-  console.log(decoded, "decoded");
-
   if (!cookie && path != "/login") {
     return NextResponse.redirect(new URL("/user/home", request.url));
   }
@@ -32,12 +28,3 @@ export function middleware(request) {
 export const config = {
   matcher: ["/login", "/user/home", "/user/calculator"],
 };
-// // export const config = {
-// //     matcher: [
-// //       "/user/home",
-// //       "/user/calculator",
-// //       "/leaderboard",
-// //       "/hide",
-// //       "/uuid/:path*",
-// //     ],
-// //   };

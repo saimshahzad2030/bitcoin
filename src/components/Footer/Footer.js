@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import React, { useState } from "react";
 
 const Footer = () => {
@@ -24,39 +25,37 @@ const Footer = () => {
           <h3 className="text-white text-center mt-4 text-3xl sm:text-2xl">
             GET IN TOUCH
           </h3>
-          <div className="flex flex-col items-start">
+          <div className="flex flex-col items-start text-indigo-200">
             {" "}
-            <p className="text-gray-300 text-md sm:text-sm text-center mt-4">
+            <p className="text-md sm:text-sm text-center mt-4">
               PHONE: +92 313-9183-132
             </p>
-            <p className="text-gray-300 text-md sm:text-sm text-center mt-2">
+            <p className="text-md sm:text-sm text-center mt-2">
               FAX: +3213xxxxxxx
             </p>
-            <p className="text-gray-300 text-md sm:text-sm text-center mt-2">
+            <p className=" text-md sm:text-sm text-center mt-2">
               EMAIL: nouser@gmail.com
             </p>
           </div>
         </div>
         <div className="w-full flex  flex-col items-start lg:mt-0 md:mt-8 mt-12 sm:px-0 px-8">
-          <h3 className="text-white text-center mt-4 text-2xl">Contact us</h3>
+          <h3 className="text-white text-center mt-4 text-2xl">
+            Connect With us
+          </h3>
 
-          <div className="flex flex-row  items-center  mt-4 ">
-            <input
-              type="text"
-              id="username"
-              value={query}
-              placeholder="Type any query..."
-              onChange={(e) => setQuery(e.target.value)}
-              className="appearance-none border border-white text-white  w-7/12   px-4 py-3 bg-indigo-700 leading-tight focus:outline-none focus:shadow-outline"
-            />
-            <button
-              onClick={() => {
-                setQuery("");
-              }}
-              className="px-4 py-3 rounded-md border border-white text-indigo-700 bg-white ml-4 hover:bg-indigo-700 hover:text-white transition-colors duration-500"
+          <div className="flex flex-col  items-start  mt-4 text-indigo-200 ">
+            <Link
+              href={"/contact-us"}
+              className="hover:text-white transition-colors duration-300"
             >
-              Contact
-            </button>
+              Contact Us
+            </Link>
+            <Link
+              href={"/privacy-policy"}
+              className="hover:text-white transition-colors duration-300"
+            >
+              Privacy Policy
+            </Link>
           </div>
           <div className="flex flex-row items-start mt-4">
             <img

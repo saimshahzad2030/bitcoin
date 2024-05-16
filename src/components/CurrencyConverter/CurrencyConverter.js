@@ -20,10 +20,10 @@ const CurrencyConverter = () => {
       <div className="container mx-auto">
         <div className=" relative flex flex-col items-center w-full h-auto  py-12 postsenOne">
           <div className="flex flex-col items-center w-auto">
-            <h1 className="text-4xl text-black font-bold mt-8">
+            <h1 className="text-4xl text-black font-bold mt-8 text-center">
               Currency Converter
             </h1>
-            <div className="bg-indigo-700 h-[2px] w-full mt-2 rounded-full"></div>
+            <div className="bg-indigo-700 h-[2px] w-9/12 sm:w-full mt-2 rounded-full"></div>
           </div>
           <div className="flex flex-col md:flex-row items-center md:justify-center w-full mt-12">
             <div className="md:mb-0 mb-8 md:mr-8 flex flex-col items-center p-8 bg-indigo-700 w-8/12 sm:w-9/12  md:w-5/12 lg:w-3/12 rounded-xl">

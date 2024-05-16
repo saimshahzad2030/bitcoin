@@ -80,6 +80,34 @@ export const Signup = async (
   }
 };
 
+export const updatePass = async (
+  email,
+  password,
+  setLoading,
+  setType,
+  setResponseMessage,
+  callback
+) => {
+  setLoading(true);
+  try {
+    alert("req hit");
+    const response = await axios.patch(`${BASEURL}/changePassword`, {
+      email,
+      password,
+    });
+    if (response.status === 200) {
+      setResponseMessage(response.data.message);
+      setType("success");
+      if (callback) {
+        callback(response.data.role);
+      }
+    }
+  } catch (error) {
+    setLoading(false);
+    setResponseMessage(error.response.data.message);
+    setType("failed");
+  }
+};
 export const autoLogin = async (setLoading, callback) => {
   try {
     setLoading(true);

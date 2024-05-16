@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import style from "./Navbar.module.css";
 import Cookies from "js-cookie";
@@ -20,6 +20,7 @@ const Navbar = ({ bg, calculatorPage, btnDisabled, selectedLink }) => {
   const name = Cookies.get("name");
   React.useEffect(() => {
     const handleScroll = () => {
+      setMenuOpen(false);
       const scrollTop = window.scrollY;
       const scrolled = scrollTop > 0;
       setIsScrolled(scrolled);
@@ -31,9 +32,6 @@ const Navbar = ({ bg, calculatorPage, btnDisabled, selectedLink }) => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-  const toggleAvatarClicked = () => {
-    setAvatarClicked(!avatarClicked);
-  };
 
   const closeAvatarDropdown = () => {
     setAvatarClicked(false);
@@ -120,7 +118,7 @@ const Navbar = ({ bg, calculatorPage, btnDisabled, selectedLink }) => {
               {!name ? (
                 <>
                   <li className="hidden sm:flex">
-                    <Link href="/login" className="text-white ">
+                    <Link href="/login?signin=true" className="text-white ">
                       <button className=" px-4 py-2 rounded-md border bg-indigo-700 border-indigo-700 hover:border-white hover:bg-white-700 hover:text-white transition-colors duration-500 ">
                         SIGNUP
                       </button>

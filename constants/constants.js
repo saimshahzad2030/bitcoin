@@ -21,8 +21,16 @@ export const BLANKPAGE = [
   { name: "Chart", image: "/assets/blankhome/chart-line.svg" },
   { name: "Custom levels", image: "/assets/blankhome/customization.svg" },
   { name: "Table View", image: "/assets/blankhome/table.svg" },
-  { name: "Subscribed plan", image: "/assets/blankhome/subscribed-plan.svg" },
+  { name: "Subscription plan", image: "/assets/blankhome/subscribed-plan.svg" },
   { name: "Free plan", image: "/assets/blankhome/free-plan.svg" },
+  {
+    name: "Subscribed plan",
+    image: "/assets/blankhome/subscribed-plan-white.svg ",
+  },
+  {
+    name: "Free plan white",
+    image: "/assets/blankhome/free-plan-white.svg",
+  },
 ];
 
 export const TOPSELLINGCOINS = [
