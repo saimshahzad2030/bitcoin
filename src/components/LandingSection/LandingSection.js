@@ -2,7 +2,10 @@ import React from "react";
 
 const LandingSection = () => {
   return (
-    <div className="postsenOne h-[100vh] w-full bg-indigo-700 absolute z-20 top-0 flex flex-row items-center justify-start">
+    <div
+      data-aos="fade-up"
+      className="postsenOne h-[100vh] w-full bg-indigo-700 absolute z-20 top-0 flex flex-row items-center justify-start"
+    >
       <div className="h-[100vh] w-full relative  flex flex-row items-center justify-start">
         <div className="flex flex-col items-start w-9/12 sm:w-8/12 lg:w-6/12 xl:w-6/12 2xl:w-6/12 px-4 z-40">
           <h2 className="text-4xl font-bold text-white">

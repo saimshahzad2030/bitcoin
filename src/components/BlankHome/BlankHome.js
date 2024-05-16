@@ -67,7 +67,10 @@ const BlankHome = () => {
               transform: "translateY(0)",
             }}
           >
-            <div className="flex flex-row items-center  p-4 border border-yellow-500 rounded-md">
+            <div
+              data-aos="flip-left"
+              className="flex flex-row items-center  p-4 border border-yellow-500 rounded-md"
+            >
               <p>
                 {" "}
                 ⚠️ You need to buy subscription to excess the exit calculator
@@ -82,13 +85,20 @@ const BlankHome = () => {
 
         <div className={`${plan ? "hidden" : ""}`}>
           <h1
+            data-aos="flip-left"
             className="text-center text-4xl sm:text-5xl font-bold my-4 sm:mt-16 sm:mb-4 px-2 sm:p-4"
             id="benefitsSection"
           >
             BENEFITS
           </h1>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 w-full px-2 sm:p-4 my-12  ">
-            <div className="bg-white h-[300px] flex flex-col items-center  w-full  cursor-pointer ">
+          <div
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 w-full px-2 sm:p-4 my-12  "
+            data-aos="fade-up"
+          >
+            <div
+              className="bg-white h-[300px] flex flex-col items-center  w-full  cursor-pointer "
+              data-aos="flip-right"
+            >
               <div className="w-11/12 bg-gradient-to-b from-indigo-900 to-indigo-600 h-full flex flex-col justify-center items-center p-4  rounded-lg  transition-transform transform duration-700  hover:scale-105">
                 <h1 className="font-bold text-2xl text-white text-center">
                   {BLANKPAGE[0].name.toUpperCase()}
@@ -103,7 +113,10 @@ const BlankHome = () => {
                 />
               </div>
             </div>
-            <div className=" mt-4 sm:mt-0 bg-white h-[300px] flex flex-col items-center  w-full cursor-pointer ">
+            <div
+              className=" mt-4 sm:mt-0 bg-white h-[300px] flex flex-col items-center  w-full cursor-pointer "
+              data-aos="flip-right"
+            >
               <div className="w-11/12 bg-gradient-to-b from-indigo-900 to-indigo-600  h-full flex flex-col justify-center items-center p-4  rounded-lg  transition-transform transform duration-700  hover:scale-105">
                 <h1 className="font-bold  text-2xl text-white text-center">
                   {BLANKPAGE[1].name.toUpperCase()}
@@ -119,7 +132,10 @@ const BlankHome = () => {
                 />
               </div>
             </div>
-            <div className="bg-white h-[300px] mt-4 lg:mt-0 flex flex-col items-center  w-full cursor-pointer">
+            <div
+              className="bg-white h-[300px] mt-4 lg:mt-0 flex flex-col items-center  w-full cursor-pointer"
+              data-aos="flip-right"
+            >
               <div className="w-11/12 bg-gradient-to-b from-indigo-900 to-indigo-600  h-full flex flex-col justify-center items-center p-4  rounded-lg  transition-transform transform duration-700  hover:scale-105">
                 <h1 className="font-bold text-2xl text-white text-center">
                   {BLANKPAGE[2].name.toUpperCase()}
@@ -134,7 +150,10 @@ const BlankHome = () => {
                 />
               </div>
             </div>
-            <div className="bg-white h-[300px] mt-4 lg:mt-0 flex flex-col items-center  w-full  cursor-pointer">
+            <div
+              className="bg-white h-[300px] mt-4 lg:mt-0 flex flex-col items-center  w-full  cursor-pointer"
+              data-aos="flip-right"
+            >
               <div className="w-11/12 bg-gradient-to-b from-indigo-900 to-indigo-600  h-full flex flex-col justify-center items-center p-4  rounded-lg  transition-transform transform duration-700  hover:scale-105">
                 <h1 className="font-bold text-2xl text-white text-center">
                   {BLANKPAGE[3].name.toUpperCase()}
@@ -198,7 +217,10 @@ const BlankHome = () => {
         )} */}
       </div>
 
-      <div className=" h-auto mt-4 lg:mt-0 flex flex-col items-center justify-center w-full  postsenOne bg-indigo-700">
+      <div
+        className=" h-auto mt-4 lg:mt-0 flex flex-col items-center justify-center w-full  postsenOne bg-indigo-700"
+        data-aos="fade-up"
+      >
         <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 w-full p-2 sm:p-4 mt-16 mb-4 bg-indigo-700 h-auto container mx-auto">
           <div className=" mt-4 sm:mt-0  flex flex-col items-center  w-full ">
             <div className="w-11/12 h-full flex flex-col  items-center sm:p-4  rounded-lg py-20">
