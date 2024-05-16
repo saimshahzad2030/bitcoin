@@ -74,3 +74,8 @@ export const DOLLAR = {
   symbol: "US$",
   image: "/assets/CurrencyConverter/dollar.svg",
 };
+
+export const CONTACT_US_BG = {
+  name: "Contact us",
+  image: "/assets/contactus/coins.jpg",
+};
