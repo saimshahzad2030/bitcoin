@@ -6,8 +6,11 @@ const Footer = () => {
   const [query, setQuery] = useState("");
   return (
     <div className={` bg-indigo-700 sm:py-8 md:py-12 h-auto w-full `}>
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 py-8 postsenOne bg-indigo-700">
-        <div className="w-full flex flex-col items-center justify-end sm:px-0 px-8">
+      <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 py-8 postsenOne bg-indigo-700 overflow-hidden">
+        <div
+          className="w-full flex flex-col items-center justify-end sm:px-0 px-8"
+          data-aos="fade-right"
+        >
           <img
             className="w-16 h-auto"
             src="/assets/landing/crypto-logo.png"
@@ -21,7 +24,10 @@ const Footer = () => {
             profits soar with our crypto calculator.
           </p>
         </div>
-        <div className="w-full flex  flex-col items-start md:items-center lg:mt-0 md:mt-8 mt-12 sm:px-0 px-8">
+        <div
+          className="w-full flex  flex-col items-start md:items-center lg:mt-0 md:mt-8 mt-12 sm:px-0 px-8"
+          data-aos="zoom-out"
+        >
           <h3 className="text-white text-center mt-4 text-3xl sm:text-2xl px-4 md:px-0">
             GET IN TOUCH
           </h3>
@@ -38,7 +44,10 @@ const Footer = () => {
             </p>
           </div>
         </div>
-        <div className=" flex flex-col items-start lg:mt-0 md:mt-8 mt-12 sm:px-0 px-8">
+        <div
+          className=" flex flex-col items-start lg:mt-0 md:mt-8 mt-12 sm:px-0 px-8"
+          data-aos="fade-left"
+        >
           <h3 className="text-white text-center mt-4 text-2xl px-4">
             Connect With us
           </h3>

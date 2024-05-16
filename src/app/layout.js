@@ -13,7 +13,10 @@ const inter = Inter({ subsets: ["latin"] });
 // };
 export default function RootLayout({ children }) {
   useEffect(() => {
-    AOS.init({ duration: 1200, once: false });
+    AOS.init({
+      duration: 1500,
+      once: false,
+    });
   }, []);
   return (
     <Providers>

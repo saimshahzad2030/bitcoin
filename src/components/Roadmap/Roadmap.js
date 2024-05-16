@@ -2,8 +2,8 @@ import React from "react";
 
 const Roadmap = () => {
   return (
-    <div data-aos="fade-up" className="w-full bg-indigo-700 py-12">
-      <div className="container mx-auto">
+    <div className="w-full bg-indigo-700 py-12 overflow-hidden">
+      <div className="container mx-auto" data-aos="fade-up">
         <div className=" relative flex flex-col items-center w-full h-auto bg-indigo-700 postsenOne">
           <div className="flex flex-col items-center w-auto">
             <h1 className="text-4xl text-white font-bold mt-8 my-4">
