@@ -8,7 +8,7 @@ const ContactUs = () => {
       <div className=" container mx-auto">
         <div className=" flex flex-col items-center pt-20  postsenOne">
           <div className=" z-20 grid grid-cols-1 md:grid-cols-2 mt-12  relative">
-            <div className="flex flex-col items-start px-6 md:px-0">
+            <div className="flex flex-col items-start px-6 ">
               <h1 className="text-3xl  font-bold mt-20 ">GET IN TOUCH</h1>
               <p className="mb-8 w-9/12 mt-4">
                 Stay Connected with us via different platform to get updated
@@ -26,7 +26,7 @@ const ContactUs = () => {
               ))}
             </div>
             <div className="flex flex-col items-center w-full">
-              <form className="flex flex-col items-center justify-center w-10/12 shadow-2xl mt-12 md:mt-56 py-8 bg-white  px-6 md:px-0">
+              <form className="flex flex-col items-center justify-center w-10/12 shadow-2xl mt-12 md:mt-56 py-8 bg-white  px-6">
                 <h1 className="text-3xl font-bold  text-center ">
                   SAY SOMETHING
                 </h1>
