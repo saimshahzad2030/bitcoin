@@ -235,7 +235,7 @@ const WelcomePage = ({}) => {
                 onSubmit={handleSubmit}
                 className="w-11/12  lg:w-8/12 flex flex-col items-center bg-white p-8 rounded-xl "
               >
-                {forgotPass && (
+                {/* {forgotPass && (
                   <div className="w-full flex flex-col items-start">
                     <button
                       className="px-4 py-2 bg-indigo-700 rounded-md cursor-pointer"
@@ -256,7 +256,7 @@ const WelcomePage = ({}) => {
                       />
                     </button>
                   </div>
-                )}
+                )} */}
                 <h2 className="text-2xl lg:text-4xl font-bold mb-4 text-indigo-800">
                   {isLogin
                     ? "Login"

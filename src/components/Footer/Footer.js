@@ -21,29 +21,29 @@ const Footer = () => {
             profits soar with our crypto calculator.
           </p>
         </div>
-        <div className="w-full flex  flex-col items-center lg:mt-0 md:mt-8 mt-12 sm:px-0 px-8">
-          <h3 className="text-white text-center mt-4 text-3xl sm:text-2xl">
+        <div className="w-full flex  flex-col items-start md:items-center lg:mt-0 md:mt-8 mt-12 sm:px-0 px-8">
+          <h3 className="text-white text-center mt-4 text-3xl sm:text-2xl px-4 md:px-0">
             GET IN TOUCH
           </h3>
-          <div className="flex flex-col items-start text-indigo-200">
+          <div className="flex flex-col items-start text-indigo-200 px-4 md:px-0">
             {" "}
-            <p className="text-md sm:text-sm text-center mt-4">
+            <p className="text-md sm:text-sm text-center mt-4 ">
               PHONE: +92 313-9183-132
             </p>
-            <p className="text-md sm:text-sm text-center mt-2">
+            <p className="text-md sm:text-sm text-center mt-2 ">
               FAX: +3213xxxxxxx
             </p>
-            <p className=" text-md sm:text-sm text-center mt-2">
+            <p className=" text-md sm:text-sm text-center mt-2 ">
               EMAIL: nouser@gmail.com
             </p>
           </div>
         </div>
-        <div className="w-full flex  flex-col items-start lg:mt-0 md:mt-8 mt-12 sm:px-0 px-8">
-          <h3 className="text-white text-center mt-4 text-2xl">
+        <div className=" flex flex-col items-start lg:mt-0 md:mt-8 mt-12 sm:px-0 px-8">
+          <h3 className="text-white text-center mt-4 text-2xl px-4">
             Connect With us
           </h3>
 
-          <div className="flex flex-col  items-start  mt-4 text-indigo-200 ">
+          <div className="flex flex-col  items-start  mt-4 text-indigo-200  px-4">
             <Link
               href={"/contact-us"}
               className="hover:text-white transition-colors duration-300"
@@ -57,7 +57,7 @@ const Footer = () => {
               Privacy Policy
             </Link>
           </div>
-          <div className="flex flex-row items-start mt-4">
+          <div className="flex flex-row items-start mt-4  px-4">
             <img
               src="/assets/footer/facebook.svg"
               alt="facebook"

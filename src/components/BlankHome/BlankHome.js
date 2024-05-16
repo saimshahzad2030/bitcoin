@@ -214,7 +214,7 @@ const BlankHome = () => {
             </div>
           </div>
           <div className=" h-auto mt-4 lg:mt-0 flex flex-col items-center justify-center w-full">
-            <div className="w-full sm:w-7/12  lg:w-11/12 bg-white h-auto flex flex-col justify-start items-center p-4  rounded-lg">
+            <div className="w-full sm:w-7/12  lg:w-11/12 bg-white h-auto flex flex-col justify-end items-center p-4  rounded-lg">
               <h1 className="font-bold text-xl sm:text-3xl 2xl:text-4xl text-indigo-700 text-center mt-4">
                 {BLANKPAGE[4].name.toUpperCase()}
               </h1>
@@ -299,7 +299,7 @@ const BlankHome = () => {
             </div>
           </div>
           <div className=" h-auto mt-4 lg:mt-0 flex flex-col items-center justify-center w-full">
-            <div className="w-full sm:w-7/12 lg:w-11/12 bg-white  h-auto flex flex-col justify-start items-center p-4  rounded-lg ">
+            <div className="w-full sm:w-7/12 lg:w-11/12 bg-white  h-auto flex flex-col justify-end items-center p-4  rounded-lg ">
               <h1 className="font-bold text-xl sm:text-3xl 2xl:text-4xl text-indigo-700 text-center mt-4">
                 {BLANKPAGE[5].name.toUpperCase()}
               </h1>

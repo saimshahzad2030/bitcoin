@@ -53,7 +53,7 @@ const Page = () => {
             </div>
           </div>
           <div className=" h-auto mt-4 lg:mt-0 flex flex-col items-center justify-center w-full">
-            <div className="w-full sm:w-7/12  lg:w-11/12 bg-indigo-700 h-auto flex flex-col justify-start items-center p-4  rounded-lg">
+            <div className="w-full sm:w-7/12  lg:w-11/12 bg-indigo-700 h-full flex flex-col justify-end items-center p-4  rounded-lg">
               <h1 className="font-bold text-xl sm:text-3xl 2xl:text-4xl text-white text-center mt-4">
                 {BLANKPAGE[4].name.toUpperCase()}
               </h1>
@@ -143,7 +143,7 @@ const Page = () => {
             </div>
           </div>
           <div className=" h-auto mt-4 lg:mt-0 flex flex-col items-center justify-center w-full">
-            <div className="w-full sm:w-7/12 lg:w-11/12 bg-indigo-700  h-auto flex flex-col justify-start items-center p-4  rounded-lg ">
+            <div className="w-full sm:w-7/12 lg:w-11/12 bg-indigo-700  h-full flex flex-col justify-end items-center p-4  rounded-lg ">
               <h1 className="font-bold text-xl sm:text-3xl 2xl:text-4xl text-white text-center mt-4">
                 {BLANKPAGE[5].name.toUpperCase()}
               </h1>

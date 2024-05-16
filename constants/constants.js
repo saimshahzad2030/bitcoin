@@ -75,7 +75,20 @@ export const DOLLAR = {
   image: "/assets/CurrencyConverter/dollar.svg",
 };
 
-export const CONTACT_US_BG = {
-  name: "Contact us",
-  image: "/assets/contactus/coins.jpg",
-};
+export const CONTACT_US = [
+  {
+    name: "Gmail",
+    value: "teamexit@gmail.com",
+    image: "/assets/contactus/gmail.svg",
+  },
+  {
+    name: "Phone",
+    value: "+92 314 2274 221",
+    image: "/assets/contactus/mobile.svg",
+  },
+  {
+    name: "Location",
+    value: "shahrah-e-faisal, Karachi",
+    image: "/assets/contactus/location.svg",
+  },
+];
