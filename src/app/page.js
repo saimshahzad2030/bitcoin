@@ -37,7 +37,10 @@ const Page = () => {
       <Services />
       <CurrencyConverter />
       <Roadmap />
-      <div className=" h-auto mt-4 lg:mt-0 flex flex-col items-center justify-center w-full  postsenOne bg-white">
+      <div
+        data-aos="fade-up"
+        className=" h-auto mt-4 lg:mt-0 flex flex-col items-center justify-center w-full  postsenOne bg-white"
+      >
         <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 w-full p-2 sm:p-4 mt-4 sm:mt-16 mb-4 bg-white h-auto container mx-auto">
           <div className=" mt-4 sm:mt-0  flex flex-col items-center  w-full ">
             <div className="w-11/12 h-full flex flex-col  items-center sm:p-4  rounded-lg py-20">

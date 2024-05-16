@@ -2,13 +2,20 @@ import React from "react";
 
 const InvestmentPlan = () => {
   return (
-    <div className="w-full h-auto flex flex-col md:flex-row items-center justify-evenly py-12">
+    <div
+      data-aos="fade-up"
+      className="w-full h-auto flex flex-col md:flex-row items-center justify-evenly py-12"
+    >
       <img
+        data-aos="flip-right"
         className="w-11/12 md:w-6/12 h-auto   bg-no-repeat bg-center bg-cover"
         src="/assets/invesmentplans/chart.jpg"
         alt="investment plans"
       />
-      <div className="flex flex-col items-center w-full md:w-5/12 md:mt-0 mt-12">
+      <div
+        className="flex flex-col items-center w-full md:w-5/12 md:mt-0 mt-12"
+        data-aos="slide-up"
+      >
         <h2 className="text-4xl font-bold text-black postsenOne text-center md:px-0 px-8">
           INVESTMENT PLAN
         </h2>
