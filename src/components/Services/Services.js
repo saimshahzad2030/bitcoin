@@ -2,12 +2,9 @@ import React from "react";
 
 const Services = () => {
   return (
-    <div data-aos="fade-up" className="w-full h-auto bg-indigo-700">
+    <div className="w-full h-auto bg-indigo-700">
       <div className="container mx-auto">
-        <div
-          className="grid grid-cols-1 md:grid-cols-3 w-full postsenOne py-12"
-          data-aos="zoom-out"
-        >
+        <div className="grid grid-cols-1 md:grid-cols-3 w-full postsenOne py-12">
           <div className="flex flex-col items-center w-full md:w-10/12">
             <img
               src="/assets/services/security.svg"
@@ -24,10 +21,7 @@ const Services = () => {
               threats.
             </p>
           </div>
-          <div
-            className="flex flex-col items-center w-full md:w-10/12 md:mt-0 mt-12"
-            data-aos="zoom-out"
-          >
+          <div className="flex flex-col items-center w-full md:w-10/12 md:mt-0 mt-12">
             <img
               src="/assets/services/currency.svg"
               alt="security"
@@ -43,10 +37,7 @@ const Services = () => {
               decisions with up-to-date currency information.
             </p>
           </div>
-          <div
-            className="flex flex-col items-center w-full md:w-10/12 md:mt-0 mt-12"
-            data-aos="zoom-out"
-          >
+          <div className="flex flex-col items-center w-full md:w-10/12 md:mt-0 mt-12">
             <img
               src="/assets/services/graph.svg"
               alt="security"

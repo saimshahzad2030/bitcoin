@@ -16,7 +16,7 @@ const CurrencyConverter = () => {
 
   const currency = TOPCURRENCIES[currencyIndex];
   return (
-    <div data-aos="fade-up" className="w-full bg-white ">
+    <div className="w-full bg-white ">
       <div className="container mx-auto">
         <div className=" relative flex flex-col items-center w-full h-auto  py-12 postsenOne">
           <div className="flex flex-col items-center w-auto">
@@ -26,10 +26,7 @@ const CurrencyConverter = () => {
             <div className="bg-indigo-700 h-[2px] w-9/12 sm:w-full mt-2 rounded-full"></div>
           </div>
           <div className="flex flex-col md:flex-row items-center md:justify-center w-full mt-12">
-            <div
-              className="md:mb-0 mb-8 md:mr-8 flex flex-col items-center p-8 bg-indigo-700 w-8/12 sm:w-9/12  md:w-5/12 lg:w-3/12 rounded-xl"
-              data-aos="fade-right"
-            >
+            <div className="md:mb-0 mb-8 md:mr-8 flex flex-col items-center p-8 bg-indigo-700 w-8/12 sm:w-9/12  md:w-5/12 lg:w-3/12 rounded-xl">
               <div className="relative flex flex-row items-center justify-start w-full">
                 <img
                   src={currency.image}
@@ -57,10 +54,7 @@ const CurrencyConverter = () => {
                 <div className="w-full h-[2px] bg-red-700"></div>
               </div>
             </div>
-            <div
-              className="flex flex-col items-center justify-center"
-              data-aos="flip-left"
-            >
+            <div className="flex flex-col items-center justify-center">
               <img
                 className="w-16 bg-white rounded-full h-auto"
                 src="/assets/CurrencyConverter/swap-icon.svg"
@@ -69,7 +63,6 @@ const CurrencyConverter = () => {
             </div>
             <div
               className={` md:mt-0 mt-8 md:ml-8 flex flex-col items-center p-8 bg-indigo-700 w-8/12 sm:w-9/12 md:w-5/12 lg:w-3/12 rounded-xl `}
-              data-aos="fade-left"
             >
               {" "}
               <div className="relative flex flex-row items-center justify-start w-full">

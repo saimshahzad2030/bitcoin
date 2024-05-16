@@ -13,7 +13,7 @@ const CoinsSection = () => {
     cssEase: "linear",
   };
   return (
-    <div data-aos="fade-up">
+    <div>
       <div className=" grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5  w-full flex-wrap h-auto  postsenOne my-12">
         <div className="  flex flex-row items-center justify-center p-12 h-auto w-full shadow-2xl">
           <img
