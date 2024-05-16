@@ -52,11 +52,16 @@ export default function RootLayout({ children }) {
           />
         </head>
         <head>
-          <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-          <script>AOS.init();</script>
           <script src="https://cdn.jsdelivr.net/npm/chart.js" async></script>
         </head>
-        <body className={inter.className}>{children}</body>
+        <body className={inter.className}>
+          {children}
+          <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"
+            async
+          ></script>
+          <script dangerouslySetInnerHTML={{ __html: "AOS.init();" }} async />
+        </body>
       </html>
     </Providers>
   );
