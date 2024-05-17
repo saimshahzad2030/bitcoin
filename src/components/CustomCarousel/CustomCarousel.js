@@ -33,7 +33,7 @@ const CustomCarousel = ({ styling }) => {
       <div
         className={`absolute bottom-[20%] md:bottom-[35%] lg:bottom-[20%] left-[5%] w-auto p-4 bg-indigo-500 opacity-80`}
       >
-        <p className=" font-bold text-sm sm:text-lg md:text-md lg:text-2xl xl:text-4xl text-white opacity-100">
+        <p className=" font-bold text-sm sm:text-lg md:text-md lg:text-xl xl:text-2xl 2xl:text-3xl text-white opacity-100">
           {text[textIndex]}
         </p>
       </div>
