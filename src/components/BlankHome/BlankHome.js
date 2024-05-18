@@ -227,7 +227,7 @@ const BlankHome = () => {
           </div>
           <div className=" h-auto mt-4 lg:mt-0 flex flex-col items-center justify-center w-full">
             <div className="w-full sm:w-7/12  lg:w-11/12 bg-white h-auto flex flex-col justify-end items-center p-4  rounded-lg">
-              <h1 className="font-bold text-xl sm:text-3xl 2xl:text-4xl text-indigo-700 text-center mt-4">
+              <h1 className="font-bold text-xl sm:text-3xl 2xl:text-3xl text-indigo-700 text-center mt-4">
                 {BLANKPAGE[4].name.toUpperCase()}
               </h1>
               <div className="flex flex-row items-center  mt-4 w-full px-2">
@@ -236,7 +236,7 @@ const BlankHome = () => {
                   alt="coin"
                   className="w-4 sm:w-6 h-auto"
                 />
-                <p className=" text-indigo-400 px-4  sm:font-bold">
+                <p className=" text-indigo-600 px-4  sm:font-bold">
                   Access to Coin history
                 </p>
               </div>
@@ -246,7 +246,7 @@ const BlankHome = () => {
                   alt="coin"
                   className="w-4 sm:w-6 h-auto"
                 />
-                <p className=" text-indigo-400 px-4  sm:font-bold">
+                <p className=" text-indigo-600 px-4  sm:font-bold">
                   Customization
                 </p>
               </div>
@@ -256,7 +256,7 @@ const BlankHome = () => {
                   alt="coin"
                   className="w-4 sm:w-6 h-auto"
                 />
-                <p className=" text-indigo-400 px-4 sm:font-bold">
+                <p className=" text-indigo-600 px-4 sm:font-bold">
                   Unlimited access
                 </p>
               </div>
@@ -266,7 +266,7 @@ const BlankHome = () => {
                   alt="coin"
                   className="w-4 sm:w-6 h-auto"
                 />
-                <p className=" text-indigo-400 px-4 sm:font-bold">
+                <p className=" text-indigo-600 px-4 sm:font-bold">
                   Graphical view
                 </p>
               </div>
@@ -276,15 +276,13 @@ const BlankHome = () => {
                   alt="coin"
                   className="w-4 sm:w-6 h-auto"
                 />
-                <p className=" text-indigo-400 px-4 sm:font-bold">
+                <p className=" text-indigo-600 px-4 sm:font-bold">
                   Calculational Investments
                 </p>
               </div>
-              <img
-                className={"w-[100px] h-auto mt-4 sm:block hidden"}
-                src={BLANKPAGE[4].image}
-                alt={BLANKPAGE[4].name}
-              />
+              <p className=" text-black px-4 text-2xl md:text-3xl my-8">
+                <span className="font-bold">$ 15.00 </span>/Month
+              </p>
               <button
                 className="mt-4 sm:mt-0 py-3 px-4 bg-indigo-700 text-white border border-indigo-700 rounded-md hover:bg-white hover:text-indigo-700 transition-colors duration-500"
                 onClick={async () => {
@@ -311,8 +309,8 @@ const BlankHome = () => {
             </div>
           </div>
           <div className=" h-auto mt-4 lg:mt-0 flex flex-col items-center justify-center w-full">
-            <div className="w-full sm:w-7/12 lg:w-11/12 bg-white  h-auto flex flex-col justify-end items-center p-4  rounded-lg ">
-              <h1 className="font-bold text-xl sm:text-3xl 2xl:text-4xl text-indigo-700 text-center mt-4">
+            <div className="w-full sm:w-7/12 lg:w-11/12 bg-white h-auto lg:h-full flex flex-col justify-end items-center p-4  rounded-lg ">
+              <h1 className="font-bold text-xl sm:text-3xl 2xl:text-3xl text-indigo-700 text-center mt-4">
                 {BLANKPAGE[5].name.toUpperCase()}
               </h1>
               <div className="flex flex-row items-center  mt-4 w-full px-2">
@@ -321,7 +319,7 @@ const BlankHome = () => {
                   alt="coin"
                   className="w-4 sm:w-6 h-auto"
                 />
-                <p className=" text-indigo-400 px-4  sm:font-bold">
+                <p className=" text-indigo-600 px-4  sm:font-bold">
                   14 days trial
                 </p>
               </div>
@@ -331,7 +329,7 @@ const BlankHome = () => {
                   alt="coin"
                   className="w-4 sm:w-6 h-auto"
                 />
-                <p className=" text-indigo-400 px-4  sm:font-bold">
+                <p className=" text-indigo-600 px-4  sm:font-bold">
                   Customization
                 </p>
               </div>
@@ -341,7 +339,7 @@ const BlankHome = () => {
                   alt="coin"
                   className="w-4 sm:w-6 h-auto"
                 />
-                <p className=" text-indigo-400 px-4  sm:font-bold">
+                <p className=" text-indigo-600 px-4  sm:font-bold">
                   Access to coin history
                 </p>
               </div>
@@ -351,7 +349,7 @@ const BlankHome = () => {
                   alt="coin"
                   className="w-4 sm:w-6 h-auto"
                 />
-                <p className=" text-indigo-400 px-4  sm:font-bold">
+                <p className=" text-indigo-600 px-4  sm:font-bold">
                   free Graphical view
                 </p>
               </div>
@@ -361,16 +359,13 @@ const BlankHome = () => {
                   alt="coin"
                   className="w-4 sm:w-6 h-auto"
                 />
-                <p className=" text-indigo-400 px-4  sm:font-bold">
+                <p className=" text-indigo-600 px-4  sm:font-bold">
                   Calculational Investments
                 </p>
               </div>
-
-              <img
-                className={"w-[100px] h-auto mt-4 sm:block hidden"}
-                src={BLANKPAGE[5].image}
-                alt={BLANKPAGE[5].name}
-              />
+              <p className=" text-black px-4 text-2xl md:text-3xl my-8">
+                <span className="font-bold">$ 00.00 </span>/Month
+              </p>
               <button
                 className="mt-4 sm:mt-0 py-3 px-4 bg-indigo-700 text-white border border-indigo-700 rounded-md hover:bg-white hover:text-indigo-700 transition-colors duration-500"
                 onClick={async () => {

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+
 import style from "./WelcomePage.module.css";
 import { useRouter } from "next/navigation";
 import Modal from "../Modal/Modal";
@@ -41,11 +42,16 @@ const WelcomePage = ({}) => {
   const [email, setEmail] = useState(
     Cookies.get("email") ? Cookies.get("email") : ""
   );
+  const [emailError, setEmailError] = React.useState(null);
   const [password, setPassword] = useState(
     Cookies.get("pass") ? Cookies.get("pass") : ""
   );
+  const [passwordError, setPasswordError] = React.useState(null);
+
   const [username, setUsername] = useState("");
+  const [usernameError, setUsernameError] = useState(null);
   const [token, setToken] = useState("");
+  const [tokenError, setTokenError] = useState(null);
   const [emailEntered, setEmailEntered] = useState(false);
   const [emailVerified, setEmailVerified] = useState(false);
   const [forgotEmailEntered, setForgotEmailEntered] = useState(false);
@@ -65,6 +71,20 @@ const WelcomePage = ({}) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isLogin) {
+      if (!email) {
+        setEmailError("Required");
+        return;
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/i.test(email)) {
+        setEmailError("Enter valid email");
+        return;
+      }
+      if (!password) {
+        setPasswordError("required");
+        return;
+      }
+      setEmailError(null);
+      setPasswordError(null);
       login(
         email,
         password,
@@ -87,27 +107,59 @@ const WelcomePage = ({}) => {
     } else {
       if (!forgotPass) {
         if (!emailEntered) {
+          if (!email) {
+            setEmailError("Required");
+            return;
+          }
+          if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/i.test(email)) {
+            setEmailError("Enter valid email");
+            return;
+          }
+
+          setEmailError(null);
           sendVerificationEmail(
             email,
             setLoading,
             setEmailEntered,
             setType,
-            setResponseMessage
+            setResponseMessage,
+            setEmailError
           );
+
           setType("");
           setResponseMessage("");
         } else if (emailEntered && !emailVerified) {
+          if (!token) {
+            setTokenError("Required");
+            return;
+          }
+          if (token.length < 6) {
+            setTokenError("Must be 6 letters");
+            return;
+          }
+          setTokenError(null);
           matchToken(
             email,
             token,
             setLoading,
             setEmailVerified,
             setType,
-            setResponseMessage
+            setTokenError,
+            setTokenError
           );
           setType("");
           setResponseMessage("");
         } else if (emailEntered && emailVerified) {
+          if (!username) {
+            setUsernameError("Required");
+            return;
+          }
+          if (!password) {
+            setPasswordError("required");
+            return;
+          }
+          setUsernameError(null);
+          setPasswordError(null);
           setType("");
           setResponseMessage("");
 
@@ -142,27 +194,53 @@ const WelcomePage = ({}) => {
         }
       } else {
         if (!forgotEmailEntered) {
+          if (!email) {
+            setEmailError("Required");
+            return;
+          }
+          if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/i.test(email)) {
+            setEmailError("Enter valid email");
+            return;
+          }
+          setEmailError(null);
           passwordVerificationEmail(
             email,
             setLoading,
             setForgotEmailEntered,
             setType,
-            setResponseMessage
+            setResponseMessage,
+            setEmailError
           );
           setType("");
           setResponseMessage("");
         } else if (forgotEmailEntered && !forgotEmailVerified) {
+          if (!token) {
+            setTokenError("Required");
+            return;
+          }
+          if (token.length < 6) {
+            setTokenError("Must be 6 letters");
+            return;
+          }
+
+          setTokenError(null);
           matchToken(
             email,
             token,
             setLoading,
             setForgotEmailVerified,
             setType,
-            setResponseMessage
+            setResponseMessage,
+            setTokenError
           );
           setType("");
           setResponseMessage("");
         } else if (forgotEmailEntered && forgotEmailVerified) {
+          if (!password) {
+            setPasswordError("required");
+            return;
+          }
+          setPasswordError(null);
           setType("");
           setResponseMessage("");
 
@@ -225,11 +303,11 @@ const WelcomePage = ({}) => {
         className={`bg-gradient-to-b from-indigo-900 to-indigo-500 pt-24    ${style.welcomePage} postsenOne`}
       >
         <div>
-          <h1
+          {/* <h1
             className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-12 text-center text-gray-50 ${style.heading}`}
           >
             Crypto Exit Calculator
-          </h1>
+          </h1> */}
           <div className="grid sm:grid-cols-1  lg:sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-2 2xl:md:grid-cols-2 ">
             <CustomCarousel />
             <div className=" flex flex-col items-center justify-center  p-4 sm:px-4 w-full ">
@@ -237,28 +315,6 @@ const WelcomePage = ({}) => {
                 onSubmit={handleSubmit}
                 className="w-11/12  lg:w-8/12 flex flex-col items-center bg-white p-8 rounded-xl "
               >
-                {/* {forgotPass && (
-                  <div className="w-full flex flex-col items-start">
-                    <button
-                      className="px-4 py-2 bg-indigo-700 rounded-md cursor-pointer"
-                      onClick={() => {
-                        setForgotPass(false);
-                        setIsLogin(true);
-                        setEmail("");
-                        setPassword("");
-                        setToken("");
-                        setForgotEmailEntered(false);
-                        setForgotEmailVerified(false);
-                      }}
-                    >
-                      <img
-                        className="w-8 h-auto"
-                        alt={GoBack.name}
-                        src={GoBack.image}
-                      />
-                    </button>
-                  </div>
-                )} */}
                 <h2 className="text-2xl lg:text-4xl font-bold mb-4 text-indigo-800">
                   {isLogin
                     ? "Login"
@@ -269,28 +325,27 @@ const WelcomePage = ({}) => {
                 <div className="flex flex-row items-center  my-3">
                   {type &&
                     responseMessage &&
-                    (type === "success" ? (
+                    type !== "success" &&
+                    responseMessage == "wrong credentials" && (
                       <img
                         src="/assets/response/success.png"
                         className="h-6 w-auto  mr-4"
                         alt="success"
                       />
-                    ) : (
-                      <img
-                        src="/assets/response/failed.png"
-                        className="h-6 w-auto  mr-4"
-                        alt="failed"
-                      />
-                    ))}
+                    )}
                   <h2 className={`text-sm font-bold text-black `}>
-                    {responseMessage ? responseMessage : ""}
+                    {type !== "succes" && responseMessage == "wrong credentials"
+                      ? responseMessage
+                      : ""}
                   </h2>
                 </div>
                 {!isLogin && !forgotPass && emailVerified && (
                   <div className="mb-4 w-full">
                     <label
                       htmlFor="username"
-                      className="block text-gray-400 text-sm font-bold mb-2"
+                      className={`block text-gray-400 text-sm font-bold mb-2 ${
+                        usernameError && "text-red-500"
+                      }`}
                     >
                       Name*
                     </label>
@@ -298,10 +353,17 @@ const WelcomePage = ({}) => {
                       type="text"
                       id="username"
                       value={username}
-                      onChange={(e) => setUsername(e.target.value)}
-                      className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                      required
+                      onChange={(e) => {
+                        setUsernameError(null);
+                        setUsername(e.target.value);
+                      }}
+                      className={`appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+                        usernameError && "border-red-500"
+                      }`}
                     />
+                    <span className={`${usernameError && "text-red-500"}`}>
+                      {usernameError ? usernameError : ""}
+                    </span>
                   </div>
                 )}
 
@@ -310,36 +372,54 @@ const WelcomePage = ({}) => {
                     <div className="mb-4 w-full">
                       <label
                         htmlFor="email"
-                        className="block text-gray-400 text-sm font-bold mb-2"
+                        className={`block text-gray-400 font-bold text-sm mb-2 ${
+                          emailError && "text-red-500"
+                        }`}
                       >
                         Email*
                       </label>
                       <input
-                        type="email"
-                        id="email"
                         value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        required
+                        onChange={(e) => {
+                          setEmail(e.target.value);
+                          setEmailError(null);
+                        }}
+                        className={`appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+                          emailError && "border-red-500"
+                        }`}
                       />
+                      {emailError ? (
+                        <span className="text-red-500">{emailError}</span>
+                      ) : (
+                        <span></span>
+                      )}
                     </div>
                   ) : (
                     !emailEntered && (
                       <div className="mb-4 w-full">
                         <label
                           htmlFor="email"
-                          className="block text-gray-400 text-sm font-bold mb-2"
+                          className={`block text-gray-400 font-bold text-sm mb-2 ${
+                            emailError && "text-red-500"
+                          }`}
                         >
                           Email*
                         </label>
                         <input
-                          type="email"
-                          id="email"
                           value={email}
-                          onChange={(e) => setEmail(e.target.value)}
-                          className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                          required
+                          onChange={(e) => {
+                            setEmail(e.target.value);
+                            setEmailError(null);
+                          }}
+                          className={`appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+                            emailError && "border-red-500"
+                          }`}
                         />
+                        {emailError ? (
+                          <span className="text-red-500">{emailError}</span>
+                        ) : (
+                          <span></span>
+                        )}
                       </div>
                     )
                   ))}
@@ -362,11 +442,19 @@ const WelcomePage = ({}) => {
                         const inputValue = e.target.value;
                         const numericInput = inputValue.replace(/[^0-9]/g, "");
                         setToken(numericInput);
+
+                        setTokenError(null);
                       }}
                       maxLength={6}
-                      className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                      required
+                      className={`appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+                        tokenError && "border-red-500"
+                      }`}
                     />
+                    {tokenError ? (
+                      <span className="text-red-500">{tokenError}</span>
+                    ) : (
+                      <span></span>
+                    )}
                   </div>
                 )}
 
@@ -375,19 +463,22 @@ const WelcomePage = ({}) => {
                     <div className="mb-6 w-full relative ">
                       <label
                         htmlFor="password"
-                        className="block text-gray-400 text-sm font-bold mb-2"
+                        className={`block text-gray-400 text-sm font-bold mb-2 ${
+                          passwordError && "text-red-500"
+                        }`}
                       >
                         Password*
                       </label>
                       <input
                         type={showPassword ? "text" : "password"}
-                        id="password"
                         value={password}
                         onChange={(e) => {
                           setPassword(e.target.value);
+                          setPasswordError(null);
                         }}
-                        className={`pr-8 appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline`}
-                        required
+                        className={`pr-8 appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline ${
+                          passwordError && "border-red-500"
+                        }`}
                         autoComplete="off"
                       />
                       {showPassword ? (
@@ -405,18 +496,24 @@ const WelcomePage = ({}) => {
                           onClick={() => setShowPassword(!showPassword)}
                         />
                       )}
+                      {passwordError ? (
+                        <span className="text-red-600">{passwordError}</span>
+                      ) : (
+                        <span></span>
+                      )}
                     </div>
                   ) : (
                     emailVerified && (
                       <div className="mb-6 w-full">
                         <label
                           htmlFor="password"
-                          className="block text-gray-400 text-sm font-bold mb-2"
+                          className={`block text-gray-400 text-sm font-bold mb-2 ${
+                            passwordError && "text-red-500"
+                          }`}
                         >
                           Password*
                         </label>
                         <p className="block text-gray-400 text-sm font-bold mb-2">
-                          {" "}
                           <span
                             className={`${
                               isPasswordValid(password) ? "hidden" : ""
@@ -448,7 +545,6 @@ const WelcomePage = ({}) => {
                         <div className="relative flex items-center justify-between">
                           <input
                             type={showPassword ? "text" : "password"}
-                            id="password"
                             value={password}
                             onChange={(e) => {
                               setPassword(e.target.value);
@@ -458,9 +554,11 @@ const WelcomePage = ({}) => {
                                   !/[\W_]/.test(e.target.value) ||
                                   e.target.value.length < 8
                               );
+                              setPasswordError(null);
                             }}
-                            className={`pr-8 appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline `}
-                            required
+                            className={`pr-8 appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline ${
+                              passwordError && "border-red-500"
+                            }`}
                           />
                           {showPassword ? (
                             <img
@@ -508,19 +606,27 @@ const WelcomePage = ({}) => {
                         </label>
                         <input
                           type="email"
-                          id="email"
                           value={email}
                           placeholder="Enter Email"
-                          onChange={(e) => setEmail(e.target.value)}
-                          className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                          required
+                          onChange={(e) => {
+                            setEmail(e.target.value);
+                            setEmailError(null);
+                          }}
+                          className={`appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+                            emailError && "border-red-500"
+                          }`}
                         />
+                        {emailError ? (
+                          <span className="text-red-500">{emailError}</span>
+                        ) : (
+                          <span></span>
+                        )}
                       </div>
                     </>
                   ) : !forgotEmailVerified ? (
                     <div className="mb-4 w-full">
                       <label
-                        htmlFor="username"
+                        htmlFor="email"
                         className="block text-gray-400 text-sm font-bold mb-2"
                       >
                         (We have sent you a verification email @ {email} enter
@@ -528,7 +634,6 @@ const WelcomePage = ({}) => {
                       </label>
                       <input
                         type="text"
-                        id="token"
                         value={token}
                         placeholder="Enter Token..."
                         onChange={(e) => {
@@ -538,11 +643,18 @@ const WelcomePage = ({}) => {
                             ""
                           );
                           setToken(numericInput);
+                          setTokenError(null);
                         }}
                         maxLength={6}
-                        className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        required
+                        className={`appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+                          tokenError && "border-red-500"
+                        }`}
                       />
+                      {tokenError ? (
+                        <span className="text-red-500">{tokenError}</span>
+                      ) : (
+                        <span></span>
+                      )}
                     </div>
                   ) : (
                     <div className="mb-6 w-full">
@@ -585,7 +697,6 @@ const WelcomePage = ({}) => {
                       <div className="relative flex items-center justify-between">
                         <input
                           type={showPassword ? "text" : "password"}
-                          id="password"
                           value={password}
                           onChange={(e) => {
                             setPassword(e.target.value);
@@ -595,9 +706,11 @@ const WelcomePage = ({}) => {
                                 !/[\W_]/.test(e.target.value) ||
                                 e.target.value.length < 8
                             );
+                            setPasswordError(null);
                           }}
-                          className={`pr-8 appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline `}
-                          required
+                          className={`pr-8 appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline ${
+                            passwordError && "border-red-500"
+                          }`}
                         />
                         {showPassword ? (
                           <img
@@ -615,7 +728,11 @@ const WelcomePage = ({}) => {
                           />
                         )}
                       </div>
-
+                      {passwordError ? (
+                        <span className="text-red-500">{passwordError}</span>
+                      ) : (
+                        <span></span>
+                      )}
                       <div className="flex items-center">
                         <input
                           type="checkbox"
@@ -683,10 +800,13 @@ const WelcomePage = ({}) => {
                         onClick={() => {
                           setForgotPass(true);
                           setIsLogin(false);
+                          setEmail("");
+                          setPassword("");
                         }}
+                        type="button"
                         className="ml-2 text-indigo-800 hover:underline focus:outline-none"
                       >
-                        {"forgot pass?"}
+                        {"forgot password?"}
                       </button>
                     </div>
                   </>

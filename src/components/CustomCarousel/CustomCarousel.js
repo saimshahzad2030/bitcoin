@@ -22,7 +22,7 @@ const CustomCarousel = ({ styling }) => {
   }, []);
   return (
     <div
-      className={`relative p-[4px] h-auto ${styling} flex flex-row items-center justify-center`}
+      className={`relative p-[4px] h-auto ${styling} flex flex-row items-center justify-center h-full `}
     >
       <img
         src={images[textIndex]}

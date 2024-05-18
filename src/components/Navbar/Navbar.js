@@ -43,6 +43,29 @@ const Navbar = ({
     setAvatarClicked(false);
   };
 
+  //remaining subscripption time code
+  const [remainingTime, setRemainingTime] = React.useState(""); // State to manage remaining time
+  React.useEffect(() => {
+    const subscriptionEndDate = new Date("2024-06-01T00:00:00Z");
+    const updateRemainingTime = () => {
+      const now = new Date();
+      const timeDiff = subscriptionEndDate - now;
+
+      const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor(
+        (timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
+      const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+      setRemainingTime(`${days}d ${hours}h ${minutes}m ${seconds}s`);
+    };
+
+    updateRemainingTime();
+    const interval = setInterval(updateRemainingTime, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <>
       <div
@@ -59,12 +82,22 @@ const Navbar = ({
         >
           <div className=" flex flex-row justify-between items-center">
             <div>
-              <Link href="/" className="text-white text-xl font-bold ">
+              <Link
+                href="/"
+                className="text-white text-xl font-bold flex flex-row items-center"
+              >
                 <img
                   className="w-12 h-auto bg-no-repeat bg-center bg-cover"
                   src="/assets/landing/crypto-logo.png"
                   alt="crypto-logo"
                 />
+                <span
+                  className={`ml-6  ${
+                    isScrolled ? "text-black" : "text-white"
+                  }`}
+                >
+                  Crypto Exit Calculator
+                </span>
               </Link>
             </div>
             {!loginPage && (
@@ -127,7 +160,7 @@ const Navbar = ({
                     <li className="hidden sm:flex">
                       <Link href="/login?signin=true" className="text-white ">
                         <button className=" px-4 py-2 rounded-md border bg-indigo-700 border-indigo-700 hover:border-white hover:bg-white-700 hover:text-white transition-colors duration-500 ">
-                          SIGNUP
+                          Login
                         </button>
                       </Link>
                     </li>
@@ -146,13 +179,6 @@ const Navbar = ({
                   <>
                     <li className="">
                       <div className="relative flex flex-row items-center justify-end  w-full p-4 z-10 postsenOne ">
-                        <p
-                          className={`hidden sm:flex ${
-                            isScrolled ? "text-black" : "text-white"
-                          } text-2xl mr-4`}
-                        >
-                          {name?.split(" ")[0]}
-                        </p>
                         <div
                           className={`flex flex-col items-center justify-center h-12 w-12 ${
                             isScrolled ? "bg-indigo-700" : "bg-white"
@@ -173,7 +199,7 @@ const Navbar = ({
                           {avatarClicked && (
                             <div
                               id="avatarDiv"
-                              className={`absolute right-0 top-4 w-[150px] h-[150px] pb-8 pt-4 z-5 postsenOne  transform transition-transform duration-300 `}
+                              className={`absolute right-0 top-0 w-[250px] h-[150px] pb-8 pt-4 z-5 postsenOne  transform transition-transform duration-300 `}
                               onClick={closeAvatarDropdown}
                             >
                               <div
@@ -181,16 +207,33 @@ const Navbar = ({
                                 onMouseLeave={() => setAvatarClicked(false)}
                               >
                                 <div className="w-full h-auto bg-slate-100 flex flex-col items-start pt-4  rounded-lg">
+                                  <p className="mt-1 w-full  font-bold pl-4  text-lg first-letter:uppercase">
+                                    {name?.split(" ")[0]}
+                                  </p>
+                                  <p className="mt-1 w-full pl-4  text-lg first-letter:uppercase">
+                                    Current Plan: Subscribed
+                                  </p>
+                                  <p className="mt-1 w-full pl-4  text-lg first-letter:uppercase">
+                                    valid till {remainingTime}
+                                  </p>
                                   <p
-                                    className="mt-1 w-full pl-4  text-lg    transition-transform transform duration-700  hover:scale-110 cursor-pointer"
+                                    className="mt-12 w-full pl-4  text-lg    transition-transform transform duration-500  hover:scale-105 cursor-pointer"
+                                    onClick={() => {
+                                      router.push("/user/calculator");
+                                    }}
+                                  >
+                                    Account settings
+                                  </p>
+                                  <p
+                                    className="mt-1 w-full pl-4  text-lg    transition-transform transform duration-500  hover:scale-105 cursor-pointer"
                                     onClick={() => {
                                       router.push("/user/calculator");
                                     }}
                                   >
                                     Chart
                                   </p>
-                                  <p
-                                    className="mt-1 mb-4 w-full pl-4 text-red-900 text-lg font-bold transition-transform transform duration-700  hover:scale-110  cursor-pointer"
+                                  <button
+                                    className="bg-white border border-red-500 mt-1 mb-4 w-auto ml-4 px-3 py-2  text-red-600 text-lg font-bold cursor-pointer rounded-md hover:text-white hover:bg-red-600 hover:border-white transition-colors duration-300"
                                     onClick={() => {
                                       Cookies.remove("token");
                                       Cookies.remove("name");
@@ -200,7 +243,7 @@ const Navbar = ({
                                     }}
                                   >
                                     Logout
-                                  </p>
+                                  </button>
                                 </div>
                               </div>
                             </div>

@@ -34,19 +34,26 @@ const ContactUs = () => {
                 </h1>
                 <input
                   type="email"
-                  placeholder="Enter your email"
+                  placeholder="Enter your email*"
                   className="border border-indigo-700 py-2 px-4  mt-4 w-full sm:w-full lg:w-full focus:outline-none focus:ring-2 focus:ring-indigo-700"
+                  required
                 />
                 <input
                   type="text"
-                  placeholder="Enter your name"
+                  placeholder="Enter your name*"
                   className="border border-indigo-700 py-2 px-4  mt-4 w-full sm:w-full lg:w-full focus:outline-none focus:ring-2 focus:ring-indigo-700"
+                  required
                 />
                 <textarea
-                  placeholder="Message"
+                  placeholder="Message*"
                   className="h-32 border border-indigo-700 py-2 px-4  mt-4 w-full sm:w-full lg:w-full focus:outline-none focus:ring-2 focus:ring-indigo-700"
+                  maxLength="250"
+                  required
                 ></textarea>
-                <button className=" w-full sm:w-full lg:w-full  bg-indigo-700 border border-white text-white rounded-md mt-4 px-4 py-3 hover:bg-white hover:border-indigo-700 hover:text-indigo-700 transition-colors duration-500 mb-12">
+                <button
+                  type="submit"
+                  className=" w-full sm:w-full lg:w-full  bg-indigo-700 border border-white text-white rounded-md mt-4 px-4 py-3 hover:bg-white hover:border-indigo-700 hover:text-indigo-700 transition-colors duration-500 mb-12"
+                >
                   Submit
                 </button>
               </form>

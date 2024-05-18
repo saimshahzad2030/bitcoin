@@ -110,11 +110,9 @@ const Page = () => {
                   Calculational Investments
                 </p>
               </div>
-              <img
-                className={"w-[100px] h-auto mt-4 sm:block hidden"}
-                src={BLANKPAGE[6].image}
-                alt={BLANKPAGE[6].name}
-              />
+              <p className=" text-white px-4 text-2xl md:text-3xl my-8">
+                <span className="font-bold">$ 15.00 </span>/Month
+              </p>
               <button
                 className="mt-4 sm:mt-0 py-3 px-4 bg-white text-indigo-700 border border-white rounded-md hover:bg-indigo-700 hover:text-white transition-colors duration-500"
                 onClick={
@@ -201,11 +199,9 @@ const Page = () => {
                 </p>
               </div>
 
-              <img
-                className={"w-[100px] h-auto mt-4 sm:block hidden"}
-                src={BLANKPAGE[7].image}
-                alt={BLANKPAGE[7].name}
-              />
+              <p className=" text-white px-4 text-2xl md:text-3xl my-8">
+                <span className="font-bold">$ 00.00 </span>/Month
+              </p>
               <button
                 className="mt-4 sm:mt-0 py-3 px-4 bg-white text-indigo-700 border border-white rounded-md hover:bg-indigo-700 hover:text-white transition-colors duration-500"
                 onClick={

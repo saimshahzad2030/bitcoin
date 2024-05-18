@@ -8,7 +8,8 @@ export const matchToken = async (
   setLoading,
   setemailVerified,
   setType,
-  setResponseMessage
+  setResponseMessage,
+  setTokenError
 ) => {
   setLoading(true);
 
@@ -28,5 +29,6 @@ export const matchToken = async (
     setLoading(false);
     setType("failed");
     setResponseMessage(error.response.data.message);
+    setTokenError(error.response.data.message);
   }
 };

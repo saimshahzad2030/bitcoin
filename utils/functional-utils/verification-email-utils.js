@@ -7,7 +7,8 @@ export const sendVerificationEmail = async (
   setLoading,
   setEmailEntered,
   setType,
-  setResponseMessage
+  setResponseMessage,
+  setEmailError
 ) => {
   setLoading(true);
 
@@ -26,6 +27,7 @@ export const sendVerificationEmail = async (
     setLoading(false);
     setType("failed");
     setResponseMessage(error.response.data.message);
+    setEmailError(error.response.data.message);
   }
 };
 
@@ -34,7 +36,8 @@ export const passwordVerificationEmail = async (
   setLoading,
   setEmailEntered,
   setType,
-  setResponseMessage
+  setResponseMessage,
+  setEmailError
 ) => {
   setLoading(true);
 
@@ -53,5 +56,6 @@ export const passwordVerificationEmail = async (
     setLoading(false);
     setType("failed");
     setResponseMessage(error.response.data.message);
+    setEmailError(error.response.data.message);
   }
 };
