@@ -21,6 +21,7 @@ import CustomCarousel from "../CustomCarousel/CustomCarousel";
 import Modal2 from "../Modal/Modal2";
 import Cookies from "js-cookie";
 import Alert from "../Alert/Alert";
+import Navbar from "../Navbar/Navbar";
 
 const WelcomePage = ({}) => {
   const [isLogin, setIsLogin] = useState(true);
@@ -219,12 +220,13 @@ const WelcomePage = ({}) => {
 
   return (
     <>
+      <Navbar loginPage={true} />
       <div
-        className={`bg-gradient-to-b from-indigo-900 to-indigo-500  py-12 ${style.welcomePage} postsenOne`}
+        className={`bg-gradient-to-b from-indigo-900 to-indigo-500 pt-24    ${style.welcomePage} postsenOne`}
       >
         <div>
           <h1
-            className={`text-5xl lg:text-6xl font-bold mb-12 text-center text-gray-50 ${style.heading}`}
+            className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-12 text-center text-gray-50 ${style.heading}`}
           >
             Crypto Exit Calculator
           </h1>

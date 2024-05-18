@@ -20,7 +20,7 @@ const SupportedCoins = () => {
             </h2>
           </div>
           <img
-            data-aos="slide-up"
+            data-aos="fade-left"
             className=" w-11/12 md:w-6/12 h-auto   bg-no-repeat bg-center bg-cover "
             src="/assets/coins/crypto-coins.png"
             alt="crypto-logo"
